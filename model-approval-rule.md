@@ -15,22 +15,24 @@
 4. Legacy `Ready for verification` counts as previous AI approval; historical `Verified by Dharma` records are preserved and also counted. **New approvals use `AI Approved`; no model impersonates Dharma.**
 5. The public site has only a member-name selector, not verified authentication. Its anonymous sessions must not grant AI Approved; those transitions use trusted project tools with an evidence review and auditable model identity.
 
-## 3. Current team split and Grok's return
-**Current source of truth: Supabase `public.users.ai_agent`.**
-- Muse: **13** (including Lokesh, Koushik and Santhan).
-- Claude: **13** (including Sandeep, Guru and Avinash).
-- ChatGPT: **14** (including Eswar, Bittu, Chakri and Muvva).
-- Grok: **0** while on leave. **When Grok returns, Grok follows exactly these rules for any members reassigned to it.** No member automatically switches back; Hanuma's explicit roster update controls ownership.
+## 3. Current team split — CEO restored Grok's original team (Nov 15)
 
-The detailed personnel split is in [team-ai-assignments.md](team-ai-assignments.md).
+**Source of truth: live Supabase `public.users.ai_agent`.** Grok is active again after Hanuma explicitly reassigned the original ten members. All four teams have **10 active members**.
+
+- **Muse (10):** Vishnu, Sai, Raghava, Krishna, Mani, Chaitanya, Abhi, Sreekanth, Rithwick, Vijay.
+- **Claude (10):** Hanuma, Rohit, Akhil, Rakesh, Teja, Navven, Chandu, Santhosh, Rithesh, Yogi.
+- **ChatGPT (10):** Dharma, Meghana, Hari, Vinay, Tirumala Rao, KC, Ananth, Suraj, Ajay, Rakhy.
+- **Grok (10):** Lokesh, Koushik, Santhan, Sandeep, Guru, Avinash, Eswar, Bittu, Chakri, Muvva.
+
+The temporary 13/13/14/0 distribution during Grok's leave is **historical and superseded**. The detailed names, original task slices, and historical transfer record are in [team-ai-assignments.md](team-ai-assignments.md). Grok must read existing task evidence before continuing its 12 affected tasks. No statuses or previously checked facts are reset.
 
 ## 4. Mixed-model task integration
-- **D1-07:** Lokesh design belongs to Muse. Muse checks and fixes the color-token mismatch, contrast, gradient claim and wireframe gaps documented in the board before approving.
-- **D1-12:** Muse supplies Santhan/Koushik footage, images and rights log; ChatGPT supplies Bittu's Pinterest account/campaign slice. The full task stays open until all acceptance criteria are met.
-- **D2-02:** Claude (Rakesh, Teja), ChatGPT (Eswar), Muse (Vijay) fact-check assigned park records and submit a consolidated source-backed log.
-- **D2-07:** ChatGPT provides Eswar's 20-brand shortlist and Meghana's private finance/credential component; Claude provides Rohit's privacy component. Do not expose secrets publicly.
+- **D1-07:** Lokesh design now belongs to Grok. Grok checks and preserves Muse's prior color-token corrections, contrast, gradient claim and wireframe gaps documented in the board before approving.
+- **D1-12:** Grok owns Santhan/Koushik footage, images and rights log and Bittu's Pinterest account/campaign slice; preserve work already contributed by Muse and ChatGPT. The full task stays open until all acceptance criteria are met.
+- **D2-02:** Claude (Rakesh, Teja), Grok (Eswar), Muse (Vijay) fact-check assigned park records and submit a consolidated source-backed log.
+- **D2-07:** Grok owns Eswar's 20-brand shortlist; ChatGPT owns Meghana's private finance/credential component; Claude owns Rohit's privacy component. Prior ChatGPT research is valid handoff evidence. Do not expose secrets publicly.
 - **D4-06:** Source verification is split between assigned models; one consolidated log is needed before full task approval.
-- **D5-06:** ChatGPT covers Muvva/KC/Ajay; Muse covers Santhan. No group or commercial rollout prior to the GO decision.
+- **D5-06:** Grok covers Muvva/Santhan; ChatGPT covers KC/Ajay. No group or commercial rollout prior to the GO decision.
 
 ## 5. Production approvals remain mandatory
 - **No human approval until production readiness** for normal internal sprint deliverables.
