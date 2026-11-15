@@ -121,13 +121,21 @@ async function loadShared(){
   if(sharedLoadInFlight)return;
   sharedLoadInFlight=true;
   try{
-    const res=await sb.from('tasks').select('task_id,status,evidence,updated_by,verified_by');
+    const res=await sb.from('tasks').select('task_id,title,owner_name,department,priority,day,due_date,status,acceptance_criteria,dependencies,notes,evidence,updated_by,verified_by,updated_at').order('task_id');
     if(res.error)throw res.error;
-    (res.data||[]).forEach(r=>{
-      const t=tasks.find(x=>x.task_id===r.task_id);if(!t)return;
-      if(validStatuses.includes(r.status)){t.status=r.status;taskStatus[t.task_id]=r.status;}
-      if(r.evidence){t.evidence=r.evidence;taskEvidence[t.task_id]=r.evidence;}t.updated_by=r.updated_by||'';t.verified_by=r.verified_by||'';
-    });
+    if(!res.data||!res.data.length)throw new Error('Shared task list returned no records');
+    // Live Supabase rows, including title/owner/criteria changes, are authoritative.
+    // Replace stale seed data without discarding the last-good offline cache.
+    const updated=res.data.map(r=>({
+      task_id:r.task_id,task:r.title||'',owner:r.owner_name||'',
+      department:r.department||'',priority:r.priority||'P1',day:r.day||'',
+      due_date:r.due_date||'',status:validStatuses.includes(r.status)?r.status:'Not started',
+      acceptance_criteria:r.acceptance_criteria||'',dependencies:r.dependencies||'',
+      notes:r.notes||'',evidence:r.evidence||'',updated_by:r.updated_by||'',
+      verified_by:r.verified_by||'',updated_at:r.updated_at||''
+    }));
+    tasks.splice(0,tasks.length,...updated);
+    updated.forEach(t=>{taskStatus[t.task_id]=t.status;taskEvidence[t.task_id]=t.evidence;});
     try{localStorage.setItem(KEY,JSON.stringify(taskStatus));localStorage.setItem(EVID_KEY,JSON.stringify(taskEvidence));}catch(e){}
     const gres=await sb.from('launch_gates').select('id,status,evidence,confirmed');
     if(!gres.error&&(gres.data||[]).length){
@@ -210,7 +218,7 @@ function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;',
 function msg(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1800)}
 function isSprintDone(t){return aiApprovedStatuses.has(t.status)}
 function countDone(){return tasks.filter(isSprintDone).length}
-function shortDate(s){return new Date(s+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'});}
+function shortDate(s){if(!s)return '—';const d=new Date(s+'T12:00:00');return Number.isNaN(d.getTime())?'—':d.toLocaleDateString('en-US',{month:'short',day:'numeric'});}
 function show(view){document.querySelectorAll('.view').forEach(v=>{const on=v.id===view;v.classList.toggle('hidden',!on);v.style.setProperty('display',on?'block':'none','important');if(on){let p=v.parentElement;while(p){if(p.classList&&p.classList.contains('hidden')){p.classList.remove('hidden');p.style.setProperty('display','block','important');}p=p.parentElement;}}});document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));window.scrollTo(0,0);if(view==='tasks')renderTasks();if(view==='team')renderTeam();if(view==='timeline')renderTimeline();if(view==='gates')renderGates();}
 document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>show(b.dataset.view)));$('heroTasks').addEventListener('click',()=>show('tasks'));
 function stats(){const done=countDone(),blocked=tasks.filter(t=>t.status==='Blocked').length;const cards=[['Founder seats','40 / 40','35 founders + 5 backups'],['Designated parks','64','Current official NPS list'],['Sprint tasks completed',done+' / '+tasks.length,Math.round(100*done/tasks.length)+'% AI-approved / historical completed'],['Launch blockers',blocked,'Production approval is a separate gate']];$('stats').innerHTML=cards.map(([k,v,sub])=>`<div class="stat"><span class="k">${k}</span><span class="v">${v}</span><span class="sub">${sub}</span></div>`).join('');$('sideProgress').style.width=(100*done/tasks.length)+'%';$('sideCopy').textContent=done+' of '+tasks.length+' sprint tasks completed (AI-approved)';}
