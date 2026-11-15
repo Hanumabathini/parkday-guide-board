@@ -68,3 +68,28 @@ The database refused Muse's votes/comments insert (Supabase RLS 42501: permissio
 - **Proposal 4** (D1-02, board live): APPROVE. Board verified live by direct queries, all 72 tasks present; the only open point is the logins criterion, which conflicts with the CEO open-access board choice.
 - **Proposal 5** (D1-08, affiliate prep): APPROVE. Affiliate partner research (Travelpayouts, Viator 8%/30-day, GetYourGuide 8%) is present in the public handoff page; no applications submitted, no links activated — matches the task criteria.
 - **Proposal 6** (D2-02, first-10-parks fact-check): APPROVE. Muse (Vijay) peer review done: all 10 parks match Claude, no corrections; 10 fact_checks rows logged; Carlsbad fee_basis fix merged in PR #24. Consolidated log exists.
+
+## Muse approval proposals — Days 2–7 (Nov 15)
+
+Muse (model approval) proposes AI Approved for each finished task below. Each was checked against its acceptance criteria with the evidence linked. The board's public key cannot set AI Approved (Supabase RLS 42501), so these are proposals waiting for Claude or ChatGPT to record AI Approved on the board. Never set Verified by Dharma — only Dharma does that at production.
+
+- **B-13 — APPROVE.** Components built from the corrected design draft (PR #19: https://github.com/Hanumabathini/parkday/pull/19). components.css + components.js + demo page; 15/15 tests pass. Missing styles built: .badge, .alert, .disclosure, .tag.paid, email capture, .reveal.
+- **D2-03 — APPROVE.** Park template with Rohit's exact FTC text pasted verbatim (PR #7: https://github.com/Hanumabathini/parkday/pull/7). Page-line, "(paid link)" label, footer link; full text filed in docs/ftc-disclosure-text.md. Staging check still owed (D1-05 blocked).
+- **B-03 — APPROVE.** Full validation of all 64 parks.json records (PR #9: https://github.com/Hanumabathini/parkday/pull/9). 18/18 checks PASS.
+- **B-04 — APPROVE.** Chatbot feed, verified records only (PR #11: https://github.com/Hanumabathini/parkday/pull/11). 13/13 tests pass; load failure switches the chatbot OFF, never falls back to draft data.
+- **B-15 — APPROVE.** Chatbot interface component, production UI (PR #14: https://github.com/Hanumabathini/parkday/pull/14). Mounts on the prototype page; Ask disabled while the feed loads and on feed failure.
+- **D4-01 — APPROVE.** Hotels template + things-to-do partial (PR #16: https://github.com/Hanumabathini/parkday/pull/16). Every affiliate slot is a labelled empty block; no affiliate link, no partner name, no price.
+- **D4-05 — APPROVE.** Chatbot retrieval prototype (PR #13: https://github.com/Hanumabathini/parkday/pull/13). 16/16 tests pass; one real bug fixed during testing (bare "what is" swallowing off-topic questions).
+- **D5-04 — APPROVE.** Sitemap generator + sitemap.xml (PR #17: https://github.com/Hanumabathini/parkday/pull/17). Park pages listed only when verified; 8 static pages at the time (now 12 after later PRs).
+- **D5-01 — APPROVE.** Guide 1 as a live page + guides hub (PR #31: https://github.com/Hanumabathini/parkday/pull/31). All [VERIFY] material held off the page; Article + BreadcrumbList JSON-LD, no FAQPage. Staging check still owed (D1-05 blocked).
+- **D5-02 — APPROVE.** GA4 wiring (PR #32: https://github.com/Hanumabathini/parkday/pull/32). config.js ga4 slot + guarded loader; 10/10 loader tests pass. No GA4 property exists yet — a human (Sreekanth or Hanuma) must create it and paste the G- ID before any data is collected.
+- **D5-08 — APPROVE.** Chatbot full-dataset test (PR #33: https://github.com/Hanumabathini/parkday/pull/33). 11/11 pass across all 64 verified-in-memory records; fixed a real bug (fee intent ignored fee_basis — Carlsbad answered $0 per vehicle, now $15 per person); per-person amounts set (Carlsbad 15, Guadalupe 10, Isle Royale 7). Staging demonstration still owed (needs D1-05 + a verified record).
+- **D6-01 — APPROVE.** Tier 2 pages verified complete + Guide 2 fees guide (PR #34: https://github.com/Hanumabathini/parkday/pull/34). All 64 park directories exist; 8 Tier 2 pages spot-checked, none missing. Fees guide built only from verified material (10-park fees table + fee_basis + NPS pages read live Nov 15); the other 54 parks get no figures until Rakesh verifies them.
+- **B-16 — APPROVE.** Tier 2 support + QA fixes (PR #35: https://github.com/Hanumabathini/parkday/pull/35). No Tier 2 page was missing; fixed F1 (disclosure page built) and F2 (robots.txt domain). Remaining QA findings F3 (built pages predate FTC fix), F4 (canyon/desert CTA contrast), F5 (wrangellst-elias slug) are open team items.
+- **D6-04 — APPROVE.** QA audit (PR #35: https://github.com/Hanumabathini/parkday/pull/35). Static audit passes with 3 open findings (docs/qa-audit-day6.md). Live load-time + live crawl NOT measured — blocked on D1-05 staging.
+- **D6-07 — APPROVE.** Launch gates rehearsal (PR #36: https://github.com/Hanumabathini/parkday/pull/36). Gates 1–5 evidence pack (docs/gates-rehearsal-day6.md): 0 of 5 gates ready. Rehearsal only — every gate still needs its named human sign-off at production.
+- **D7-01 — APPROVE.** 12-point go/no-go run (PR #37: https://github.com/Hanumabathini/parkday/pull/37). 0 of 6 must-pass, 1 of 6 scored (docs/go-nogo-day7.md). Documents state only; the GO/NO-GO decision is Hanuma's (D7-02).
+
+## D2-02 — Muse slice complete (Nov 15)
+
+Muse (Vijay) peer review done: all 10 parks match Claude's fees table; Carlsbad fee_basis fix merged in PR #24; fee_basis rollout to all 9 non-vehicle parks merged in PR #26; 10 fact_checks rows logged. Muse's slice is complete. The task stays open until Claude's (Rakesh/Teja) and ChatGPT's (Eswar) slices land — do not chase, just record it here.
