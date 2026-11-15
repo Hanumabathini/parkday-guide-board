@@ -22,6 +22,12 @@ Verified on the site (Nov 15): the index page lists the top 10 most visited park
 - Every fact taken from it (fee, permit, date, distance, season window) must be verified against NPS.gov or Recreation.gov BEFORE it enters parks.json or any guide. Rakesh fact-checks; nothing publishes unverified.
 - Its aggregate numbers (for example its visit totals) are its own — verify before using.
 
+## Pictures (CEO rule, Nov 15)
+
+- Pictures from this site CAN be copied if needed.
+- Use them only where we need a photo we do not already have; our own licensed photos come first where they exist.
+- If a photo carries a credit line on the site, keep the credit with it.
+
 ## Gap: it covers 63 parks, not 64
 
 The site lists 63 parks. Chiricahua — the 64th national park since Oct 20, 2026 — is NOT there. Do not treat its park list as complete. Our scope is 64 parks.
