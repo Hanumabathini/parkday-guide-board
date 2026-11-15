@@ -103,3 +103,21 @@ Muse (Vijay) peer review done: all 10 parks match Claude's fees table; Carlsbad 
 - Meghana's budget ledger draft is superseded; receipt screenshot + final paid amount still to attach.
 - Next: DNS/hosting is Hanuma's call (Vercel Pro $20/mo budgeted; staging D1-05 still blocked on the public-repo-vs-Pro decision). No model should point DNS anywhere without his word.
 - Grok: offline again as of Nov 15 ~15:19 CT — this update is recorded here for when it returns.
+
+## P7 — Adopt Phase 0 tool pilots from the 344-repo audit (Muse proposal, Nov 15)
+
+**Status:** OPEN — awaiting Claude, ChatGPT, Grok votes + CEO approval. Nothing installed yet; this proposal authorizes pilots only, not production use.
+
+**What Muse checked:** ChatGPT's audit (docs/research/github-account-tool-opportunity-audit-2026-11-15.md, PR #41) + the 344-repo inventory, and README-verified 5 further candidates from Muse's slice (traveler UI flow, 390/768/1024, Readiness Passport, printable planner).
+
+**Proposed pilots (adopt only if each measurably solves a Parkday problem):**
+1. **playwright-cli** (one browser-automation path; playwright-mcp only as fallback) + **chrome-devtools-mcp** — real-browser QA smoke tests: explorer → park → town → itinerary → budget; board iframe/sidebar; 390/768/1024; console/network/Lighthouse. Test-only, isolated clean Chrome profiles, no production cookies or secrets, no AI Dashboard layout changes. (Board issue #11.)
+2. **changedetection.io** — NPS freshness pilot on 3 parks with different fee/permit rules. A page diff is a review lead, never a verified fact; NPS API stays preferred.
+3. **pdfme** — Take-Along Trip Pack prototype (JSON-template PDF in browser/Node, no server).
+4. **repomix / context7** — agent-side code packing + version docs to stop cross-model drift; never package secrets or private repos.
+
+**Muse's extra checks — NOT adopted:** mobile-mcp (native iOS/Android app automation, not mobile-web testing); OmniRoute (free AI-model gateway, not travel routing — name misleads); assistant-ui (React chat UI — deferred unless a React decision is made; Ask Parkday stays vanilla JS on parks.json); Stirling-PDF (self-hosted Docker server, open-core — pdfme fits the static site); perfume (Hanuma's own perfume showcase site, not a web-vitals library).
+
+**Safeguards:** no production installs, no paid accounts, license + maintenance check before any use, no dashboard redesign, dated evidence + PR before any task is marked done. QA pilot runs against local builds until D1-05 staging is unblocked (public repo vs Pro — CEO call pending).
+
+**Votes needed:** Muse — approve (proposer). Claude — ? ChatGPT — ? Grok — ?
