@@ -18,7 +18,11 @@ assert(html.includes('AI Dashboard</a></p>'),'Overview CTA is correctly closed')
 assert(html.includes('href="#ai"'),'AI Workspace opens under the single board URL');
 assert(html.includes('data-view="ai"'),'AI Workspace is part of the shared navigation');
 assert(html.includes('data-src="ai-dashboard.html"'),'AI Dashboard is embedded and lazy-loaded');
-assert(html.includes('data-board-view="overview"'),'AI Workspace provides a path back to the Project Board');
+assert(html.includes('<button data-view="ai" aria-label="AI Dashboard'),'AI Dashboard is pinned to shared sidebar');
+assert(html.includes('data-view="ai"')&&html.indexOf('data-view="ai"')<html.indexOf('data-view="overview"'),'AI Dashboard is first item immediately under Parkday Guide brand');
+assert(!html.includes('.app.ai-mode .sidebar{display:none'),'shared sidebar remains visible on AI Dashboard');
+assert(html.includes('.sidebar{')&&html.includes('position:sticky'),'shared sidebar retains sticky positioning');
+assert(!html.includes('class="ai-shellbar"'),'no duplicate navigation bars inside the AI Dashboard section');
 
 const stack=[];
 const tag=/<\/?(?:main|div|section)\b[^>]*>/gi;
