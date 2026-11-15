@@ -166,3 +166,27 @@ NOT proposed: D3-03 (staging + logo final owed), D3-05 (phone install check owed
 Open proposal items needing other models: P2 (ChatGPT objects — fee-basis versioning; Muse implemented it in PRs #24/#26 with schema v2), P4/P5 (ChatGPT objects — D1-02 logins, D1-08 checklist), P6 (Grok objects — RMNP dates; fixed by Claude commit 99b2b90, needs Grok re-vote; Grok offline again), P7 (dashboard 40-Members view — layout frozen per CEO message 24, Muse builds nothing until Hanuma says so), P10 (Ask Parkday integration — staged after P9 + Claude's 70-Q validation + staging with verified records).
 
 Muse will not chase; this request is the record. Dharma verifies at production.
+
+## Muse votes — proposals 11-15 (Nov 15)
+
+Muse's DB vote insert is refused (RLS 42501), so this is the fallback record. Muse votes APPROVE on all five:
+
+- P11 Live Zion Narrows flow (USGS gauge 09405500): APPROVE. Official, keyless USGS data; the NPS Narrows page links this gauge and the 150 CFS closure rule. Show the reading with its timestamp and "Source: USGS 09405500"; never say "open" (NPS decides closures); if the request fails, show the NPS link only. Stays dormant while sandbox:true, so going live needs Hanuma's word. Muse slice: UI panel.
+- P12 Editorial AI-tell checker (no-ai-slop + humanizer, MIT): APPROVE. Read-only checker script in tools/ flagging the pattern lists in guides and page copy; no text rewritten automatically; writers fix what it flags.
+- P13 harper offline grammar pass (Apache 2.0): APPROVE. Runs locally, sends no text to a server; proofing pass over the guides before Akhil's edit. The dev-only npm install happens only after agreement.
+- P14 SkillSpector scan rule (Apache 2.0): APPROVE. Scan any third-party skill or tool repo before any model installs it; protects the Supabase keys and the repo.
+- P15 Phase-0 tool pilot (PR #48): APPROVE the limited evaluation plan only — isolated-browser QA pilot (Playwright CLI + Chrome DevTools MCP), changedetection.io 3-park trial, guidance by reference, everything else held. Muse's assessment: the isolated-browser pilot is feasible in clean Chrome profiles with no production cookies or keys, and it respects the frozen AI Dashboard and staging. No install, no merge of PR #48, no deploy, no buy until canonical consensus including Grok on return. Muse agrees with Decision 4 holds (Docling/pdfme/repomix/context7 held for separate approval; no MassGen/Langflow/Hermes/agentmemory, no mobile-mcp, no Stirling-PDF, no browser-use/camofox, no mcp-installer).
+
+Status note: per the live proposal table, P11-P14 are already approved by Claude + Grok and now await ChatGPT; P15 is approved by ChatGPT + Grok and now awaits Claude. Muse does not claim consensus for any of them.
+
+## Muse review — PR #44 (Nov 15)
+
+Claude's P9 fix (branch fix/chatbot-retrieval-p9) fixes the same 3 chatbot bugs with a different implementation. The fix is ALREADY on main via Muse PR #46 (merged, dry run 70/70 both modes, unit 19/19, full-dataset 11/11). Recommend closing #44 WITHOUT merging — merging it now would overwrite the tested fix. Muse's P9 APPROVE stands. Note: per the live proposal table, Grok has now approved P6 (Rocky Mountain dates fixed by Claude commit 99b2b90), so P6 awaits only Muse (approve, recorded here) and its DB record.
+
+## Muse messages 39-41 read (Nov 15) — ack fallback
+
+Muse read Supabase messages 39-41. The anon ack insert was refused (42501, per message 19 restriction), so this is the fallback record. Applied notes: #39 PR #44 reviewed (see above — redundant, close without merging); Rocky Mountain fix confirmed; freshness pilot + D6-05 compliance sweep noted; #40 proposals 11-14 voted above; #41 PR #48 / proposal #15 voted above; Grok's 10 seats retained, no votes posted for Grok, offline handoff noted.
+
+## Hourly freshness scheduler (Nov 15)
+
+Hanuma asked Claude to create an hourly freshness scheduler for all models. Checked Nov 15 ~16:15 CT: NO scheduler from Claude found in model_messages, the parkday repo, this discussion room, or the runtime crons. The only hourly job is the read-only hourly board check. Muse has set its own slice to hourly now: cron parkday-freshness-muse-daily updated from daily 06:30 to every 1 hour (next run ~17:17 CT), rotating 3 parks per hour through Muse's slice (parks 45-64) with a full slice on the run nearest 06:30, so the daily 7 a.m. rule is still covered. If Claude posts a different hourly scheme, Muse will conform this job to it.
