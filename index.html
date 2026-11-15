@@ -12,20 +12,51 @@ main{min-width:0;padding:29px clamp(16px,3.5vw,55px) 70px}.topline{display:flex;
 .hidden{display:none!important}#toast{position:fixed;bottom:20px;right:20px;background:var(--deep);color:white;border-radius:10px;padding:13px 17px;opacity:0;transition:opacity .2s;pointer-events:none;font-size:13px}#toast.show{opacity:1}
 @media(max-width:1100px){.app{grid-template-columns:190px minmax(0,1fr)}.cards{grid-template-columns:repeat(2,1fr)}.membergrid{grid-template-columns:repeat(2,1fr)}.docgrid{grid-template-columns:repeat(2,1fr)}.sidebar{padding:22px 10px}}
 @media(max-width:720px){.app{display:block}.sidebar{position:static;height:auto;padding:12px 13px;gap:12px}.brand{justify-content:space-between}.nav{display:flex;overflow-x:auto;gap:3px;padding:0 1px}.nav button{white-space:nowrap;padding:9px 11px;font-size:11px}.side-foot{display:none}main{padding:15px 12px 40px}.topline{margin:4px 0 14px}.hero{padding:24px 22px;display:block}.hero h1{font-size:30px}.hero button{margin-top:8px}.cards{gap:8px}.stat{padding:14px}.stat .v{font-size:27px}.grid-2{grid-template-columns:1fr}.days{grid-template-columns:repeat(7,minmax(0,1fr));gap:3px}.day{padding:9px 2px;min-height:83px}.day b{font-size:10px}.day small{font-size:9px}.day span{font-size:16px}.membergrid,.docgrid{grid-template-columns:1fr}.budget{grid-template-columns:1fr 1fr}.panel{padding:14px}.sectionhead h2{font-size:18px}}
+.app.ai-mode{grid-template-columns:minmax(0,1fr)}
+.app.ai-mode .sidebar,.app.ai-mode .topline{display:none}
+.app.ai-mode main{padding:0;min-width:0;width:100%;max-width:none}
+.app.ai-mode #ai{padding:0}
+.ai-shell{min-width:0;width:100%;background:#020404;color:#eef6f2;min-height:100dvh}
+.ai-shellbar{height:58px;display:flex;align-items:center;gap:14px;padding:0 17px;background:#102b23;color:#fff;border-bottom:1px solid #315444}
+.ai-shellbar strong{font-size:13px;white-space:nowrap;letter-spacing:.1px}
+.ai-shellmuted{color:#a3bdad;font-weight:500}
+.ai-back,.ai-quicknav button{background:transparent;border:1px solid #3a5e50;color:#e7f3eb;border-radius:8px;padding:8px 12px;font-weight:650;font-size:12px;white-space:nowrap}
+.ai-back:hover,.ai-quicknav button:hover{background:#2a4d3f}
+.ai-quicknav{display:flex;gap:6px;margin-left:auto;overflow-x:auto;min-width:0}
+.ai-embedded{display:block;width:100%;height:calc(100dvh - 58px);min-height:500px;border:0;background:#020404}
+.task-to-ai{border:0;background:transparent;color:#19704a;font-size:11px;font-weight:700;padding:4px 0;cursor:pointer;text-align:left}
+.task-to-ai:hover{text-decoration:underline}
+@media(max-width:750px){.ai-shellbar{height:auto;min-height:58px;flex-wrap:wrap;gap:8px;padding:9px 10px}.ai-quicknav{flex:1 0 100%;margin-left:0;padding-bottom:2px}.ai-embedded{height:calc(100dvh - 104px);min-height:440px}.ai-shellmuted{display:none}}
 </style>
 </head>
 <body><div class="app">
 <aside class="sidebar"><div class="brand"><div style="display:flex;gap:10px;align-items:center"><span class="brand-icon">▲</span><div><b>PARKDAY GUIDE</b><small>parkdayguide.com</small></div></div></div>
-<nav class="nav" aria-label="Project navigation"><button class="active" data-view="overview"><span class="ic">◈</span> Overview</button><button data-view="tasks"><span class="ic">☑</span> Task Board</button><button data-view="team"><span class="ic">♧</span> Team Roster</button><button data-view="timeline"><span class="ic">◷</span> Timeline</button><button data-view="docs"><span class="ic">▤</span> Documents</button><button data-view="gates"><span class="ic">✓</span> Launch Gates</button><button data-view="chatbot"><span class="ic">💬</span> Chatbot</button></nav>
+<nav class="nav" aria-label="Project navigation"><button class="active" data-view="overview"><span class="ic">◈</span> Overview</button><button data-view="tasks"><span class="ic">☑</span> Task Board</button><button data-view="team"><span class="ic">♧</span> Team Roster</button><button data-view="timeline"><span class="ic">◷</span> Timeline</button><button data-view="docs"><span class="ic">▤</span> Documents</button><button data-view="gates"><span class="ic">✓</span> Launch Gates</button><button data-view="chatbot"><span class="ic">💬</span> Chatbot</button><button data-view="ai" aria-label="AI Workspace — Brain, discussions and task activity"><span class="ic">✦</span> AI Workspace</button></nav>
 <div class="side-foot"><strong>7-day sprint</strong><p>Nov 15 – Nov 21, 2026<br>Launch requires formal sign-off.</p><div class="mini-progress"><span id="sideProgress"></span></div><p id="sideCopy" style="margin-bottom:0">0 tasks done</p></div></aside>
 <main><div class="topline"><div class="eyebrow">Project / Beta Launch</div><div class="top-right"><span class="pill"><span class="dot"></span> Planning stage</span><span class="pill sync-pill" id="syncPill">Sync: Local only — shared DB pending</span><select id="whoAmI" class="whoami" aria-label="I am"><option value="">I am…</option></select><span>CEO · Hanuma</span></div></div>
 <section id="overview" class="view">
-<p style="margin:0 0 14px"><a href="ai-dashboard.html" style="display:inline-block;background:#d9773f;color:#102b23;font-weight:800;padding:10px 16px;border-radius:10px;text-decoration:none">AI Dashboard</a></p>
+<p style="margin:0 0 14px"><a href="#ai" style="display:inline-block;background:#d9773f;color:#102b23;font-weight:800;padding:10px 16px;border-radius:10px;text-decoration:none">AI Dashboard</a></p>
 <div class="hero"><div><div class="hero-eyebrow">THE JOURNEY BEGINS · NOVEMBER 2026</div><h1>One team. 64 parks.<br>Parkday Guide.</h1><p>40 people across the Executive Office and five operating departments — 35 founders plus 5 backup members. A seven-day sprint to a carefully reviewed public-beta candidate — not a promise of a production launch. Domain parkdayguide.com, chosen and to be bought Day 1, Sun Nov 15, 2026.</p></div><button id="heroTasks">Open Task Board →</button></div>
 <div class="cards" id="stats"></div>
 <div class="grid-2"><section><div class="sectionhead"><h2>Department ownership</h2><span>Five functional teams</span></div><div class="panel" id="departmentPanel"></div></section>
 <section><div class="sectionhead"><h2>Launch checkpoints</h2><span>Nov 15 – 21</span></div><div class="panel"><p style="font-size:13px;line-height:1.7;margin-top:0">A credible beta prioritizes <b>valid park data</b>, <b>working navigation</b>, <b>reviewed content</b> and <b>privacy/rights clearance</b>. Booking links stay inactive until real partnerships are approved.</p><div id="checkpointList"></div></div></section></div>
 <div class="sectionhead"><h2>Tasks needing attention</h2><span>Critical priority, then nearest due</span></div><div class="panel"><div class="table-wrap"><table><thead><tr><th>Task</th><th>Owner</th><th>Due</th><th>Priority</th><th>Evidence</th><th>Status</th></tr></thead><tbody id="previewTasks"></tbody></table></div></div>
+</section>
+<section id="ai" class="view hidden" aria-label="Parkday unified AI Workspace">
+<div class="ai-shell">
+  <header class="ai-shellbar" aria-label="Unified Parkday workspace navigation">
+    <button type="button" class="ai-back" data-board-view="overview" aria-label="Go back to Project Overview">← Project Overview</button>
+    <strong>Parkday Guide <span class="ai-shellmuted">/ AI Workspace</span></strong>
+    <nav class="ai-quicknav" aria-label="Other project sections">
+      <button type="button" data-board-view="tasks">Tasks</button>
+      <button type="button" data-board-view="team">Team</button>
+      <button type="button" data-board-view="timeline">Timeline</button>
+      <button type="button" data-board-view="docs">Documents</button>
+      <button type="button" data-board-view="gates">Launch gates</button>
+    </nav>
+  </header>
+  <iframe id="aiFrame" class="ai-embedded" title="Parkday AI Brain, models, team leads, members, tasks and live data" data-src="ai-dashboard.html" loading="lazy"></iframe>
+</div>
 </section>
 <section id="tasks" class="view hidden"><div class="sectionhead"><div><div class="eyebrow">Delivery / Assignment</div><h2>Seven-day task board</h2></div><button class="ghost" id="exportBtn">↓ Export updated CSV</button></div><div class="panel"><div class="toolbar"><input id="taskSearch" aria-label="Search tasks" placeholder="Search tasks, owners, criteria…"><select id="taskDept" aria-label="Department filter"><option value="">All departments</option></select><select id="taskStatus" aria-label="Status filter"><option value="">All statuses</option><option>Not started</option><option>In progress</option><option>Blocked</option><option>AI Approved</option><option value="Ready for verification">AI approved (legacy)</option><option value="Verified by Dharma">Historical verified (legacy)</option></select><select id="taskDay" aria-label="Day filter"><option value="">All days</option><option>Day 1</option><option>Day 2</option><option>Day 3</option><option>Day 4</option><option>Day 5</option><option>Day 6</option><option>Day 7</option></select><span class="pill">AI models approve sprint work · production sign-off separate</span><button id="clearFilters">Clear filters</button></div><div class="table-wrap"><table><thead><tr><th>ID</th><th>Task / acceptance criteria</th><th>Owner / team</th><th>Due</th><th>Priority</th><th>Evidence (required)</th><th>Update status</th></tr></thead><tbody id="allTasks"></tbody></table></div><div id="taskEmpty" class="empty hidden">No tasks match these filters.</div></div><p class="footnote"><b>Development approval workflow — CEO policy, Nov 15, 2026:</b> Muse, Claude and ChatGPT review evidence for members assigned to their model; if acceptance criteria are met, the model records an <b>AI Approved</b> decision in the shared database with an evidence link and audit entry. Such tasks count as completed for the sprint. If criteria fail, the model records precise corrections. This public board displays AI approvals but does <b>not</b> issue them through the member-name picker, which is an attribution label rather than authenticated authorization. The old <b>Ready for verification</b> status is recognized as AI-approved for historical compatibility. Older <b>Verified by Dharma</b> records are preserved as historical completions. <b>Human verification is deferred until production readiness</b>; the six required launch gates and go/no-go sign-off remain separate. Evidence and task updates sync through Supabase; local storage is an offline fallback. <a href="model-approval-rule.md" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;color:#13784f">Full policy</a>.</p>
 <div class="panel" style="margin-top:14px"><div class="sectionhead" style="margin-top:0"><h2>Collaboration — shared database live</h2><span>Live sync</span></div>
@@ -219,8 +250,72 @@ function msg(t){$('toast').textContent=t;$('toast').classList.add('show');setTim
 function isSprintDone(t){return aiApprovedStatuses.has(t.status)}
 function countDone(){return tasks.filter(isSprintDone).length}
 function shortDate(s){if(!s)return '—';const d=new Date(s+'T12:00:00');return Number.isNaN(d.getTime())?'—':d.toLocaleDateString('en-US',{month:'short',day:'numeric'});}
-function show(view){document.querySelectorAll('.view').forEach(v=>{const on=v.id===view;v.classList.toggle('hidden',!on);v.style.setProperty('display',on?'block':'none','important');if(on){let p=v.parentElement;while(p){if(p.classList&&p.classList.contains('hidden')){p.classList.remove('hidden');p.style.setProperty('display','block','important');}p=p.parentElement;}}});document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));window.scrollTo(0,0);if(view==='tasks')renderTasks();if(view==='team')renderTeam();if(view==='timeline')renderTimeline();if(view==='gates')renderGates();}
-document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>show(b.dataset.view)));$('heroTasks').addEventListener('click',()=>show('tasks'));
+const PROJECT_VIEWS=new Set(['overview','ai','tasks','team','timeline','docs','gates','chatbot']);
+let pendingAiTask=null,aiFocusRetries=0;
+function show(view){
+  if(!PROJECT_VIEWS.has(view))view='overview';
+  document.querySelectorAll('.view').forEach(v=>{
+    const on=v.id===view;
+    v.classList.toggle('hidden',!on);
+    v.style.setProperty('display',on?'block':'none','important');
+  });
+  document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+  document.querySelector('.app').classList.toggle('ai-mode',view==='ai');
+  if(view==='ai')activateAiFrame();
+  window.scrollTo(0,0);
+  if(view==='tasks')renderTasks();
+  if(view==='team')renderTeam();
+  if(view==='timeline')renderTimeline();
+  if(view==='gates')renderGates();
+}
+function navigate(view){
+  if(!PROJECT_VIEWS.has(view))view='overview';
+  show(view);
+  if(window.location&&window.location.hash!=='#'+view)window.location.hash=view;
+}
+function activateAiFrame(){
+  const f=$('aiFrame');if(!f)return;
+  if(!f.getAttribute('src'))f.setAttribute('src',f.dataset.src);
+  else if(pendingAiTask)focusAiTask();
+}
+function focusAiTask(){
+  if(!pendingAiTask||!$('aiFrame'))return;
+  try{
+    const fn=$('aiFrame').contentWindow?.findTask;
+    if(typeof fn==='function'){
+      fn(pendingAiTask);
+      pendingAiTask=null;
+      aiFocusRetries=0;
+      return;
+    }
+  }catch(e){/* Inner dashboard may still be loading its data */ }
+  if(aiFocusRetries++<24)setTimeout(focusAiTask,500);
+}
+function openAiTask(taskId){
+  pendingAiTask=taskId;
+  aiFocusRetries=0;
+  navigate('ai');
+  focusAiTask();
+}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.view)));
+document.querySelectorAll('[data-board-view]').forEach(b=>b.addEventListener('click',()=>navigate(b.dataset.boardView)));
+document.addEventListener('click',e=>{
+  const jump=e.target.closest('[data-ai-task]');
+  if(jump){e.preventDefault();openAiTask(jump.dataset.aiTask);return;}
+  const aiLink=e.target.closest('a[href="#ai"]');
+  if(aiLink){e.preventDefault();navigate('ai');}
+});
+const embedded=$('aiFrame');
+embedded.addEventListener('load',()=>{
+  try{
+    // Keep the existing "Open the board" action inside the shared workspace.
+    const back=embedded.contentDocument?.querySelector('a[href="./"]');
+    if(back)back.addEventListener('click',e=>{e.preventDefault();navigate('overview')});
+  }catch(e){/* Same-origin iframe expected; navigation shell remains available */ }
+  if(pendingAiTask)focusAiTask();
+});
+window.addEventListener('hashchange',()=>show((window.location.hash||'#overview').slice(1)));
+$('heroTasks').addEventListener('click',()=>navigate('tasks'));
 function stats(){const done=countDone(),blocked=tasks.filter(t=>t.status==='Blocked').length;const cards=[['Founder seats','40 / 40','35 founders + 5 backups'],['Designated parks','64','Current official NPS list'],['Sprint tasks completed',done+' / '+tasks.length,Math.round(100*done/tasks.length)+'% AI-approved / historical completed'],['Launch blockers',blocked,'Production approval is a separate gate']];$('stats').innerHTML=cards.map(([k,v,sub])=>`<div class="stat"><span class="k">${k}</span><span class="v">${v}</span><span class="sub">${sub}</span></div>`).join('');$('sideProgress').style.width=(100*done/tasks.length)+'%';$('sideCopy').textContent=done+' of '+tasks.length+' sprint tasks completed (AI-approved)';}
 function statusOptions(t){return `<select class="status-select" data-task="${t.task_id}" aria-label="Status for ${escapeHtml(t.task_id)}">${validStatuses.map(s=>`<option value="${escapeHtml(s)}" ${t.status===s?'selected':''}${aiApprovedStatuses.has(s)?' disabled':''}>${s==='Ready for verification'?'AI Approved (legacy)':s==='Verified by Dharma'?'Historical verified':s}</option>`).join('')}</select>`}
 function renderPreview(){const active=tasks.filter(t=>!isSprintDone(t)).sort((a,b)=>a.priority.localeCompare(b.priority)||a.due_date.localeCompare(b.due_date)).slice(0,7);$('previewTasks').innerHTML=active.map(t=>`<tr><td><b>${escapeHtml(t.task)}</b><div class="detail">${t.task_id}</div></td><td>${escapeHtml(t.owner)}</td><td>${shortDate(t.due_date)}</td><td><span class="priority ${t.priority}">${t.priority}</span></td><td><input class="evidence-input" data-evidence="${t.task_id}" placeholder="PR / link / screenshot" value="${escapeHtml(t.evidence||'')}" aria-label="Evidence for ${escapeHtml(t.task_id)}"></td><td>${statusOptions(t)}</td></tr>`).join('')||'<tr><td colspan="6">All sprint tasks AI-approved</td></tr>';attachStatus($('previewTasks'));}
@@ -229,12 +324,12 @@ function assignedModels(t){return [...new Set(t.owner.split(/\s*(?:\/|\+|,)\s*/)
 function refresh(){stats();renderPreview();renderTasks();renderTimeline();}
 function renderDepts(){$('departmentPanel').innerHTML=departments.slice(1).map(d=>`<div class="dept"><div><b>${escapeHtml(d)}</b><small>Lead: ${leadership[d]}</small></div><span class="count">${PEOPLE.filter(p=>p.department===d).length} people</span></div>`).join('')}
 function renderCheckpoints(){const milestones=[['Day 1–2','Foundation, data & shared board'],['Day 3','All 64 parks in data - major checkpoint'],['Day 4–5','Pages, guides & chatbot build'],['Day 6','QA, fact-check sign-off & chatbot test'],['Day 7','Formal go/no-go with evidence pack']];$('checkpointList').innerHTML=milestones.map(([a,b])=>`<div class="dept"><b>${a}</b><small>${b}</small></div>`).join('')}
-function renderTasks(){let q=$('taskSearch').value.toLowerCase().trim(),d=$('taskDept').value,s=$('taskStatus').value,day=$('taskDay').value;const subset=tasks.filter(t=>(!q||Object.values(t).join(' ').toLowerCase().includes(q))&&(!d||t.department===d)&&(!s||t.status===s)&&(!day||t.day===day));$('allTasks').innerHTML=subset.map(t=>`<tr><td class="muted">${t.task_id}</td><td><strong>${escapeHtml(t.task)}</strong><div class="detail">Done when: ${escapeHtml(t.acceptance_criteria)}</div></td><td><strong>${escapeHtml(t.owner)}</strong><div class="detail">${escapeHtml(t.department)}</div><div class="detail">AI reviewer: ${escapeHtml(assignedModels(t))}</div><div class="detail">${isSprintDone(t)?'Sprint complete · production review later':'Evidence review pending'}</div></td><td>${shortDate(t.due_date)}<div class="detail">${t.day}</div></td><td><span class="priority ${t.priority}">${t.priority}</span></td><td><input class="evidence-input" data-evidence="${t.task_id}" placeholder="PR / link / screenshot" value="${escapeHtml(t.evidence||'')}" aria-label="Evidence for ${escapeHtml(t.task_id)}"></td><td>${statusOptions(t)}</td></tr>`).join('');$('taskEmpty').classList.toggle('hidden',subset.length>0);attachStatus($('allTasks'));}
+function renderTasks(){let q=$('taskSearch').value.toLowerCase().trim(),d=$('taskDept').value,s=$('taskStatus').value,day=$('taskDay').value;const subset=tasks.filter(t=>(!q||Object.values(t).join(' ').toLowerCase().includes(q))&&(!d||t.department===d)&&(!s||t.status===s)&&(!day||t.day===day));$('allTasks').innerHTML=subset.map(t=>`<tr><td class="muted">${t.task_id}</td><td><strong>${escapeHtml(t.task)}</strong><div class="detail">Done when: ${escapeHtml(t.acceptance_criteria)}</div><button type="button" class="task-to-ai" data-ai-task="${escapeHtml(t.task_id)}" aria-label="Find task ${escapeHtml(t.task_id)} in AI Brain">Find in AI Brain ↗</button></td><td><strong>${escapeHtml(t.owner)}</strong><div class="detail">${escapeHtml(t.department)}</div><div class="detail">AI reviewer: ${escapeHtml(assignedModels(t))}</div><div class="detail">${isSprintDone(t)?'Sprint complete · production review later':'Evidence review pending'}</div></td><td>${shortDate(t.due_date)}<div class="detail">${t.day}</div></td><td><span class="priority ${t.priority}">${t.priority}</span></td><td><input class="evidence-input" data-evidence="${t.task_id}" placeholder="PR / link / screenshot" value="${escapeHtml(t.evidence||'')}" aria-label="Evidence for ${escapeHtml(t.task_id)}"></td><td>${statusOptions(t)}</td></tr>`).join('');$('taskEmpty').classList.toggle('hidden',subset.length>0);attachStatus($('allTasks'));}
 function renderTeam(){let q=$('teamSearch').value.toLowerCase().trim(),dept=$('teamDept').value,ai=($('teamAI')?$('teamAI').value:'');const arr=PEOPLE.filter(p=>(!dept||p.department===dept)&&(!ai||p.ai_agent===ai)&&(!q||Object.values(p).join(' ').toLowerCase().includes(q)));$('teamGrid').innerHTML=arr.map(p=>`<article class="member${p.is_backup?' backup':''}"><span class="avatar">${escapeHtml(p.name.slice(0,2).toUpperCase())}</span><div><h3>${escapeHtml(p.name)} <span class="muted" style="font-size:10px">#${p.seat}</span>${p.is_backup?'<span class="badge-backup">★ BACKUP</span>':''}</h3><p style="color:#314d3c;font-weight:700">${escapeHtml(p.title)}</p><p class="dept-tag">${escapeHtml(p.department)}</p><p>${escapeHtml(p.responsibility)}</p><span class="ai-tag ${escapeHtml(p.ai_agent||'')}">AI: ${escapeHtml(p.ai_agent||'—')}</span></div></article>`).join('')||'<p>No matching team member</p>'}
 function renderTimeline(){const days=Array.from({length:7},(_,i)=>{let n=i+1,arr=tasks.filter(t=>t.day==='Day '+n);return {n,all:arr.length,done:arr.filter(isSprintDone).length,date:shortDate('2026-11-'+(14+n))}});$('daysGrid').innerHTML=days.map(d=>`<div class="day"><b>Day ${d.n}</b><small>${d.date}</small><span>${d.done}/${d.all}</span><i><em style="width:${d.all?100*d.done/d.all:0}%"></em></i></div>`).join('');$('dayBreakdown').innerHTML=days.map(d=>`<div class="dept"><b>Day ${d.n} · ${d.date}</b><small>${d.all} tasks, ${d.done} AI-approved / completed</small></div>`).join('')}
 function renderDocs(){
   const docs=[
-    ['🧭','AI Dashboard','Preserved interactive Brain, models, tasks and discussions','ai-dashboard.html'],
+    ['🧭','AI Dashboard','Preserved interactive Brain, models, tasks and discussions','#ai'],
     ['👥','Current team assignments','Four active models with 10 members each','team-ai-assignments.md'],
     ['✅','CEO model approval rules','Evidence, votes, approvals, dashboard layout freeze','model-approval-rule.md'],
     ['📘','How the AI team works','Task handoffs, research, discussion and freshness','how-the-ai-team-works.md'],
@@ -261,7 +356,7 @@ function renderGates(){
     return '<tr><td class="muted">'+g.id+'</td><td><strong>'+escapeHtml(g.name)+'</strong></td><td>'+escapeHtml(g.owner)+'</td><td>'+escapeHtml(g.approver||g.owner)+'</td><td><span class="pill">'+escapeHtml(st.status||'Pending')+'</span></td><td>'+link+'</td><td>'+((st.confirmed&&st.status==='Passed')?'Confirmed':'Awaiting authorized approval')+'</td></tr>';
   }).join('');
 }
-renderDepts();renderCheckpoints();renderDocs();renderTeam();renderGates();refresh();initIdentity();show('overview');loadShared();subscribeRealtime();
+renderDepts();renderCheckpoints();renderDocs();renderTeam();renderGates();refresh();initIdentity();show(PROJECT_VIEWS.has((window.location?.hash||'').slice(1))?window.location.hash.slice(1):'overview');loadShared();subscribeRealtime();
 // Refresh all task/roster/gate data as models update Supabase, even if Realtime
 // publication or a browser network channel is unavailable. No layout changes.
 setInterval(()=>{if(!document.hidden)loadShared()},20000);
