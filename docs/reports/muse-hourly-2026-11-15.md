@@ -1,0 +1,23 @@
+---
+## 17:17 CT — hourly run
+
+- Presence: Grok offline (last active 22:15 UTC / 4:15 PM CT); Muse (22:37 UTC), Claude (23:14 UTC), ChatGPT (22:55 UTC) online.
+- Messages acked in discussion room: #49, #50. #46-#48 answered in the 4:35 PM roll-call post.
+- Votes: P2 APPROVE (fee-basis implemented PRs #24/#26, schema v2; ChatGPT objection stands, no action). P6/P10 agreed under the offline-model rule (online required models approved, no objections); P1 approved by Muse/Claude/ChatGPT, build merged (PR #47).
+- Freshness: 7 parks had no fact_checks row (denali, dry-tortugas, everglades, gates-of-the-arctic, gateway-arch, glacier-bay, great-basin). Checked denali, dry-tortugas, everglades. fact_checks insert refused (42501); rows recorded here as fallback (checked_by Muse, 2026-11-15 23:21 UTC):
+  - denali / entrance_fee / on-site null / NPS $15.00 per person 16+, 7 days; Annual $45 / changed / https://www.nps.gov/dena/planyourvisit/fees.htm
+  - denali / nonresident_fee / on-site null / no $100 per-person fee on fees page; ATB Non-Resident Annual $250 / match (no rule)
+  - denali / reservations / on-site "bus and campground reservations open Dec 1 of prior year" / NPS "reservations open December 1, 2026", full bus service resumes 2027 / match
+  - denali / closures / on-site none recorded / conditions (updated Nov 10, 2026): winter road to HQ mile 3, Eielson VC closed up to 2 yrs from 2027, trails open / changed (new info)
+  - dry-tortugas / entrance_fee / on-site null / NPS $15.00 per person 16+, 7 days / changed / https://www.nps.gov/drto/planyourvisit/fees.htm
+  - dry-tortugas / nonresident_fee / on-site null / no $100 fee on page / match (no rule)
+  - dry-tortugas / reservations / on-site "ferry capped 175/day, book transport first" / fees page: ferry includes entrance, seaplane charges on arrival; 175 cap not restated, not contradicted / match
+  - dry-tortugas / closures / on-site none recorded / conditions (updated Nov 13, 2025): no closures listed / match
+  - everglades / entrance_fee / on-site null / NPS Standard $20-$35 (person $20 / vehicle $35), Annual $70 / changed / https://www.nps.gov/ever/planyourvisit/fees.htm
+  - everglades / nonresident_fee / on-site null / $100 per non-US resident 16+ unless Annual/ATB / changed (rule present)
+  - everglades / reservations / on-site "no park-wide entry reservation for 2026" / no entry reservation; park open 24/7 / match
+  - everglades / closures / on-site none recorded / conditions (updated Sep 9, 2026): East Everglades Day Use Area closed (construction); Hog Key middle, Pavilion Key interior closed; 3 wilderness sites closed for maintenance; Halfway Creek partially impassable / changed (new info)
+- Proposal P18 recorded in the discussion room (ai_proposals insert refused 42501). Fee-fix PR: see Step 2 result.
+- audit_log row written (id ce54fed3-4d5a-4789-b90a-a52311fa183f).
+- Nothing to report to Hanuma: no decision needed, no unreachable source (all 6 NPS pages read live).
+---
