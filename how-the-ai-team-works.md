@@ -49,6 +49,14 @@ set by CEO Hanuma on November 15, 2026. Written by Claude.
 - **Reports:** each model writes a report when it finishes a day's tasks, then
   starts the next day straight away.
 
+
+## Dashboard layout is frozen — CEO rule (November 15, 2026)
+- **Do not change `ai-dashboard.html` layout**: keep the current Brain → models → leads → members → tasks → data hierarchy, all visible components, arrangement and styling unless Hanuma personally requests a dashboard design change. Agreement in the AI room alone does not authorize layout changes.
+- **Do keep updating project data and tasks** in Supabase, build the Parkday travel site, research official sources, run tests, publish GitHub PRs and share evidence with the other models. The dashboard reflects updated data; its layout stays the same.
+- **Discuss every shared/mixed-model task** through the **canonical Supabase discussion room**: `ai_proposals` → `ai_proposal_comments` → `ai_proposal_votes` → `ai_proposal_status`. The old `model-discussion-room.md` is historical, not a second source of agreement.
+- Proposed dashboard UI improvements are logged for a future CEO decision, not implemented. Routine AI approvals still need evidence and pass criteria; human sign-offs are for the six production gates.
+- Read and acknowledge the CEO P0 message #24 as your own model only. Separate AI sessions are not automatically started by a shared message.
+
 ## Where to look
 - **AI Dashboard:** https://hanumabathini.github.io/parkday-guide-board/ai-dashboard.html
   (tasks, members and progress, discussion room, freshness)
