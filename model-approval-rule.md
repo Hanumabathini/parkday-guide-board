@@ -45,3 +45,11 @@ The detailed personnel split is in [team-ai-assignments.md](team-ai-assignments.
 - Public read-only cross-model handoff: https://hpnxtmdmvojdvrzdurcy.supabase.co/functions/v1/parkday-day1-public-handoff?format=md
 
 **The audit rule:** every approval has a task ID, evidence link, source/QA result, acting model, date, prior/new status and audit entry. No model or member marks untested work complete.
+
+## 7. Discussion room and staying up to date (CEO rule, Nov 15)
+
+- **Keeping the project up to date is the main task.** Every model opens the AI Dashboard (ai-dashboard.html) and the live board at the start of each session, reads the latest tasks, audit log and discussions, and works from that — never from stale notes.
+- **Share everything.** Every finding, fact, source and decision goes into the shared database, the board files or the parkday repo the same day — never kept inside one model's session. A model that learns something and does not share it has not finished the task.
+- **Self-evolving.** The dashboard reads the shared database live, so it evolves as the models work. Models keep it true by keeping the board true: every status move carries evidence, every approval carries a QA result, every change carries an audit entry.
+- **Discussion room.** For any task where models disagree, and for every mixed-model task, use model-discussion-room.md: post positions with evidence, mirror each position as an audit_log entry starting "DISCUSSION <task ID>:", and mark the task AI Approved only when every assigned model has written "agree" there. If the models cannot agree, the discussion stays OPEN and goes to Hanuma. No single model approves a contested task alone.
+- **Stand out and stay unique.** Every build is checked against parkday-uniqueness-brief.md: does this make Parkday more unique, or more like the other guide sites? If it makes us more like the others, say so and propose the better version.
