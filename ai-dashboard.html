@@ -44,7 +44,10 @@ svg{display:block;width:100%;height:100%;touch-action:none}
 .link.k-gemini{stroke:var(--violet);stroke-dasharray:5 4}
 .link.k-task{stroke:#1b3d33}
 .link.k-data{stroke:#173a30;stroke-dasharray:2 3}
-.node{cursor:pointer}
+.node{cursor:pointer;outline:none}
+.node:focus,.node:focus-visible{outline:none}
+.node:focus-visible .core{stroke:var(--gold);stroke-width:2.5px}
+.node.hit .core{stroke:var(--gold);stroke-width:2px}
 .node text{fill:var(--ink);paint-order:stroke;stroke:var(--bg);stroke-width:3px;stroke-linejoin:round;font-size:11px}
 .node .sub{fill:var(--mut);font-family:"Spline Sans Mono",monospace;font-size:9px}
 .node.dim{opacity:.18}
@@ -237,7 +240,7 @@ function draw(){
   L.exit().remove();
   const N=g.selectAll("g.node").data(nodes,d=>d.id);
   const en=N.enter().append("g").attr("class","node").attr("tabindex",0).attr("role","button")
-    .on("click",(e,d)=>{e.stopPropagation();act(d)}).on("keydown",(e,d)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();act(d)}});
+    .on("mousedown",e=>e.preventDefault()).on("click",(e,d)=>{e.stopPropagation();act(d)}).on("keydown",(e,d)=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();act(d)}});
   en.append("circle").attr("class","halo");en.append("path").attr("class","ring");en.append("circle").attr("class","core");
   en.append("text").attr("class","name");en.append("text").attr("class","sub");
   const all=en.merge(N);
