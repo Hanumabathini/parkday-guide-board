@@ -59,7 +59,7 @@ const people=JSON.parse(js.match(/const PEOPLE=(\[[\s\S]*?\]);\s*const START_TAS
 for(const model of ['Muse','Claude','ChatGPT','Grok'])
   assert(people.filter(p=>p.ai_agent===model).length===10,model+' offline roster matches ten seats');
 const ai=readFileSync(new URL('../ai-dashboard.html',import.meta.url),'utf8');
-const aiJs=[...ai.matchAll(/<script(?:\\s[^>]*)?>([\\s\\S]*?)<\\/script>/g)].at(-1)?.[1];
+const aiJs=[...ai.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].at(-1)?.[1];
 assert(!!aiJs,'original AI Dashboard scripts exist');
 new Function(aiJs);
 console.log('PASS original AI Dashboard JavaScript syntax and appearance preserved');
