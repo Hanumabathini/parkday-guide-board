@@ -1,34 +1,47 @@
-# Parkday Guide — CEO Approval Rule (November 15, 2026)
+# Parkday Guide — CEO model approval and research-to-build rule
+**Set by CEO Hanuma, November 15, 2026. Applies to all sprint days and all AI models: Muse, Claude, ChatGPT and Grok, including when Grok returns.**
 
-**Effective from Day 1 through all development sprints.** Set by CEO Hanuma. This version supersedes earlier instructions that required Dharma or another human to verify routine sprint work before it counted as complete.
+## 1. Models do the research and build
+- Each assigned model **reads current work from the live Supabase roster and tasks, researches primary sources, builds the requested deliverable, runs checks, attaches evidence, then independently approves or returns corrections.** Do not wait for a human or a named team member to do the drafting or coding.
+- Inspect the actual PR, source link, screenshot or output against **every acceptance criterion**. For a partial multi-model task, finish and review your slice, but the full task is approved only when all slices pass.
+- Research notes must link current official sources, dates and remaining uncertainty. A fact without a source remains unverified; don't fabricate fees, permits, availability, review scores or affiliate terms.
+- Push work to the main Parkday repository through clear task-ID commits/PRs so other models can read and review it. Record changes and links in the canonical task record and audit log. Never overwrite other models' active branches without reviewing.
+- Continue with the next actionable sprint task in the active model session. Remote ChatGPT/Claude/Muse/Grok sessions are **not automatically running or notified** merely because a policy file exists.
 
-## AI model review and completion
+## 2. AI approval is sprint completion
+1. If criteria pass: record evidence, model reviewer, date and QA result, set `tasks.status = 'AI Approved'`, and insert an audit-log entry. This task now counts as **sprint Done**.
+2. If criteria fail: keep `In progress` or `Blocked`, list exact missing items and required evidence in the task notes.
+3. **Do not request manual Hanuma, Dharma or other human verification for routine development tasks.** Human approval is deferred until production-readiness.
+4. Legacy `Ready for verification` counts as previous AI approval; historical `Verified by Dharma` records are preserved and also counted. **New approvals use `AI Approved`; no model impersonates Dharma.**
+5. The public site has only a member-name selector, not verified authentication. Its anonymous sessions must not grant AI Approved; those transitions use trusted project tools with an evidence review and auditable model identity.
 
-1. Each model (Muse, Claude and ChatGPT; Grok if reinstated) reviews deliverables from the members currently assigned to it in the live Supabase roster. Assignment changes belong to the CEO's roster updates, not to an AI's guess.
-2. Open the actual PR, link, screenshot or deliverable and check it against **every** acceptance criterion. Record evidence, reviewer model, date and decision in task notes/audit log.
-3. **When the evidence meets the acceptance criteria, mark the task `AI Approved`. This counts as sprint-complete immediately.** No approval by Hanuma, Dharma or any other human is required during development.
-4. If the work does not meet the criteria, retain `In progress` or `Blocked` and provide an exact list of missing items. Do not mark an unfinished task complete merely because an evidence link exists.
-5. Begin the next day's work as dependencies allow; do not wait for human verification.
+## 3. Current team split and Grok's return
+**Current source of truth: Supabase `public.users.ai_agent`.**
+- Muse: **13** (including Lokesh, Koushik and Santhan).
+- Claude: **13** (including Sandeep, Guru and Avinash).
+- ChatGPT: **14** (including Eswar, Bittu, Chakri and Muvva).
+- Grok: **0** while on leave. **When Grok returns, Grok follows exactly these rules for any members reassigned to it.** No member automatically switches back; Hanuma's explicit roster update controls ownership.
 
-## Compatibility and historical records
+The detailed personnel split is in [team-ai-assignments.md](team-ai-assignments.md).
 
-- The legacy `Ready for verification` status means **AI approved / sprint complete** for pre-migration records. It is not a queue for Dharma to approve during the sprint.
-- Historical `Verified by Dharma` statuses stay as recorded and count toward sprint completion; they are **not** a reason to impersonate Dharma or forge approvals.
-- The updated board recognizes all three completed states for progress: `AI Approved`, `Ready for verification` (legacy) and `Verified by Dharma` (historical).
-- Model approval must be recorded through trusted project tooling, not by selecting another person's name on the public board. Until authenticated model roles are implemented, the public name picker is not an approval authority.
+## 4. Mixed-model task integration
+- **D1-07:** Lokesh design belongs to Muse. Muse checks and fixes the color-token mismatch, contrast, gradient claim and wireframe gaps documented in the board before approving.
+- **D1-12:** Muse supplies Santhan/Koushik footage, images and rights log; ChatGPT supplies Bittu's Pinterest account/campaign slice. The full task stays open until all acceptance criteria are met.
+- **D2-02:** Claude (Rakesh, Teja), ChatGPT (Eswar), Muse (Vijay) fact-check assigned park records and submit a consolidated source-backed log.
+- **D2-07:** ChatGPT provides Eswar's 20-brand shortlist and Meghana's private finance/credential component; Claude provides Rohit's privacy component. Do not expose secrets publicly.
+- **D4-06:** Source verification is split between assigned models; one consolidated log is needed before full task approval.
+- **D5-06:** ChatGPT covers Muvva/KC/Ajay; Muse covers Santhan. No group or commercial rollout prior to the GO decision.
 
-## Separate production readiness
+## 5. Production approvals remain mandatory
+- **No human approval until production readiness** for normal internal sprint deliverables.
+- Production launch and all **six launch gates** retain their named human sign-offs. No model can waive legal, accessibility, privacy, photo-rights, fact-check or CEO go/no-go requirements.
+- Domain purchases, spend, external account terms, sponsorship outreach, affiliate submissions and `sandbox` activation are **external actions** requiring their existing explicit authorization. Preparation and research can proceed without delaying the sprint.
 
-- Human verification, legal/privacy clearance, factual signoff and the CEO's production go/no-go occur **only when the product is ready for production**.
-- All **six production launch gates** remain mandatory and require their designated human approvals. An AI task approval never automatically passes a production gate.
-- Do not publish affiliate links, submit partnerships, spend funds, assert legal consent or launch production merely because a sprint task is approved.
+## 6. Where every model finds the work
+- Live task board: https://hanumabathini.github.io/parkday-guide-board/
+- Canonical working code and shared research: https://github.com/Hanumabathini/parkday
+- Detailed all-model workflow: https://github.com/Hanumabathini/parkday/blob/main/docs/ai-working-rules.md
+- ChatGPT team draft deliverables for new members: https://github.com/Hanumabathini/parkday/blob/main/docs/chatgpt-team/2026-11-15-research-build-handoff.md
+- Public read-only cross-model handoff: https://hpnxtmdmvojdvrzdurcy.supabase.co/functions/v1/parkday-day1-public-handoff?format=md
 
-## Evidence and security
-
-- Keep PRs, comparison reports, drafts and screenshots accessible to the assigned model. Keep private agreements, receipts, contact details, API secrets and credentials out of public board notes.
-- An evidence link proves only that a file exists; the reviewer must inspect the contents and test the acceptance criteria.
-- The public website may update ordinary task/evidence fields; its anonymous sessions **cannot** grant `AI Approved` or overwrite an already-approved task. Those decisions use trusted project workflows until proper authentication is deployed.
-
-Live board: https://hanumabathini.github.io/parkday-guide-board/
-
-Shared model handoff: https://hpnxtmdmvojdvrzdurcy.supabase.co/functions/v1/parkday-day1-public-handoff?format=md
+**The audit rule:** every approval has a task ID, evidence link, source/QA result, acting model, date, prior/new status and audit entry. No model or member marks untested work complete.
