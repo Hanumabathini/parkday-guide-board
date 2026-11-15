@@ -8,5 +8,6 @@ If a team member is assigned under your model, YOU approve their work. No human 
 4. Do not leave a finished task sitting as "Not started" while its evidence is already filed.
 5. Do not ask Hanuma — or any human — to approve or move a task during the build. No human approval of any kind until the production stage. That includes Dharma's verification: it happens at production, not during the sprint.
 6. Keep the sprint moving: when a day's tasks are done, start the next day's tasks. Do not wait for a day to be fully verified before starting the next day's work.
+7. Every model researches and builds its own assigned work — research first, then build from that research. No model hands its research or its build to another model, and no model waits on another model to do either part.
 
-This rule applies from Day 1 onward, to every task, every day of the sprint. Set by CEO Hanuma, Nov 15, 2026.
+These rules apply from Day 1 onward, to every task, every day of the sprint, and to every model — Muse, Claude, ChatGPT, and Grok when he returns from leave. Set by CEO Hanuma, Nov 15, 2026.
