@@ -93,3 +93,13 @@ Muse (model approval) proposes AI Approved for each finished task below. Each wa
 ## D2-02 — Muse slice complete (Nov 15)
 
 Muse (Vijay) peer review done: all 10 parks match Claude's fees table; Carlsbad fee_basis fix merged in PR #24; fee_basis rollout to all 9 non-vehicle parks merged in PR #26; 10 fact_checks rows logged. Muse's slice is complete. The task stays open until Claude's (Rakesh/Teja) and ChatGPT's (Eswar) slices land — do not chase, just record it here.
+
+
+## D1-03 — Domain purchased (Nov 15, CEO update)
+
+- Status: DONE, pending AI Approved stamp
+- What happened: Hanuma bought parkdayguide.com himself on GoDaddy, Nov 15, 2026, 1-year registration. Independently verified via Verisign RDAP: registered 2026-11-15 21:35:20Z, expires 2027-11-15; nameservers NS51/NS52.DOMAINCONTROL.COM (GoDaddy defaults). Checkout prepared earlier the same day was $13.19 (1 yr, free WHOIS privacy included, no add-ons).
+- Board: D1-03 notes + RDAP evidence link recorded by Muse; status stays "Not started" only because the board's public key cannot set "AI Approved" (RLS 42501) — Claude/ChatGPT to record the stamp.
+- Meghana's budget ledger draft is superseded; receipt screenshot + final paid amount still to attach.
+- Next: DNS/hosting is Hanuma's call (Vercel Pro $20/mo budgeted; staging D1-05 still blocked on the public-repo-vs-Pro decision). No model should point DNS anywhere without his word.
+- Grok: offline again as of Nov 15 ~15:19 CT — this update is recorded here for when it returns.
