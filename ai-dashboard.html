@@ -60,7 +60,7 @@ svg{display:block;width:100%;height:100%;touch-action:none}
 .legend div{display:flex;align-items:center;gap:6px;margin:2px 0}
 .dot{display:inline-block;width:9px;height:9px;border-radius:50%}
 .lbl{font-family:"Spline Sans Mono",monospace;font-size:10.5px;letter-spacing:.12em;color:var(--mut);text-transform:uppercase}
-.side{right:12px;top:12px;width:min(360px,calc(100% - 24px));max-height:calc(100% - 24px);overflow:auto}
+.side{right:12px;top:12px;width:min(320px,calc(100% - 24px));max-height:calc(100% - 24px);overflow:auto}
 .side h2{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:19px;margin:2px 26px 4px 0}
 .side .x{position:absolute;right:8px;top:8px;width:30px;height:30px;border-radius:8px;border:1px solid var(--line2);background:var(--panel);color:var(--gold);font-size:16px;line-height:1}
 .k{font-family:"Spline Sans Mono",monospace;font-size:10.5px;letter-spacing:.08em;color:var(--mut);text-transform:uppercase;margin-top:10px}
@@ -94,6 +94,7 @@ footer{color:var(--dim);font-size:12px;padding-block:0 30px}
   .side{top:auto;bottom:12px;max-height:62%}
   input[type=search]{width:140px}
   #stage{height:72vh;min-height:480px}
+  #stage:has(.side:not([hidden])) .kpi,#stage:has(.side:not([hidden])) .zoomctl{display:none}
 }
 </style>
 </head>
@@ -111,7 +112,7 @@ footer{color:var(--dim);font-size:12px;padding-block:0 30px}
   <section class="hero">
     <div class="kicker" id="kicker">Sprint · Nov 15 to 21, 2026</div>
     <h1>One Brain. <span id="hModels">3 models</span>. <span id="hMembers">40 members</span>. Every task traced.</h1>
-    <p>The shared discussion room sits at the centre. It connects to each AI model, each model to the team leads of its members, each lead to its members, each member to their tasks, and each task to its data: status, evidence, discussion and history. Rings show the share of tasks done. Tap any orb to open it.</p>
+    <p>The shared discussion room sits at the centre. It connects to each AI model, each model to the team leads of its members, each lead to its members, each member to their tasks, and each task to its data: status, evidence, discussion and history. Rings show the share of tasks done. Tap a team lead to link out its members, a member to link out their tasks, and a task to link out its data.</p>
   </section>
 
   <div class="stagewrap">
@@ -208,7 +209,7 @@ function st(n){const ids=new Map();(function w(x){if(x.data.kind==="task")ids.se
   const tot=ids.size,done=[...ids.values()].filter(s=>DONE.has(s)).length;return {tot,done,pct:tot?done/tot:0,ids}}
 
 const R={brain:34,model:20,gemini:15,lead:12,member:8,task:5,data:3.2};
-const RING={brain:0,model:130,gemini:130,lead:250,member:390,task:540,data:650};
+const RING={brain:0,model:130,gemini:130,lead:250,member:390,task:540,data:820};
 
 function prep(){
   root=d3.hierarchy(build());
@@ -255,7 +256,7 @@ function draw(){
       .text(k==="brain"?"BRAIN":d.data.name)}
     else{const deg=d.x*180/Math.PI-90,flip=d.x>Math.PI;t.attr("text-anchor",flip?"end":"start").attr("y",0).attr("dy","0.32em")
       .attr("transform",`rotate(${flip?deg+180:deg})`).attr("x",(flip?-1:1)*(R[k]+5)).attr("font-size",k==="member"?11:k==="task"?9.5:8.5).attr("font-weight",k==="member"?600:400)
-      .text(k==="member"?d.data.name:k==="task"?d.data.t.task_id+" "+d.data.t.title.slice(0,26)+(d.data.t.title.length>26?"…":""):d.data.name.slice(0,30))}});
+      .text(k==="member"?d.data.name:k==="task"?d.data.t.task_id+" "+d.data.t.title.slice(0,24)+(d.data.t.title.length>24?"…":""):d.data.name.slice(0,30))}});
   all.select(".sub").each(function(d){const k=d.data.kind,t=d3.select(this),s=st(d);
     if(k==="brain")t.attr("text-anchor","middle").attr("y",R.brain+30).text("discussion room · "+s.done+"/"+s.tot);
     else if(k==="model")t.attr("text-anchor","middle").attr("y",R.model+28).text(d.data.name==="Grok"?"on leave":(D.users.filter(u=>u.ai_agent===d.data.name).length+" members · "+s.done+"/"+s.tot));
@@ -267,7 +268,15 @@ function draw(){
 }
 function act(d){const k=d.data.kind;
   if(k==="member"||k==="task"){if(d.children){d._children=d.children;d.children=null;openIds.delete(d.id)}else if(d._children){d.children=d._children;d._children=null;openIds.add(d.id)}draw()}
-  side(d)}
+  else if(k==="lead"){const open=(d.children||[]).some(m=>m.children);(d.children||[]).forEach(m=>{if(open&&m.children){m._children=m.children;m.children=null;openIds.delete(m.id)}else if(!open&&m._children){m.children=m._children;m._children=null;openIds.add(m.id)}});draw()}
+  side(d);focusTree(d)}
+function focusTree(d){const pts=[];const P=(a,r)=>[r*Math.cos(a-Math.PI/2),r*Math.sin(a-Math.PI/2)];
+  (function w(x){pts.push(P(x.x,x.r));(x.children||[]).forEach(w)})(d);if(d.parent)pts.push(P(d.parent.x,d.parent.r));
+  if(pts.length<2){focusNode(d);return}
+  const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]);const x0=Math.min(...xs)-140,x1=Math.max(...xs)+140,y0=Math.min(...ys)-60,y1=Math.max(...ys)+60;
+  const st=document.getElementById("stage"),w=st.clientWidth,h=st.clientHeight,pw=(document.getElementById("side").hidden||w<720)?0:380;
+  const s=Math.min(2.2,Math.max(.35,Math.min((w-pw)/(x1-x0),h/(y1-y0))));
+  svg.transition().duration(650).call(zoom.transform,d3.zoomIdentity.translate((w-pw)/2-((x0+x1)/2)*s,h/2-((y0+y1)/2)*s).scale(s))}
 function fit(){const w=document.getElementById("stage").clientWidth,h=document.getElementById("stage").clientHeight;const b=g.node().getBBox();
   const s=Math.min(1.6,Math.max(.3,Math.min(w/(b.width+60),h/(b.height+60))));
   svg.transition().duration(500).call(zoom.transform,d3.zoomIdentity.translate(w/2-(b.x+b.width/2)*s,h/2-(b.y+b.height/2)*s).scale(s))}
@@ -279,11 +288,11 @@ function prog(s){return s.tot?`<div class="pbar"><span style="width:${Math.round
 function side(d){const el=document.getElementById("side"),k=d.data.kind,s=st(d);let h=`<button class="x" aria-label="Close" id="sx">✕</button>`;
   if(k==="brain")h+=`<div class="lbl">Brain</div><h2>Shared discussion room</h2><p>Models propose, comment and vote. A proposal is agreed only when every required model approves and no one objects. Gemini advises when they cannot agree; Hanuma decides if they still disagree.</p>${prog(s)}`;
   else if(k==="model"){const mem=D.users.filter(u=>u.ai_agent===d.data.name);const ack=(D.acks||[]).find(a=>a.model===d.data.name);
-    h+=`<div class="lbl">AI model</div><h2 style="color:${MCOL[d.data.name]}">${esc(d.data.name)}</h2><p>${mem.length} members${ack?" · "+ack.n+" of "+D.messages+" messages confirmed":""}</p>${prog(s)}${s.tot?`<div class="k">Tasks</div>`+tlist(s.ids):""}`}
+    h+=`<div class="lbl">AI model</div><h2 style="color:${MCOL[d.data.name]}">${esc(d.data.name)}</h2><p>${mem.length} members${ack?" · "+ack.n+" of "+D.messages+" messages confirmed":""}</p>${prog(s)}<p class="mono" style="color:var(--mut)">Tap a team lead to open its members and their tasks.</p>`}
   else if(k==="gemini")h+=`<div class="lbl">Backup reviewer</div><h2 style="color:var(--violet)">Gemini</h2><p>Owns no members or tasks. Asked through the discussion room only when the models cannot agree. Its vote is advice; the models re-vote, and Hanuma decides if they still disagree.</p>`;
-  else if(k==="lead"){const L=d.data.L;h+=`<div class="lbl">Team lead · ${esc(d.parent.data.name)} members</div><h2>${esc(d.data.name)}</h2><p class="mono" style="color:var(--mut)">${esc(L?L.title+" · "+L.department+" · AI: "+L.ai_agent:"")}</p>${prog(s)}<div class="k">Members in this group</div><ul class="tl">${d.data.children.map(c=>{const ms=st(d.children.find(x=>x.data.name===c.name));return `<li data-member="${esc(c.name)}"><b>${esc(c.name)}</b><span>${esc(c.u.title)}</span><span class="mono">${ms.done}/${ms.tot}</span></li>`}).join("")}</ul>`}
-  else if(k==="member"){const u=d.data.u;h+=`<div class="lbl">Member · AI ${esc(u.ai_agent)}</div><h2>${esc(u.name)}</h2><p class="mono" style="color:var(--mut)">${esc(u.title)} · ${esc(u.department)}<br>Reports to ${esc(u.reports_to)}${u.is_backup?" · backup for "+esc(u.backup_for):""}</p>${prog(s)}${s.tot?`<div class="k">Tasks</div>`+tlist(s.ids):"<p>No tasks assigned.</p>"}`}
-  else if(k==="task"){const t=d.data.t;h+=`<div class="lbl">Task · ${esc(t.day)} · ${esc(t.priority)}</div><h2>${esc(t.task_id)}</h2><p>${esc(t.title)}</p><div class="k">Status</div><div style="color:${COL(t.status)};font-weight:600">${esc(t.status)}</div><div class="k">Owners</div><div>${esc(t.owner_name)}</div><div class="k">Acceptance criteria</div><div>${esc(t.acceptance_criteria)}</div>${t.evidence?`<div class="k">Evidence</div><div style="overflow-wrap:anywhere">${esc(t.evidence).replace(/(https?:\/\/[^\s|]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>')}</div>`:""}<div class="k">Last update</div><div class="mono">${esc(t.updated_by||"")} · ${fmt(t.updated_at)}</div>`}
+  else if(k==="lead"){const L=d.data.L;h+=`<div class="lbl">Team lead · ${esc(d.parent.data.name)} members</div><h2>${esc(d.data.name)}</h2><p class="mono" style="color:var(--mut)">${esc(L?L.title+" · "+L.department+" · AI: "+L.ai_agent:"")}</p>${prog(s)}<p class="mono" style="color:var(--mut)">${d.data.children.length} members shown as linked orbs. Tap the lead again to fold them.</p>`}
+  else if(k==="member"){const u=d.data.u;h+=`<div class="lbl">Member · AI ${esc(u.ai_agent)}</div><h2>${esc(u.name)}</h2><p class="mono" style="color:var(--mut)">${esc(u.title)} · ${esc(u.department)}<br>Reports to ${esc(u.reports_to)}${u.is_backup?" · backup for "+esc(u.backup_for):""}</p>${prog(s)}<p class="mono" style="color:var(--mut)">${s.tot?s.tot+" tasks linked around "+esc(u.name)+". Tap a task orb to open its data.":"No tasks assigned."}</p>`}
+  else if(k==="task"){const t=d.data.t;h+=`<div class="lbl">Task · ${esc(t.day)} · ${esc(t.priority)}</div><h2>${esc(t.task_id)}</h2><p>${esc(t.title)}</p><div class="k">Status</div><div style="color:${COL(t.status)};font-weight:600">${esc(t.status)}</div><div class="k">Owners</div><div>${esc(t.owner_name)}</div><div class="k">Acceptance criteria</div><div>${esc(t.acceptance_criteria)}</div><p class="mono" style="color:var(--mut)">Status, evidence, discussion and history are linked as orbs around the task.</p>${t.evidence?`<div class="k">Evidence</div><div style="overflow-wrap:anywhere">${esc(t.evidence).replace(/(https?:\/\/[^\s|]+)/g,'<a href="$1" target="_blank" rel="noopener">$1</a>')}</div>`:""}<div class="k">Last update</div><div class="mono">${esc(t.updated_by||"")} · ${fmt(t.updated_at)}</div>`}
   else h+=`<div class="lbl">${esc(d.data.text||"Data")} · task ${esc(d.parent.data.name)}</div><h2>${esc(d.data.name)}</h2>${d.data.text&&d.data.text!=="Status"?`<p style="overflow-wrap:anywhere">${esc(d.data.text)}</p>`:""}${d.data.href?`<p><a href="${esc(d.data.href)}" target="_blank" rel="noopener">Open evidence</a></p>`:""}`;
   el.innerHTML=h;el.hidden=false;document.getElementById("sx").onclick=()=>el.hidden=true;
   el.querySelectorAll("[data-task]").forEach(li=>li.onclick=()=>findTask(li.dataset.task));
@@ -291,8 +300,8 @@ function side(d){const el=document.getElementById("side"),k=d.data.kind,s=st(d);
 }
 function expandTo(pred){let hit=null;(function w(d){if(hit)return;if(pred(d)){hit=d;return}(d.children||d._children||[]).forEach(w)})(root);
   if(!hit)return null;hit.ancestors().reverse().forEach(a=>{if(a!==hit&&a._children){a.children=a._children;a._children=null;openIds.add(a.id)}});draw();return hit}
-function findMember(n){const d=expandTo(x=>x.data.kind==="member"&&x.data.name===n);if(d){if(d._children){d.children=d._children;d._children=null;openIds.add(d.id);draw()}focusNode(d);side(d);flash([d])}}
-function findTask(id){const d=expandTo(x=>x.data.kind==="task"&&x.data.t.task_id===id);if(d){focusNode(d);side(d);flash([d])}}
+function findMember(n){const d=expandTo(x=>x.data.kind==="member"&&x.data.name===n);if(d){if(d._children){d.children=d._children;d._children=null;openIds.add(d.id);draw()}side(d);focusTree(d);flash([d])}}
+function findTask(id){const d=expandTo(x=>x.data.kind==="task"&&x.data.t.task_id===id);if(d){if(d._children){d.children=d._children;d._children=null;openIds.add(d.id);draw()}side(d);focusTree(d);flash([d])}}
 function flash(hits){g.selectAll("g.node").classed("hit",x=>hits.includes(x))}
 
 function panels(){
