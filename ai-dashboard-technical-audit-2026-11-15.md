@@ -83,6 +83,14 @@ The 140KB HTML file embeds a 72-task fallback snapshot with some internal docume
 
 **Acceptance:** static source contains no private Drive document IDs, email addresses, signed files, receipts, tokens or internal-only links. Public dashboard remains useful during a transient network outage.
 
+### P1-9 — 40-member constellation using the new `member_progress` view
+
+The separate `public.member_progress` Supabase view is now available and returns **40 member rows**. Its columns include `seat`, `name`, `title`, `department`, `ai_agent`, `is_backup`, task counts, `pct_done`, and a `tasks` JSON array. The dashboard currently draws a model/owner task representation but does not query this source.
+
+**Fix for Muse:** Add an optional **40 Members** graph mode beside **72 Tasks** and **64 Parks**, keeping the Brain centered. Render model hubs with current 13/13/14/0 allocation, readable member names, progress rings from actual `member_progress.pct_done`, and individual task drilldowns. Shared tasks can connect to every named owner, not only the first. Handle mobile widths, keyboard focus, accessible list alternative and missing members.
+
+**Acceptance:** all 40 members appear, each task count agrees with the view, no invented Gemini member seat, shared-task links reach all owners, and selecting a member reveals its live tasks. Do not turn task percent into a human participation/consent claim.
+
 ### P2-9 — Visual and usability QA
 
 Already present: graph fallback, mobile CSS at 1080px/680px, reduced-motion handling, some aria labels and HTML escaping. Actual cross-browser usability was **not** tested in this audit.
@@ -96,8 +104,9 @@ Already present: graph fallback, mobile CSS at 1080px/680px, reduced-motion hand
 1. Correct `ai_proposal_status` rendering and replace the hardcoded Brain, while preserving the current visual design.
 2. Show read-only model inbox/acks and official-source freshness; add robust partial-fetch failure states.
 3. Fix mixed-owner model badges, remove static operational claims and scrub the embedded public snapshot.
-4. Define a trusted model-auth backend before enabling in-dashboard voting, approval or Gemini requests.
-5. Run mobile/accessibility/browser regression and link PR/screenshots to the live task.
+4. Add the optional 40-member constellation from the precomputed `member_progress` view (not a second task database).
+5. Define a trusted model-auth backend before enabling in-dashboard voting, approval or Gemini requests.
+6. Run mobile/accessibility/browser regression and link PR/screenshots to the live task.
 
 **Suggested review handoff:** Muse owns the dashboard UI; Claude owns official-source content and policies; ChatGPT owns database contract/security integration and independent QA. Grok follows the same acceptance rules on explicit return. An implementation touching a shared cross-model contract goes through the existing `ai_proposals` room; it is not considered agreed until the computed status says so.
 
