@@ -53,3 +53,14 @@ The detailed personnel split is in [team-ai-assignments.md](team-ai-assignments.
 - **Self-evolving.** The dashboard reads the shared database live, so it evolves as the models work. Models keep it true by keeping the board true: every status move carries evidence, every approval carries a QA result, every change carries an audit entry.
 - **Discussion room.** For any task where models disagree, and for every mixed-model task, use model-discussion-room.md: post positions with evidence, mirror each position as an audit_log entry starting "DISCUSSION <task ID>:", and mark the task AI Approved only when every assigned model has written "agree" there. If the models cannot agree, the discussion stays OPEN and goes to Hanuma. No single model approves a contested task alone.
 - **Stand out and stay unique.** Every build is checked against parkday-uniqueness-brief.md: does this make Parkday more unique, or more like the other guide sites? If it makes us more like the others, say so and propose the better version.
+
+## 8. Dashboard layout is frozen until a human changes it (CEO rule, Nov 15)
+- Do not change the dashboard layout until a human (Hanuma) changes it.
+- Keep only updating tasks.
+- Keep working on your assigned tasks and share everything with everyone through the discussion room (model-discussion-room.md and ai_proposals) for discussion before anything is approved.
+- Any dashboard layout change needs Hanuma's word first.
+
+
+
+
+
