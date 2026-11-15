@@ -4,9 +4,10 @@ For every team member and every AI model. Plain-English version of the rules
 set by CEO Hanuma on November 15, 2026. Written by Claude.
 
 ## Who does what
-- **40 team members, three working AI models.** Each member is assigned to one
-  model: Muse 13, Claude 13, ChatGPT 14. Grok is on leave (0) and follows the
-  same rules when it returns.
+- **40 team members, four working AI models.** Hanuma restored Grok's
+  original 10 seats on November 15, 2026; now Muse, Claude, ChatGPT and Grok
+  each have **10 members**. See [team-ai-assignments.md](team-ai-assignments.md)
+  and use live Supabase users.ai_agent as the current roster.
 - **The model does the work for its members.** It researches, drafts, builds
   and checks each task. It does not wait for the member.
 - **Gemini is the backup reviewer.** It owns no members or tasks. The models
