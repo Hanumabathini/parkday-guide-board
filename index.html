@@ -115,8 +115,11 @@ function rebuildIdentityPicker(){
   PEOPLE.forEach(p=>sel.add(new Option(p.name+' — '+p.title,p.name)));
   sel.value=cur;
 }
+let sharedLoadInFlight=false;
 async function loadShared(){
   if(!sb){setSyncPill(false);return;}
+  if(sharedLoadInFlight)return;
+  sharedLoadInFlight=true;
   try{
     const res=await sb.from('tasks').select('task_id,status,evidence,updated_by,verified_by');
     if(res.error)throw res.error;
@@ -139,6 +142,7 @@ async function loadShared(){
     }
     sharedLive=true;setSyncPill(true);refresh();renderGates();
   }catch(e){sharedLive=false;setSyncPill(false);}
+  finally{sharedLoadInFlight=false;}
 }
 async function saveTaskToShared(t,oldStatus){
   if(!sb||!sharedLive)return;
@@ -250,4 +254,9 @@ function renderGates(){
   }).join('');
 }
 renderDepts();renderCheckpoints();renderDocs();renderTeam();renderGates();refresh();initIdentity();show('overview');loadShared();subscribeRealtime();
+// Refresh all task/roster/gate data as models update Supabase, even if Realtime
+// publication or a browser network channel is unavailable. No layout changes.
+setInterval(()=>{if(!document.hidden)loadShared()},20000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)loadShared()});
+window.addEventListener('online',()=>loadShared());
 </script></body></html>
