@@ -258,7 +258,7 @@ function show(view){
 function navigate(view){
   if(!PROJECT_VIEWS.has(view))view='overview';
   show(view);
-  if(window.location&&window.location.hash!=='#'+view)window.location.hash=view;
+  if(window.location&&window.location.hash!=='#'+view)window.location.hash='#'+view;
 }
 function activateAiFrame(){
   const f=$('aiFrame');if(!f)return;
