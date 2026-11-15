@@ -46,21 +46,23 @@ The detailed personnel split is in [team-ai-assignments.md](team-ai-assignments.
 
 **The audit rule:** every approval has a task ID, evidence link, source/QA result, acting model, date, prior/new status and audit entry. No model or member marks untested work complete.
 
-## 7. Discussion room and staying up to date (CEO rule, Nov 15)
+## 7. Shared work and canonical discussion (CEO instruction, Nov 15)
 
-- **Keeping the project up to date is the main task.** Every model opens the AI Dashboard (ai-dashboard.html) and the live board at the start of each session, reads the latest tasks, audit log and discussions, and works from that — never from stale notes.
-- **Share everything.** Every finding, fact, source and decision goes into the shared database, the board files or the parkday repo the same day — never kept inside one model's session. A model that learns something and does not share it has not finished the task.
-- **Self-evolving.** The dashboard reads the shared database live, so it evolves as the models work. Models keep it true by keeping the board true: every status move carries evidence, every approval carries a QA result, every change carries an audit entry.
-- **Discussion room.** For any task where models disagree, and for every mixed-model task, use model-discussion-room.md: post positions with evidence, mirror each position as an audit_log entry starting "DISCUSSION <task ID>:", and mark the task AI Approved only when every assigned model has written "agree" there. If the models cannot agree, the discussion stays OPEN and goes to Hanuma. No single model approves a contested task alone.
-- **Stand out and stay unique.** Every build is checked against parkday-uniqueness-brief.md: does this make Parkday more unique, or more like the other guide sites? If it makes us more like the others, say so and propose the better version.
+- **Work independently and continuously.** Muse, Claude, ChatGPT and Grok upon return: research, build, source-check, test and publish work for your currently assigned roster. Keep all member tasks and data current in Supabase; post a PR, evidence link, test result and dated progress report. Do not wait for human sprint approval.
+- **One official discussion room:** `public.ai_proposals` (topics), `public.ai_proposal_comments` (evidence-backed discussion), `public.ai_proposal_votes` (approve/object) and `public.ai_proposal_status` (computed consensus). Do **not** treat `model-discussion-room.md` as a second authoritative voting system; it may only link/archive discussion.
+- **Share findings with every model.** Before implementing any shared/cross-model change, post the intent and evidence in that single Supabase discussion room; continue unrelated independent tasks while waiting. When everyone required approves with no objections, the shared change may proceed, *except dashboard layout changes*, which additionally require explicit Hanuma authorization.
+- **Use the shared model inbox:** read `model_messages` in P0/P1 order, acknowledge only your own actual receipt in `model_message_acks`. Publishing a message does not automatically notify a remote AI session. Never impersonate another model, user or approver.
+- **Keep Parkday unique and current.** Confirm changeable park facts using dated official sources, compare existing verified values, log source checks, keep the traveler site original and maintain its unified park discovery → planning → budget → preparation experience. Do not copy competitors' proprietary pages or unlicensed images.
+- **Sprint completion is separate from human production sign-off.** After verifying every acceptance criterion, the responsible AI model may record `AI Approved` with source/test/evidence and audit attribution. A mixed-owner task needs every applicable slice. Six production launch gates still require their named humans.
 
-## 8. Dashboard layout is frozen until a human changes it (CEO rule, Nov 15)
-- Do not change the dashboard layout until a human (Hanuma) changes it.
-- Keep only updating tasks.
-- Keep working on your assigned tasks and share everything with everyone through the discussion room (model-discussion-room.md and ai_proposals) for discussion before anything is approved.
-- Any dashboard layout change needs Hanuma's word first.
+## 8. AI Dashboard layout FROZEN (CEO instruction, Nov 15, 2026)
 
+**The current published `ai-dashboard.html` layout is final until CEO Hanuma explicitly requests a change.**
 
-
-
+- **NO model** — Muse, Claude, ChatGPT, Grok or advisory Gemini — may redesign, re-upload, replace or modify the dashboard layout, visual styling, graph hierarchy, panels, positioning, typography, CSS or navigation without Hanuma's explicit instruction. Model unanimity alone cannot override this rule.
+- The layout is **Brain → models → team leads → members → tasks → data**. Preserve the current dashboard source; no deletion/re-addition, wholesale rebuild or alternative layout rollout.
+- **YES: keep the dashboard's data current** via normal shared Supabase task/status/evidence, member assignment, facts, audit, and discussion workflows. Keep working on the actual Parkday travel website and new deliverables. Those projects are **not frozen**.
+- If a design improvement, new dashboard component or layout bug is found, post the details and evidence to `ai_proposals` and the task/issue backlog. **Do not implement any dashboard-layout change until Hanuma expressly authorizes it.** Discussions may continue without blocking regular work.
+- Leave the six mandatory human production gates untouched unless their actual authorized approvers act.
+- All model sessions must open this document and the P0 `model_messages` CEO instruction (#24) when working on this project; log real acknowledgement for themselves only.
 
