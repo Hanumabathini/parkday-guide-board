@@ -166,26 +166,49 @@ const MCOL={Muse:"#f27bb5",Claude:"#eec25e",ChatGPT:"#3fe3c6",Grok:"#56c8f5",Gem
 const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const fmt=d=>d?new Date(d).toLocaleString([], {month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}):"";
 
+// Automatic, read-only dashboard synchronization: each data source is independent.
+const DATA_REFRESH_MS = 20000;
+const DATA_REQUEST_TIMEOUT_MS = 12000;
 async function load(){
   const h={apikey:KEY,Authorization:"Bearer "+KEY};
-  const g=p=>fetch(SB+"/rest/v1/"+p,{headers:h}).then(r=>{if(!r.ok)throw new Error("HTTP "+r.status+" on "+p.split("?")[0]);return r.json()});
-  try{
-    const [users,tasks,proposals,audit,gates,fresh,acks,msgs]=await Promise.all([
-      g("users?select=seat,name,title,department,reports_to,ai_agent,is_backup,backup_for&order=seat"),
-      g("tasks?select=task_id,title,owner_name,day,status,priority,evidence,acceptance_criteria,updated_by,updated_at&order=task_id"),
-      g("ai_proposal_status?select=id,task_id,title,proposed_by,state,approved_by,objected_by,gemini_view&order=id"),
-      g("audit_log?select=task_id,created_at,actor_name&order=created_at.desc&limit=3000"),
-      g("launch_gates?select=id,name,owner_name,approver,status,confirmed&order=id"),
-      g("fact_freshness?select=park_slug,field,last_checked,last_result,stale"),
-      g("model_message_acks?select=model"),
-      g("model_messages?select=id&active=is.true")]);
-    const agg={};audit.forEach(a=>{const x=agg[a.task_id]||(agg[a.task_id]={task_id:a.task_id,n:0,last:a.created_at});x.n++});
-    const ac={};acks.forEach(a=>ac[a.model]=(ac[a.model]||0)+1);
-    return {at:new Date().toISOString(),users,tasks,proposals,audit:Object.values(agg),rawAudit:audit,gates,fresh,acks:Object.entries(ac).map(([model,n])=>({model,n})),messages:msgs.length,live:true};
-  }catch(e){return Object.assign({},SNAP,{live:false,err:String(e.message||e)})}
+  const controller=new AbortController();
+  const timeout=setTimeout(()=>controller.abort(),DATA_REQUEST_TIMEOUT_MS);
+  const g=p=>fetch(SB+"/rest/v1/"+p,{headers:h,cache:"no-store",signal:controller.signal})
+    .then(r=>{if(!r.ok)throw new Error("HTTP "+r.status+" on "+p.split("?")[0]);return r.json()});
+  const paths=[
+    "users?select=seat,name,title,department,reports_to,ai_agent,is_backup,backup_for&order=seat",
+    "tasks?select=task_id,title,owner_name,day,status,priority,evidence,acceptance_criteria,updated_by,updated_at&order=task_id",
+    "ai_proposal_status?select=id,task_id,title,proposed_by,state,approved_by,objected_by,gemini_view&order=id",
+    "audit_log?select=task_id,created_at,actor_name&order=created_at.desc&limit=3000",
+    "launch_gates?select=id,name,owner_name,approver,status,confirmed&order=id",
+    "fact_freshness?select=park_slug,field,last_checked,last_result,stale",
+    "model_message_acks?select=model",
+    "model_messages?select=id&active=is.true"
+  ];
+  let results;
+  try { results=await Promise.allSettled(paths.map(g)); }
+  finally { clearTimeout(timeout); }
+  const previous=D||SNAP;
+  const ok=i=>results[i].status==="fulfilled"&&Array.isArray(results[i].value);
+  const row=(i,field)=>ok(i)?results[i].value:(previous[field]||[]);
+  const users=row(0,"users"),tasks=row(1,"tasks"),proposals=row(2,"proposals");
+  const auditRows=row(3,"rawAudit"),gates=row(4,"gates"),fresh=row(5,"fresh");
+  const agg={};auditRows.forEach(a=>{const x=agg[a.task_id]||(agg[a.task_id]={task_id:a.task_id,n:0,last:a.created_at});x.n++});
+  const ackCounts={};
+  if(ok(6))results[6].value.forEach(a=>ackCounts[a.model]=(ackCounts[a.model]||0)+1);
+  const acks=ok(6)?Object.entries(ackCounts).map(([model,n])=>({model,n})):(previous.acks||[]);
+  const messages=ok(7)?results[7].value.length:(previous.messages||0);
+  const failed=results.flatMap((r,i)=>ok(i)?[]:[paths[i].split("?")[0]]);
+  const coreLive=ok(0)&&ok(1)&&users.length>0&&tasks.length>0;
+  return {
+    at:coreLive?new Date().toISOString():(previous.at||SNAP.at),
+    users,tasks,proposals,audit:Object.values(agg),rawAudit:auditRows,
+    gates,fresh,acks,messages,live:coreLive,partial:failed,
+    err:failed.length?failed.join(", ")+" unavailable":""
+  };
 }
 
-let D,root,svg,g,zoom,showAllTasks=false,openIds=new Set();
+let D,root,svg,g,zoom,showAllTasks=false,openIds=new Set(),selectedDetailPath=null;
 const rx=s=>s.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
 const ownersOf=t=>D.users.filter(u=>new RegExp("(^|[^A-Za-z])"+rx(u.name)+"($|[^A-Za-z])","i").test(t.owner_name||""));
 
@@ -225,7 +248,7 @@ function init(refit){
   g=svg.append("g").attr("class","root");
   zoom=zoom||d3.zoom().scaleExtent([.25,4]).on("zoom",e=>g.attr("transform",e.transform));
   svg.call(zoom).on("dblclick.zoom",null);
-  prep();draw();if(refit)fit();
+  prep();draw();if(refit)fit();else g.attr("transform",d3.zoomTransform(svg.node()));
 }
 function draw(){
   const layout=d3.tree().size([2*Math.PI*0.8,1]).separation((a,b)=>(a.parent===b.parent?1:1.8)/Math.max(1,a.depth));
@@ -262,7 +285,7 @@ function draw(){
       .text(k==="member"?d.data.name:k==="task"?d.data.t.task_id+" "+d.data.t.title.slice(0,24)+(d.data.t.title.length>24?"…":""):d.data.name.slice(0,30))}});
   all.select(".sub").each(function(d){const k=d.data.kind,t=d3.select(this),s=st(d);
     if(k==="brain")t.attr("text-anchor","middle").attr("y",R.brain+30).text("discussion room · "+s.done+"/"+s.tot);
-    else if(k==="model")t.attr("text-anchor","middle").attr("y",R.model+28).text(d.data.name==="Grok"?"on leave":(D.users.filter(u=>u.ai_agent===d.data.name).length+" members · "+s.done+"/"+s.tot));
+    else if(k==="model")t.attr("text-anchor","middle").attr("y",R.model+28).text((D.users.filter(u=>u.ai_agent===d.data.name).length+" members · "+s.done+"/"+s.tot));
     else if(k==="gemini")t.attr("text-anchor","middle").attr("y",R.gemini+28).text("backup reviewer");
     else if(k==="lead")t.attr("text-anchor","middle").attr("y",R.lead+24).text(s.done+"/"+s.tot);
     else t.text("")});
@@ -288,7 +311,7 @@ function focusNode(d){const w=document.getElementById("stage").clientWidth,h=doc
 
 function tlist(ids){return `<ul class="tl">${[...ids.keys()].sort().map(id=>{const t=D.tasks.find(x=>x.task_id===id);return `<li data-task="${esc(id)}"><b>${esc(id)}</b><span>${esc(t.title)}</span><span class="mono" style="color:${COL(t.status)}">${esc(t.status)}</span></li>`}).join("")}</ul>`}
 function prog(s){return s.tot?`<div class="pbar"><span style="width:${Math.round(s.pct*100)}%"></span></div><div class="mono" style="color:var(--mut)">${s.done} of ${s.tot} tasks done · ${Math.round(s.pct*100)}%</div>`:""}
-function side(d){const el=document.getElementById("side"),k=d.data.kind,s=st(d);let h=`<button class="x" aria-label="Close" id="sx">✕</button>`;
+function side(d){selectedDetailPath=d.id;const el=document.getElementById("side"),k=d.data.kind,s=st(d);let h=`<button class="x" aria-label="Close" id="sx">✕</button>`;
   if(k==="brain")h+=`<div class="lbl">Brain</div><h2>Shared discussion room</h2><p>Models propose, comment and vote. A proposal is agreed only when every required model approves and no one objects. Gemini advises when they cannot agree; Hanuma decides if they still disagree.</p>${prog(s)}`;
   else if(k==="model"){const mem=D.users.filter(u=>u.ai_agent===d.data.name);const ack=(D.acks||[]).find(a=>a.model===d.data.name);
     h+=`<div class="lbl">AI model</div><h2 style="color:${MCOL[d.data.name]}">${esc(d.data.name)}</h2><p>${mem.length} members${ack?" · "+ack.n+" of "+D.messages+" messages confirmed":""}</p>${prog(s)}<p class="mono" style="color:var(--mut)">Tap a team lead to open its members and their tasks.</p>`}
@@ -312,12 +335,12 @@ function panels(){
   document.getElementById("kDone").innerHTML=`${done} <span>of ${T.length}</span>`;
   document.getElementById("kBar").innerHTML=[[done,"#4ade80"],[ip,"#fbbf24"],[bl,"#fb7185"],[ns,"#7c8a86"]].map(([n,c])=>`<i style="width:${100*n/T.length}%;background:${c}"></i>`).join("");
   document.getElementById("kSplit").textContent=`${done} done · ${ip} in progress · ${bl} blocked · ${ns} not started`;
-  const models=["Muse","Claude","ChatGPT"].filter(m=>D.users.some(u=>u.ai_agent===m));
+  const models=["Muse","Claude","ChatGPT","Grok"].filter(m=>D.users.some(u=>u.ai_agent===m));
   document.getElementById("hModels").textContent=models.length+" models";document.getElementById("hMembers").textContent=D.users.length+" members";
   // models card
   const mStat=m=>{const ids=new Map();D.tasks.forEach(t=>{if(ownersOf(t).some(u=>u.ai_agent===m))ids.set(t.task_id,t.status)});const tot=ids.size,dn=[...ids.values()].filter(s=>DONE.has(s)).length;return {tot,dn}};
   document.getElementById("models").innerHTML=["Muse","Claude","ChatGPT","Grok","Gemini"].map(m=>{const s=mStat(m),n=D.users.filter(u=>u.ai_agent===m).length,a=(D.acks||[]).find(x=>x.model===m);
-    return `<div class="row"><b style="color:${MCOL[m]}">${m}</b><div>${s.tot?`<div class="pbar"><span style="width:${100*s.dn/s.tot}%"></span></div>`:""}<span class="mono" style="color:var(--mut)">${m==="Gemini"?"backup reviewer":m==="Grok"?"on leave":n+" members · "+s.dn+"/"+s.tot+" tasks"}</span></div><span class="tag ${a&&a.n>=D.messages?"ok":"wait"}">${a?a.n:0}/${D.messages} msgs</span></div>`}).join("");
+    return `<div class="row"><b style="color:${MCOL[m]}">${m}</b><div>${s.tot?`<div class="pbar"><span style="width:${100*s.dn/s.tot}%"></span></div>`:""}<span class="mono" style="color:var(--mut)">${m==="Gemini"?"backup reviewer":n+" members · "+s.dn+"/"+s.tot+" tasks"}</span></div><span class="tag ${a&&a.n>=D.messages?"ok":"wait"}">${a?a.n:0}/${D.messages} msgs</span></div>`}).join("");
   // leads card
   const leads=[...new Set(D.users.map(u=>u.reports_to&&u.reports_to!==u.name?u.reports_to:"Hanuma"))];
   document.getElementById("leads").innerHTML=leads.map(l=>{const mem=D.users.filter(u=>(u.reports_to&&u.reports_to!==u.name?u.reports_to:"Hanuma")===l);const ids=new Map();D.tasks.forEach(t=>{if(ownersOf(t).some(u=>mem.includes(u)))ids.set(t.task_id,t.status)});const tot=ids.size,dn=[...ids.values()].filter(s=>DONE.has(s)).length;const L=D.users.find(u=>u.name===l);
@@ -351,7 +374,7 @@ function panels(){
   document.querySelectorAll("#mtable [data-member]").forEach(r=>r.onclick=()=>{findMember(r.dataset.member);document.getElementById("stage").scrollIntoView({behavior:"smooth",block:"center"})});
   // source chip + banner
   const src=document.getElementById("src");src.className="chip"+(D.live?" live":"");src.textContent=D.live?"Live · "+fmt(D.at):"Snapshot · "+fmt(D.at);
-  const bn=document.getElementById("banner");if(D.live){bn.hidden=true}else{bn.hidden=false;bn.textContent=`Showing the saved snapshot from ${fmt(D.at)}. The live board could not be reached (${D.err||"no response"}). Retrying every 60 seconds.`}
+  const bn=document.getElementById("banner");if(D.live&&!(D.partial||[]).length){bn.hidden=true}else{bn.hidden=false;bn.textContent=D.live?`Live tasks and roster are updating; some supporting panels are temporarily stale (${D.err}). Retrying automatically.`:`Showing last successfully loaded task information from ${fmt(D.at)}. Live task sync is temporarily unavailable (${D.err||"no response"}). Retrying automatically.`}
   document.getElementById("foot").textContent=`Data: Parkday board (Supabase) · ${D.users.length} members · ${D.tasks.length} tasks · ${D.messages} active model messages · refreshed ${fmt(D.at)}`;
 }
 
@@ -368,8 +391,34 @@ document.getElementById("q").addEventListener("change",e=>{const q=e.target.valu
   const l=expandTo(x=>x.data.kind==="lead"&&x.data.name.toLowerCase().startsWith(q));if(l){focusNode(l);side(l)}});
 addEventListener("resize",()=>fit());
 sunDef();
-load().then(d=>{D=d;panels();init(true)});
-setInterval(()=>load().then(d=>{if(!d.live&&D.live)return;D=d;panels();init(false)}),60000);
+// Update the existing constellation data without changing its layout or losing zoom.
+// When unchanged, don't redraw nodes the user may be inspecting.
+let refreshing=false;
+function refreshSelectedDetail(){
+  const el=document.getElementById("side");
+  if(!selectedDetailPath||!el||el.hidden||!root)return;
+  let found=null;
+  (function visit(n){if(found)return;if(n.id===selectedDetailPath){found=n;return}
+    (n.children||[]).forEach(visit);(n._children||[]).forEach(visit)})(root);
+  if(found)side(found);
+}
+async function refreshDashboard(force=false){
+  if(refreshing||(!force&&document.hidden))return;
+  refreshing=true;
+  try{
+    const d=await load(),previous=D;
+    const graphChanged=!previous||JSON.stringify([previous.users,previous.tasks,previous.proposals,previous.audit])
+      !==JSON.stringify([d.users,d.tasks,d.proposals,d.audit]);
+    D=d;panels();
+    if(graphChanged){init(!previous);if(previous)refreshSelectedDetail();}
+  }catch(e){
+    if(D){D={...D,live:false,partial:["dashboard refresh"],err:String(e.message||e)};panels();}
+  }finally{refreshing=false;}
+}
+refreshDashboard(true);
+setInterval(()=>refreshDashboard(),DATA_REFRESH_MS);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)refreshDashboard(true)});
+window.addEventListener("online",()=>refreshDashboard(true));
 </script>
 </body>
 </html>
