@@ -1,61 +1,27 @@
 # Team AI assignments — Parkday Guide
 
-**Current CEO decision: November 15, 2026 — Grok is active again.** Hanuma explicitly restored Grok's original ten team members. The authoritative roster is live Supabase `public.users.ai_agent`; this document explains the decision and its implications.
+**CEO decision — November 15, 2026:** ChatGPT is the **elected project coordination lead**, supervising four execution models: **Muse, Claude, Grok, Perplexity**. Each execution model owns exactly ten existing member seats (40 total). The former ten ChatGPT seats have been assigned to Perplexity. Live `public.users.ai_agent` is authoritative; historical model ownership and votes are preserved in existing comments, tasks, commits and audit history.
 
-## Current assignments — 10 members on each model
+## Current roster
 
-**Muse — 10 members:** Vishnu, Sai, Raghava, Krishna, Mani, Chaitanya (backup), Abhi (backup), Sreekanth, Rithwick, Vijay.
+- **Muse (10):** Vishnu, Sai, Raghava, Krishna, Mani, Chaitanya, Abhi, Sreekanth, Rithwick, Vijay.
+- **Claude (10):** Hanuma, Rohit, Akhil, Rakesh, Teja, Navven, Chandu, Santhosh, Rithesh, Yogi.
+- **Grok (10):** Lokesh, Koushik, Santhan, Sandeep, Guru, Avinash, Eswar, Bittu, Chakri, Muvva.
+- **Perplexity (10, transferred from ChatGPT):** Dharma, Meghana, Hari, Vinay, Tirumala Rao, KC, Ananth, Suraj, Ajay, Rakhy.
+- **ChatGPT:** elected coordination lead, **zero direct member seats**; oversees task scheduling, inter-model review and offline coverage. ChatGPT's former technical research and prior votes remain historically attributed to ChatGPT.
 
-**Claude — 10 members:** Hanuma, Rohit, Akhil, Rakesh, Teja (backup), Navven, Chandu (backup), Santhosh, Rithesh, Yogi.
+No human name, department, task owner, backup link, or task acceptance criteria was replaced. The reassignment changes the execution model responsible for these ten people's outstanding work.
 
-**ChatGPT — 10 members:** Dharma, Meghana, Hari, Vinay, Tirumala Rao (backup), KC, Ananth, Suraj, Ajay, Rakhy.
+## Perplexity onboarding requirements
 
-**Grok — 10 restored members:**
-- **Lokesh** — UI/UX Designer (transferred from Muse)
-- **Koushik** — Photographer (transferred from Muse)
-- **Santhan** — Video Producer (transferred from Muse)
-- **Sandeep** — RV & Vanlife Specialist (transferred from Claude)
-- **Guru** — Digital PR Specialist (transferred from Claude)
-- **Avinash** — Short-Form Editor (transferred from Claude)
-- **Eswar** — Sponsorships Manager (transferred from ChatGPT)
-- **Bittu** — Pinterest Strategist (transferred from ChatGPT)
-- **Chakri** — Social Commerce Specialist (transferred from ChatGPT)
-- **Muvva** — Community Cultivator (transferred from ChatGPT)
+Perplexity now appears as an execution model in the roster and AI Dashboard. This **does not by itself give Perplexity independent Supabase write credentials**. Its ability to review GitHub comments is separate from the secure write permission needed for task updates, proposal comments and votes. Create and test a **Perplexity-specific authenticated identity** with permission limited to its own records/actions; no shared Supabase `service_role`, secret API key, or model impersonation. Preserve independent source validation and all CEO launch gates.
 
-**Total 40 active roster entries, unchanged; all ten original Grok seats restored.** No member records, roles, departments, reporting relationships, task ownership names, status, evidence or production gates were deleted or re-created.
+## Muse connection requirements
 
-## Reassigned Grok task coverage — twelve existing tasks
+Muse retains its original ten team members. Muse may use the Supabase project URL and **publishable** project key for read access, but those alone **do not authorize writes**. Muse's proposal votes, discussion comments and message acknowledgements must come from a verified Muse-specific authenticated session or a tightly scoped authenticated server-side endpoint that records the caller's actual identity. Existing RLS restrictions must not be disabled to bypass access errors. See security discussion [issue #68](https://github.com/Hanumabathini/parkday/issues/68) and council [issue #23](https://github.com/Hanumabathini/parkday/issues/23).
 
-The model owning a task's named member changes automatically through Supabase roster mapping. Task owner names stay fixed, so history remains intact.
+## Coordination rules
 
-| Task | Grok contributors | Other assigned models | State at reassignment |
-|---|---|---|---|
-| D1-07 Design system draft | Lokesh | None | In progress |
-| D1-12 Footage, photos, Pinterest | Santhan, Koushik, Bittu | None | In progress |
-| D2-02 First ten parks fact-check | Eswar | Claude, Muse | In progress |
-| D2-03 Park page layout + FTC | Lokesh | Muse | In progress |
-| D2-07 Credential policy and brands | Eswar | ChatGPT, Claude | In progress |
-| D3-03 Homepage/directory + logo | Lokesh, Koushik | Muse | In progress |
-| D3-04 Guides, RV and fee study | Sandeep, Guru | Claude | In progress |
-| D4-04 Q&A, teaser, merch brief | Avinash | Claude, ChatGPT | Not started |
-| D4-06 Final parks fact-check | Chakri | Claude, ChatGPT | In progress |
-| D5-06 Community, welcome, footage | Muvva, Santhan | ChatGPT | In progress |
-| D6-05 About page, photo log, compliance | Koushik | ChatGPT, Claude | In progress |
-| D7-03 Conditional GO launch actions | Bittu, Avinash, Muvva | Muse, ChatGPT | Not started |
+ChatGPT is the elected lead under CEO-confirmed election proposal #24 (final 4–1 expressed candidate tally; provenance retained in proposal comment #64). Before each new push, the required council models must discuss the exact proposed change and independently approve it; separate approval is required before merge. Older work without proof of prior approval receives candid retrospective review. If any model is verifiably offline for >=120 minutes, ChatGPT coordinates coverage by qualified available models and hands tasks back with PR/test evidence when it returns. No absent model's vote or acknowledgment may be forged.
 
-**Handoff discipline:** Existing Claude/Muse/ChatGPT research and PR evidence remain valid. Grok reads these records, checks its slice, coordinates with the remaining owners, and must not overwrite shared data or falsely approve a whole mixed task after reviewing only one part. Do not activate any conditional launch actions before CEO GO and all six human production gates.
-
-## Historical leave period (for audit trail)
-
-Earlier on November 15, Grok's ten members were distributed temporarily as follows: Muse received Lokesh, Koushik, Santhan (total 13); Claude received Sandeep, Guru, Avinash (total 13); ChatGPT received Eswar, Bittu, Chakri, Muvva (total 14); Grok had none. That **historical split is no longer current** after Hanuma's explicit return decision. Any prior document or model message that says "Grok 0/on leave" is superseded for roster assignment.
-
-## Current operating rules for all four models
-
-1. Read actual current Supabase tasks/users before work and acknowledge your own model's active P0 instructions; GitHub/Supabase publication does not automatically wake any separate AI chat.
-2. All four models research → build → primary-source verification → QA/tests → evidence/PR → model approval for completed sprint work. Ordinary development does **not** wait for human signoff.
-3. Discuss every mixed-model task, proposal, source correction or disagreement in the **canonical** Supabase `ai_proposals`, `ai_proposal_comments`, `ai_proposal_votes` system; read calculated consensus in `ai_proposal_status`. No fabricated votes or impersonated acknowledgements.
-4. Grok receives its original member contributions immediately. Reconcile existing proposal required-model lists against current roster without forging past approvals. For park-freshness slices, keep existing verified research and propose a nonoverlapping four-model rotation through the discussion room rather than silently invalidating current assignments.
-5. **AI Dashboard layout is frozen** until Hanuma explicitly requests a change. Update shared data, website code, documents and status; don't change `ai-dashboard.html` layout.
-6. Six production gates, spending, partner applications, domain purchase, external-account commitments, affiliate activation and launch remain restricted by their existing human-approval rules.
-
-Sources: live Supabase `public.users`, `public.tasks`, official [model approval policy](model-approval-rule.md), and [all-model working rules](https://github.com/Hanumabathini/parkday/blob/main/docs/ai-working-rules.md).
+The [AI Dashboard](https://hanumabathini.github.io/parkday-guide-board/ai-dashboard.html) must preserve its Brain → models → team leads → members → tasks → data layout. Production spending, domain, affiliate and six launch gates remain CEO-only.
