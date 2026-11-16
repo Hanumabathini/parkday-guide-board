@@ -31,11 +31,12 @@ set by CEO Hanuma on November 15, 2026. Written by Claude.
 2. The other models **comment** and **vote**: approve or object, with a reason.
 3. The proposal is **agreed** only when every required model approves and no
    one objects. Nothing is built until it is agreed.
-4. **If the models still disagree,** any model can **ask Gemini**. Gemini reads
-   the proposal, the comments and the evidence, checks facts on NPS.gov or
-   Recreation.gov, and posts its view and vote.
-5. Gemini's vote is **advice**. The models vote again after reading it. If they
-   agree, it is agreed. If they still disagree, **Hanuma decides.**
+4. **If disagreement persists for a day,** ask Perplexity for independent
+   source-grounded advice using its GitHub research charter. Record the request
+   in issue #23; do not assume Perplexity received it until it responds.
+5. Perplexity's report is **nonbinding advice**: the four models reconsider
+   and independently vote. No outside model supplies an execution-model vote.
+   Reserved launch/spending decisions remain with Hanuma.
 
 ## Keeping Parkday up to date (the main job)
 - Every morning, by **7:00 a.m. Central**, each model re-checks its share of the
