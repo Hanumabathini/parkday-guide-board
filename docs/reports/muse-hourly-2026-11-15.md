@@ -21,3 +21,28 @@
 - audit_log row written (id ce54fed3-4d5a-4789-b90a-a52311fa183f).
 - Nothing to report to Hanuma: no decision needed, no unreachable source (all 6 NPS pages read live).
 ---
+---
+## 18:17 CT — hourly run
+
+- Presence: Grok offline (last active 22:15 UTC / 4:15 PM CT); Muse (00:05 UTC), Claude (00:14 UTC), ChatGPT (00:16 UTC) online.
+- Messages acked in discussion room: #56, #57, #58, #59, #60, #61. Roll call #46 answered in this run's room post.
+- Votes: #19 APPROVE (record_vote/record_ack/record_fact_check RPCs; same trust as ai_approve; transcribe requested). PR #58 reviewed: APPROVE (diff verified: 2 lines, gateway_towns/top_trails to names; edge 11/11 + retrieve 19/19 re-run by Muse; "Where to stay near Zion?" now answers "Towns near Zion National Park: Springdale, Utah."). Transcribed votes #1/#6/#9-15/#18 verified as correct. Hallmark confirmed for Claude to post as new proposal.
+- Message #61 answered: Phase-0 skill-to-task mapping posted in the room (Playwright/DevTools-Muse D3-05/D5-08/D6-04; changedetection/Docling-Claude D4-06/D2-02/D1-11/D4-04; repomix-ChatGPT D4-05/D2-07; harper blocked on #13; SkillSpector gate; SEO D1-09; pdfme D5-08). Transcription to #15/issue #23 requested.
+- Board: D2-02 AI Approved (Claude ai_approve 17:56 CT). Counts: AI Approved 27, In progress 35, Not started 6, Blocked 2 (D1-05, D2-09), Verified by Dharma 2.
+- Freshness: 4 parks had no fact_checks row (gates-of-the-arctic, gateway-arch, glacier-bay, great-basin); denali/dry-tortugas/everglades skipped (checked 17:17, within 6h). Checked gates-of-the-arctic, gateway-arch, glacier-bay. fact_checks insert refused (42501); rows recorded here as fallback (checked_by Muse, 2026-11-16 00:35 UTC):
+  - gates-of-the-arctic / entrance_fee / on-site null / NPS no entrance fee, no pass required / changed / https://www.nps.gov/gaar/planyourvisit/fees.htm
+  - gates-of-the-arctic / nonresident_fee / on-site null / no $100 fee: no entrance fee charged / match (no rule)
+  - gates-of-the-arctic / reservations / on-site "No entrance fee, no entry permit and no reservation required" / NPS "No entrance fees or registration required; backcountry orientation requested; group permits by advance contact" / match
+  - gates-of-the-arctic / closures / on-site none recorded / conditions (updated Jul 15, 2025): bear-encounter reporting note only; no closures / match
+  - gateway-arch / entrance_fee / on-site null / NPS no park entrance fee for grounds/museum/Old Courthouse; Tram adult $15-$19, child $11 starting / changed / https://www.nps.gov/jeff/planyourvisit/fees.htm
+  - gateway-arch / nonresident_fee / on-site null / no $100 fee; $3 NPS portion of tram/movie ticket waived with ATB pass / match (no rule)
+  - gateway-arch / reservations / on-site "Tram Ride to the Top is a timed ticket year-round, from $15 adult and $11 child" / NPS timed entry system, Tram reservation Jan 2-Dec 31, adult starting $15, child $11, gatewayarch.com; VC 9am-6pm, last tram 1h before close / match
+  - gateway-arch / closures / on-site none recorded / conditions (updated Sep 6, 2025): no closures; security checkpoint, VC 9am-6pm, Old Courthouse 9am-5pm / match
+  - glacier-bay / entrance_fee / on-site null / NPS no entrance fee; no entrance pass required; no pass needed / changed / https://www.nps.gov/glba/planyourvisit/fees.htm
+  - glacier-bay / nonresident_fee / on-site null / no $100 fee: no entrance fee charged / match (no rule)
+  - glacier-bay / reservations / on-site "No entrance fee and no park-wide entry reservation. Free camping and private-boating permits required in season" / NPS no entrance fee; free camping (backcountry permit + orientation); free private-vessel permit / match
+  - glacier-bay / closures / on-site none recorded / conditions (updated Aug 21, 2025): no closures listed / match
+- Fee-fix PR: https://github.com/Hanumabathini/parkday/pull/59 (commit 961b0006). data/last-checked.json regenerated (38 to 63 parks, 112 facts; includes the 17:17 run's 12 log-only rows + this run's 12).
+- audit_log row written (id 7633ddcd-d9f9-45c7-bcf6-5554f918dec4).
+- Nothing to report to Hanuma: no decision needed, no unreachable source (all 6 NPS pages read live).
+---
