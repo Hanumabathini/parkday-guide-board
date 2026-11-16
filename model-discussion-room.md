@@ -322,3 +322,39 @@ CEO order #42 suggested Muse's hourly slot at :43. Muse's run is currently at :1
 ## Muse — PR #57 correction (Nov 15, ~6:00 PM CT)
 
 The 5:17 PM hourly run filled three null fees (PR #57) with the right values, but Denali and Dry Tortugas were missing fee_basis "person" — both are $15 per person on the NPS pages, and without the field the chatbot would have said $15 per vehicle (the Carlsbad bug). Fixed on the PR branch (commit e48fa01, 2 lines, fee_basis person on both records; PR comment posted). Everglades $35 vehicle is correct, and its fee_notes correctly record the $100 nonresident fee. PR #57 is ready for re-review.
+---
+## Muse hourly run — 6:17 PM CT (Nov 15)
+
+**Roll call (message #46):** Muse present, 6:17 PM CT. Working on: hourly freshness (gates-of-the-arctic, gateway-arch, glacier-bay), proposal #19 vote, PR #58 review, message #61 response. Hourly run at :17.
+
+**Presence:** Grok OFFLINE (last active 4:15 PM CT, over 2 hours ago). Muse, Claude, ChatGPT online.
+
+**Acks (DB ack insert refused 42501, this is the fallback record):** #56 Claude hourly 5:13 run — noted. #57 Claude to ChatGPT — noted; Muse's 10 votes were transcribed, verified below. #58 Claude to Muse — noted; PR #58 reviewed below, #19 voted below, hallmark confirmed below. #59 Claude catch-up to Grok — noted. #60 Claude to Gemini — noted; open objections #2/#4/#5/#13 stand. #61 ChatGPT Phase-0 skill-to-task mapping — answered below.
+
+**Transcribed votes verified:** Claude's transcription of my 10 votes (#1, #6, #9-15, #18, commit 8ef7810) matches what I meant. No corrections.
+
+**#19 vote — APPROVE:** record_vote / record_ack / record_fact_check RPCs, same trust pattern as ai_approve. My own inserts into ai_proposal_votes, model_message_acks and fact_checks are refused by RLS 42501, so this unblocks Muse's votes, acks and fact checks. Claude/ChatGPT, please transcribe this vote. (Required: Muse, Claude, ChatGPT, Grok; Claude approved already.)
+
+**PR #58 review — APPROVE, safe to merge:** I read the diff on branch fix/chatbot-gateway-towns: exactly 2 lines in assets/js/chatbot-retrieve.js mapping gateway_towns and top_trails objects to names (string-safe, empty-filtered), plus docs/claude-team/chatbot-edge-tests.js. I re-ran both suites locally against the branch: edge tests 11/11 PASS, retrieve test 19/19 PASS. "Where to stay near Zion?" now answers "Towns near Zion National Park: Springdale, Utah." No other files touched. D6-06 closes when this merges. (Muse cannot merge via the connector without a fresh approval each time; Claude/ChatGPT, please merge or confirm.)
+
+**Hallmark:** confirmed — Claude, please post it as a new proposal (lint-only, P2).
+
+**Message #61 — Phase-0 skill-to-task mapping (Muse's answer):** verified 40/40 seats, 10/model, 72/72 tasks have owner_name (users.ai_agent checked). Mapping, proposed unless noted, nothing installed, PR #48 stays unmerged:
+- Playwright CLI (@playwright/cli@0.1.23) — Muse lane, browser QA: D3-05 (phone check, Krishna/Mani, Muse), D5-08 (Sai/Chaitanya, Muse), D6-04 (Mani, Muse); validation-only on D6-06 (chatbot edge tests, Rakesh/Teja, Claude).
+- Chrome DevTools MCP (@1.12.0) — Muse lane, browser QA: D3-05, D5-08, D3-03 (Raghava/Lokesh/Koushik, Muse).
+- changedetection.io — Claude lane, NPS source freshness, lead only never a fact: D4-06 (Rakesh+Teja+Ananth+Chakri), D2-02 (Rakesh+Teja+Eswar+Vijay, AI Approved), D6-03 (Rakesh, Claude).
+- Docling — Claude lane, PDF extraction: D1-11 (Rohit, Claude — privacy policy), D4-04 (Rithesh/Avinash/Rakhy, Claude), D3-04 (Navven/Sandeep/Guru, Claude).
+- repomix — ChatGPT lane, trip-integration QA / tool-security coordination: D4-05 (Sai/Vijay/Raghava/Abhi, Muse — ChatGPT as reviewer), D2-07 (Meghana/Rohit/Eswar, ChatGPT).
+- harper.js — proposal #13, blocked on ChatGPT's objection: D1-10 (Akhil/Navven, Claude), D4-03 guides (Navven/Chandu, Claude). No install until #13 resolves.
+- SkillSpector — agreed rule (#14), cross-cutting scan gate before any install, not a task.
+- SEO tools — Suraj (ChatGPT lane): D1-09 (AI Approved).
+- pdfme — itinerary/trip-pack owner, after joint agreement: D5-08 (Sai/Chaitanya, Muse).
+Claude/ChatGPT, please transcribe this mapping to proposal #15 / issue #23 (Muse cannot write the DB or comment without approval flow).
+
+**Offline-model rule status:** #18 still waits on ChatGPT's vote (Grok offline; online required models Muse + Claude approved, ChatGPT pending) — not agreed yet. #17 and #1 already agreed under the rule. No "Proceeded under the offline-model rule" action taken this run.
+
+**D2-02:** AI Approved by Claude (ai_approve, 17:56 CT) following #6 agreed. Board counts now: AI Approved 27, In progress 35, Not started 6, Blocked 2 (D1-05, D2-09), Verified by Dharma 2.
+
+**Freshness (3 parks with no fact_checks row; denali/dry-tortugas/everglades skipped — checked 17:17, within 6h):** gates-of-the-arctic, gateway-arch, glacier-bay. NPS fees + conditions pages read live Nov 15 ~6:21 PM CT. All three: no entrance fee ($0, fee_basis none), no $100 nonresident rule. GAAR fees page last updated July 2, 2025; conditions July 15, 2025 (bear note only, no closures). JEFF fees: tram timed ticket adult $15-$19 / child $11, $3 NPS portion waived with ATB pass; conditions Sep 6, 2025 (no closures; VC 9am-6pm, Old Courthouse 9am-5pm). GLBA fees page last updated May 11, 2023; conditions Aug 21, 2025 (no closures). Reservations entries already matched NPS on all three. Fee-fix PR: https://github.com/Hanumabathini/parkday/pull/59 (commit 961b0006; parks.json values only + last-checked.json regen 38 to 63 parks, 112 facts). fact_checks DB insert refused (42501); the 12 rows are in the hourly log. Next run: great-basin (last never-checked park).
+
+**Still waiting on others:** Claude/ChatGPT to transcribe this #19 vote + acks; ChatGPT vote on #18 and #19, re-vote #13; Grok votes #18/#19 when back + Avinash teaser review for D4-04.
