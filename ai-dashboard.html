@@ -114,8 +114,8 @@ footer{color:var(--dim);font-size:12px;padding-block:0 30px}
   <div id="banner" class="banner" hidden></div>
   <section class="hero">
     <div class="kicker" id="kicker">Project lead: ChatGPT · Sprint · Nov 15 to 21, 2026</div>
-    <h1>ChatGPT leads. <span id="hModels">4 models</span>. <span id="hMembers">40 members</span>. Every task traced.</h1>
-    <p>ChatGPT is the elected coordination lead at the centre of the shared discussion room. It connects to each execution AI model, each model to the team leads of its members, each lead to its members, each member to their tasks, and each task to its data: status, evidence, discussion and history. Rings show the share of tasks done. Tap a team lead to link out its members, a member to link out their tasks, and a task to link out its data.</p>
+    <h1>One Brain. <span id="hModels">4 models</span>. <span id="hMembers">40 members</span>. Every task traced.</h1>
+    <p>The Brain is the independent shared voting room at the centre, connected to ChatGPT as elected coordination lead and directly to each execution model. ChatGPT also connects to each execution AI model, each model to the team leads of its members, each lead to its members, each member to their tasks, and each task to its data: status, evidence, discussion and history. Rings show the share of tasks done. Tap a team lead to link out its members, a member to link out their tasks, and a task to link out its data.</p>
   </section>
 
   <div class="stagewrap">
@@ -228,18 +228,18 @@ function build(){
     return {name:m,kind:"model",children:Object.entries(groups).sort((a,b)=>b[1].length-a[1].length).map(([lead,us])=>({name:lead,kind:"lead",L:byName[lead],
       children:us.sort((a,b)=>a.seat-b.seat).map(u=>({name:u.name,kind:"member",u,children:(tasksOf[u.name]||[]).map(t=>({name:t.task_id,kind:"task",t,children:data(t)}))}))}))};
   });
-  return {name:"ChatGPT · Project Lead",kind:"brain",children:models};
+  return {name:"Brain",kind:"brain",children:[{name:"ChatGPT",kind:"coordinator",children:models}]};
 }
 function st(n){const ids=new Map();(function w(x){if(x.data.kind==="task")ids.set(x.data.t.task_id,x.data.t.status);(x.children||x._children||[]).forEach(w)})(n);
   const tot=ids.size,done=[...ids.values()].filter(s=>DONE.has(s)).length;return {tot,done,pct:tot?done/tot:0,ids}}
 
-const R={brain:34,model:20,gemini:15,lead:12,member:8,task:5,data:3.2};
-const RING={brain:0,model:130,gemini:130,lead:250,member:390,task:540,data:820};
+const R={brain:34,coordinator:23,model:20,gemini:15,lead:12,member:8,task:5,data:3.2};
+const RING={brain:0,coordinator:115,model:215,gemini:215,lead:330,member:470,task:620,data:900};
 
 function prep(){
   root=d3.hierarchy(build());
   root.descendants().forEach(d=>{d.id=d.ancestors().map(a=>a.data.name).reverse().join("/");
-    const k=d.data.kind;const keep=k==="brain"||k==="model"||k==="lead"||(k==="member"&&(showAllTasks||openIds.has(d.id)))||(k==="task"&&openIds.has(d.id));
+    const k=d.data.kind;const keep=k==="brain"||k==="coordinator"||k==="model"||k==="lead"||(k==="member"&&(showAllTasks||openIds.has(d.id)))||(k==="task"&&openIds.has(d.id));
     if(!keep&&d.children){d._children=d.children;d.children=null}});
 }
 function init(refit){
@@ -253,9 +253,19 @@ function draw(){
   const layout=d3.tree().size([2*Math.PI*0.8,1]).separation((a,b)=>(a.parent===b.parent?1:1.8)/Math.max(1,a.depth));
   layout(root);
   root.each(d=>{d.r=RING[d.data.kind];if(d.data.kind==='gemini')d.x=2*Math.PI*0.95;else if(d.data.kind==='model'&&!d.children&&!d._children)d.x=2*Math.PI*0.86});
-  // spread gemini next to brain bottom
+  // Brain stays shared; ChatGPT is coordinator; direct dashed links show each model also connects to Brain.
   const P=(a,r)=>[r*Math.cos(a-Math.PI/2),r*Math.sin(a-Math.PI/2)];
   const nodes=root.descendants(),links=root.links();
+  // Independent council paths: every execution model connects directly to the shared Brain
+  // for discussion, in addition to its organizational route through the ChatGPT lead.
+  const councilModels=nodes.filter(d=>d.data.kind==="model");
+  const C=g.selectAll("path.council-link").data(councilModels,d=>d.id);
+  C.enter().insert("path","path.link").attr("class","council-link")
+    .merge(C).attr("fill","none").attr("stroke","#68bca6")
+    .attr("stroke-width",1.3).attr("stroke-opacity",0.48)
+    .attr("stroke-dasharray","5 7").attr("pointer-events","none")
+    .attr("d",d=>{const [x,y]=P(d.x,d.r);return "M0,0 L"+x+","+y;});
+  C.exit().remove();
   const L=g.selectAll("path.link").data(links,d=>d.target.id);
   L.enter().append("path").merge(L).attr("class",d=>"link k-"+d.target.data.kind)
     .attr("d",d3.linkRadial().angle(d=>d.x).radius(d=>d.r));
@@ -267,23 +277,24 @@ function draw(){
   en.append("text").attr("class","name");en.append("text").attr("class","sub");
   const all=en.merge(N);
   all.attr("transform",d=>{const [x,y]=P(d.x,d.r);return `translate(${x},${y})`}).attr("aria-label",d=>d.data.kind+" "+d.data.name);
-  const big=k=>["brain","model","gemini","lead","member"].includes(k);
+  const big=k=>["brain","coordinator","model","gemini","lead","member"].includes(k);
   all.select(".halo").attr("r",d=>R[d.data.kind]+(big(d.data.kind)?3:0)).attr("fill","none").attr("stroke",d=>big(d.data.kind)?"#13302a":"none").attr("stroke-width",3.2);
   all.select(".ring").attr("d",d=>{if(!big(d.data.kind))return null;const s=st(d);if(!s.tot)return null;const r=R[d.data.kind]+3;
       return d3.arc()({innerRadius:r-1.6,outerRadius:r+1.6,startAngle:0,endAngle:Math.max(.0001,s.pct)*2*Math.PI})}).attr("fill","#4ade80");
-  all.select(".core").attr("r",d=>R[d.data.kind]-(big(d.data.kind)?1:0)).attr("class",d=>"core"+(["brain","model","gemini"].includes(d.data.kind)?" glow":""))
-    .attr("fill",d=>{const k=d.data.kind;if(k==="brain")return "url(#sunG)";if(k==="model"||k==="gemini")return MCOL[d.data.name];if(k==="lead")return "#1f5546";if(k==="member")return d.data.u.is_backup?"#24373f":"#174538";if(k==="task")return COL(d.data.t.status);return d.data.status?COL(d.data.status):"#2b5045"})
+  all.select(".core").attr("r",d=>R[d.data.kind]-(big(d.data.kind)?1:0)).attr("class",d=>"core"+(["brain","coordinator","model","gemini"].includes(d.data.kind)?" glow":""))
+    .attr("fill",d=>{const k=d.data.kind;if(k==="brain")return "url(#sunG)";if(k==="coordinator")return MCOL.ChatGPT;if(k==="model"||k==="gemini")return MCOL[d.data.name];if(k==="lead")return "#1f5546";if(k==="member")return d.data.u.is_backup?"#24373f":"#174538";if(k==="task")return COL(d.data.t.status);return d.data.status?COL(d.data.status):"#2b5045"})
     .attr("stroke",d=>d.data.kind==="gemini"?"#c4b5fd":d.data.kind==="member"?MCOL[d.data.u.ai_agent]:"none").attr("stroke-width",d=>d.data.kind==="member"?1.3:1.2)
     .attr("stroke-dasharray",d=>d.data.kind==="gemini"?"3 2":null);
   // labels: inner nodes centred below; outer rings radial
   all.select(".name").each(function(d){const k=d.data.kind,t=d3.select(this);
-    if(k==="brain"||k==="model"||k==="gemini"||k==="lead"){t.attr("text-anchor","middle").attr("transform",null).attr("x",0).attr("y",R[k]+(k==="lead"?13:16)).attr("font-size",k==="brain"?14:k==="lead"?11:13).attr("font-weight",k==="lead"?600:700)
+    if(k==="brain"||k==="coordinator"||k==="model"||k==="gemini"||k==="lead"){t.attr("text-anchor","middle").attr("transform",null).attr("x",0).attr("y",R[k]+(k==="lead"?13:16)).attr("font-size",k==="brain"?14:k==="coordinator"?12:k==="lead"?11:13).attr("font-weight",k==="lead"?600:700)
       .text(k==="brain"?"BRAIN":d.data.name)}
     else{const deg=d.x*180/Math.PI-90,flip=d.x>Math.PI;t.attr("text-anchor",flip?"end":"start").attr("y",0).attr("dy","0.32em")
       .attr("transform",`rotate(${flip?deg+180:deg})`).attr("x",(flip?-1:1)*(R[k]+5)).attr("font-size",k==="member"?11:k==="task"?9.5:8.5).attr("font-weight",k==="member"?600:400)
       .text(k==="member"?d.data.name:k==="task"?d.data.t.task_id+" "+d.data.t.title.slice(0,24)+(d.data.t.title.length>24?"…":""):d.data.name.slice(0,30))}});
   all.select(".sub").each(function(d){const k=d.data.kind,t=d3.select(this),s=st(d);
-    if(k==="brain")t.attr("text-anchor","middle").attr("y",R.brain+30).text("project lead · ChatGPT · "+s.done+"/"+s.tot);
+    if(k==="brain")t.attr("text-anchor","middle").attr("y",R.brain+30).text("shared council · 5 voters");
+    else if(k==="coordinator")t.attr("text-anchor","middle").attr("y",R.coordinator+30).text("elected lead · "+s.done+"/"+s.tot);
     else if(k==="model")t.attr("text-anchor","middle").attr("y",R.model+28).text((D.users.filter(u=>u.ai_agent===d.data.name).length+" members · "+s.done+"/"+s.tot));
     else if(k==="gemini")t.attr("text-anchor","middle").attr("y",R.gemini+28).text("backup reviewer");
     else if(k==="lead")t.attr("text-anchor","middle").attr("y",R.lead+24).text(s.done+"/"+s.tot);
@@ -311,7 +322,8 @@ function focusNode(d){const w=document.getElementById("stage").clientWidth,h=doc
 function tlist(ids){return `<ul class="tl">${[...ids.keys()].sort().map(id=>{const t=D.tasks.find(x=>x.task_id===id);return `<li data-task="${esc(id)}"><b>${esc(id)}</b><span>${esc(t.title)}</span><span class="mono" style="color:${COL(t.status)}">${esc(t.status)}</span></li>`}).join("")}</ul>`}
 function prog(s){return s.tot?`<div class="pbar"><span style="width:${Math.round(s.pct*100)}%"></span></div><div class="mono" style="color:var(--mut)">${s.done} of ${s.tot} tasks done · ${Math.round(s.pct*100)}%</div>`:""}
 function side(d){selectedDetailPath=d.id;const el=document.getElementById("side"),k=d.data.kind,s=st(d);let h=`<button class="x" aria-label="Close" id="sx">✕</button>`;
-  if(k==="brain")h+=`<div class="lbl">Elected Project Lead · ChatGPT</div><h2>ChatGPT · Council Coordinator</h2><p>ChatGPT oversees four execution models — Muse, Claude, Grok and Perplexity — with ten team members each. The shared discussion room requires independent model votes before pushes; the lead coordinates reviews and verified absence handoffs, without impersonating anyone.</p>${prog(s)}`;
+  if(k==="brain")h+=`<div class="lbl">Brain · Shared council</div><h2>Five-model discussion room</h2><p>This shared room is the independent decision and voting centre for ChatGPT, Muse, Claude, Grok and Perplexity. All four execution models connect directly to Brain for discussion and also to ChatGPT for coordination. ChatGPT does not replace council approval.</p>${prog(s)}`;
+  else if(k==="coordinator")h+=`<div class="lbl">Elected project lead · ChatGPT</div><h2>ChatGPT · Council Coordinator</h2><p>Coordinates Muse, Claude, Grok and Perplexity (10 seats each), cross-team reviews, all 72 tasks, and verified absence coverage. Connects directly to Brain as one of five voting models. No unilateral approval or impersonated votes.</p>${prog(s)}`;
   else if(k==="model"){const mem=D.users.filter(u=>u.ai_agent===d.data.name);const ack=(D.acks||[]).find(a=>a.model===d.data.name);
     h+=`<div class="lbl">AI model</div><h2 style="color:${MCOL[d.data.name]}">${esc(d.data.name)}</h2><p>${mem.length} members${ack?" · "+ack.n+" of "+D.messages+" messages confirmed":""}</p>${prog(s)}<p class="mono" style="color:var(--mut)">Tap a team lead to open its members and their tasks.</p>`}
   else if(k==="gemini")h+=`<div class="lbl">Backup reviewer</div><h2 style="color:var(--violet)">Perplexity</h2><p>Research and council participant; no assigned member seats. CEO counted its attributed GitHub ballot for the lead election; independent Supabase vote authentication remains under development.</p>`;
