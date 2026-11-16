@@ -46,3 +46,28 @@
 - audit_log row written (id 7633ddcd-d9f9-45c7-bcf6-5554f918dec4).
 - Nothing to report to Hanuma: no decision needed, no unreachable source (all 6 NPS pages read live).
 ---
+---
+## 19:17 CT — hourly run
+
+- Presence: Grok offline (last active 22:15 UTC / 4:15 PM CT); Claude offline (last active 00:14 UTC / 6:14 PM CT, 63 min); ChatGPT (00:29 UTC), Muse (00:50 UTC) online. (ChatGPT active again 19:23 CT — PR #60 + audit note — after the presence read.)
+- Messages: none new since #61 (acked 18:17). No acks this run.
+- Votes: none new. #19 APPROVE still room-only (transcription requested); ChatGPT objected 18:29 CT, objection stands, #19 not agreed. #1 and #17 already agreed under the offline-model rule (declared by Claude, message #59). #18 waits on ChatGPT + Grok.
+- PR #60 seen: ChatGPT 19:23 CT live council and RPC identity security QA (docs PR, open).
+- Freshness: 1 park had no fact_checks row (great-basin); acadia + badlands oldest single-field rows (10:00 AM CT). Checked great-basin, acadia, badlands. fact_checks insert refused (42501); rows recorded here as fallback (checked_by Muse, 2026-11-16 01:30 UTC):
+  - great-basin / entrance_fee_usd / on-site null / NPS no entrance fee, no pass required / changed / https://www.nps.gov/grba/planyourvisit/fees.htm
+  - great-basin / nonresident_fee / on-site n/a (no entrance fee) / no $100 fee: no entrance fee charged / match (no rule)
+  - great-basin / reservations / on-site "No park-wide entry reservation in 2026; Lehman Caves ticket up to 30 days ahead; campgrounds reservation-only" / NPS same; campgrounds $20/night via Recreation.gov / match
+  - great-basin / closures / on-site none recorded / conditions (updated Nov 11, 2026): Wheeler Peak Scenic Drive CLOSED at Osceola Ditch (seasonal winter); Baker Creek, Strawberry Creek, Snake Creek OPEN; visitor centers and Lehman Caves tours OPEN / match
+  - acadia / entrance_fee_usd / on-site 35 / NPS $35 vehicle, $30 motorcycle, $20 per person, 7 days / match / https://www.nps.gov/acad/planyourvisit/fees.htm
+  - acadia / nonresident_fee / on-site "$100 per non-US resident 16+ unless Annual/ATB pass" / NPS same / match
+  - acadia / reservations / on-site "Cadillac Summit Road vehicle reservation May 20-Oct 25, $6" / NPS timed entry May 20-Oct 25, $6 on Recreation.gov; no reservation elsewhere / match
+  - acadia / closures / on-site none recorded / conditions (updated Aug 17, 2026): no closures listed; Jan 2024 storm damage repairs complete / match
+  - badlands / entrance_fee_usd / on-site 30 / NPS $30 vehicle, $25 motorcycle, $15 per person, 7 days (fees page text-fetch returned waiver content only; corroborated via NPS Entrance Fees by Park index) / match / https://www.nps.gov/badl/planyourvisit/fees.htm
+  - badlands / nonresident_fee / on-site none listed / not among the 11 parks with the $100 surcharge in 2026 / match (no rule)
+  - badlands / reservations / on-site none / NPS no reservation required to enter / match
+  - badlands / closures / on-site none recorded / live conditions page read via browser 19:25 CT: only a Navigation caution alert; no closures (page footer last updated Nov 14, 2025) / match
+- Fee-fix PR: https://github.com/Hanumabathini/parkday/pull/61 (commit 196e26c1). data/last-checked.json regenerated (63 to 64 parks, 112 to 122 facts; includes the 17:17/18:17 log-only rows + this run's 12; field name now entrance_fee_usd per DB convention).
+- Proposal: freshness fee-fill for great-basin recorded in the discussion room (ai_proposals insert refused 42501).
+- audit_log row written (id 0c1aeb03-3a01-410a-86f8-45d41bcf8216).
+- Next run: big-bend, biscayne, black-canyon-of-the-gunnison (oldest single-field rows, 16:00 UTC).
+- Nothing to report to Hanuma: no decision needed; one source limitation (Badlands fees page text-fetch returned waiver content only — amounts corroborated via NPS index; conditions page read live via browser, no closures).
