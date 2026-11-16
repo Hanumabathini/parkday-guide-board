@@ -228,13 +228,13 @@ function build(){
     return {name:m,kind:"model",children:Object.entries(groups).sort((a,b)=>b[1].length-a[1].length).map(([lead,us])=>({name:lead,kind:"lead",L:byName[lead],
       children:us.sort((a,b)=>a.seat-b.seat).map(u=>({name:u.name,kind:"member",u,children:(tasksOf[u.name]||[]).map(t=>({name:t.task_id,kind:"task",t,children:data(t)}))}))}))};
   });
-  return {name:"Brain",kind:"brain",children:[{name:"ChatGPT",kind:"coordinator",children:models}]};
+  return {name:"Brain",kind:"brain",children:[models[2],models[3],{name:"ChatGPT",kind:"coordinator"},models[0],models[1]]};
 }
 function st(n){const ids=new Map();(function w(x){if(x.data.kind==="task")ids.set(x.data.t.task_id,x.data.t.status);(x.children||x._children||[]).forEach(w)})(n);
   const tot=ids.size,done=[...ids.values()].filter(s=>DONE.has(s)).length;return {tot,done,pct:tot?done/tot:0,ids}}
 
 const R={brain:34,coordinator:23,model:20,gemini:15,lead:12,member:8,task:5,data:3.2};
-const RING={brain:0,coordinator:115,model:215,gemini:215,lead:330,member:470,task:620,data:900};
+const RING={brain:0,coordinator:205,model:205,gemini:205,lead:335,member:480,task:635,data:925};
 
 function prep(){
   root=d3.hierarchy(build());
@@ -252,19 +252,31 @@ function init(refit){
 function draw(){
   const layout=d3.tree().size([2*Math.PI*0.8,1]).separation((a,b)=>(a.parent===b.parent?1:1.8)/Math.max(1,a.depth));
   layout(root);
-  root.each(d=>{d.r=RING[d.data.kind];if(d.data.kind==='gemini')d.x=2*Math.PI*0.95;else if(d.data.kind==='model'&&!d.children&&!d._children)d.x=2*Math.PI*0.86});
-  // Brain stays shared; ChatGPT is coordinator; direct dashed links show each model also connects to Brain.
+  // Five equal-angle spokes: Grok, Perplexity, ChatGPT (opposite side), Muse, Claude.
+  // Keep each team's existing descendants within the sector around its anchored spoke.
+  root.children.forEach((branch,i)=>{
+    const anchor=i*2*Math.PI/5;
+    const branchNodes=branch.descendants();
+    const original=branch.x;
+    const maxDeviation=Math.max(.0001,...branchNodes.map(n=>Math.abs(n.x-original)));
+    const compression=Math.min(1,(Math.PI/5*.86)/maxDeviation);
+    branchNodes.forEach(n=>{n.x=anchor+(n.x-original)*compression});
+  });
+  root.x=0;
+  root.each(d=>{d.r=RING[d.data.kind]});
+  // Brain-to-model links are the five equal spokes; secondary links mark coordination.
   const P=(a,r)=>[r*Math.cos(a-Math.PI/2),r*Math.sin(a-Math.PI/2)];
   const nodes=root.descendants(),links=root.links();
-  // Independent council paths: every execution model connects directly to the shared Brain
-  // for discussion, in addition to its organizational route through the ChatGPT lead.
+  // ChatGPT coordinates all four execution models, while all five vote via Brain.
+  const coordinator=nodes.find(d=>d.data.kind==="coordinator");
+  const [cx,cy]=P(coordinator.x,coordinator.r);
   const councilModels=nodes.filter(d=>d.data.kind==="model");
-  const C=g.selectAll("path.council-link").data(councilModels,d=>d.id);
-  C.enter().insert("path","path.link").attr("class","council-link")
+  const C=g.selectAll("path.coordination-link").data(councilModels,d=>d.id);
+  C.enter().insert("path","path.link").attr("class","coordination-link")
     .merge(C).attr("fill","none").attr("stroke","#68bca6")
-    .attr("stroke-width",1.3).attr("stroke-opacity",0.48)
-    .attr("stroke-dasharray","5 7").attr("pointer-events","none")
-    .attr("d",d=>{const [x,y]=P(d.x,d.r);return "M0,0 L"+x+","+y;});
+    .attr("stroke-width",1.55).attr("stroke-opacity",0.64)
+    .attr("stroke-dasharray","5 6").attr("pointer-events","none")
+    .attr("d",d=>{const [x,y]=P(d.x,d.r);return "M"+cx+","+cy+" Q"+((cx+x)*.5)+","+((cy+y)*.5)+" "+x+","+y;});
   C.exit().remove();
   const L=g.selectAll("path.link").data(links,d=>d.target.id);
   L.enter().append("path").merge(L).attr("class",d=>"link k-"+d.target.data.kind)
