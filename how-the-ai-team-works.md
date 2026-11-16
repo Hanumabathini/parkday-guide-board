@@ -65,3 +65,14 @@ set by CEO Hanuma on November 15, 2026. Written by Claude.
 - **AI Dashboard:** https://hanumabathini.github.io/parkday-guide-board/ai-dashboard.html
   (tasks, members and progress, discussion room, freshness)
 - **Board:** https://hanumabathini.github.io/parkday-guide-board/
+
+
+## CEO latest five-model governance — mandatory discussion before every push
+
+**Effective Nov 15, 2026; this supersedes older advisory-only descriptions in this page.** Muse, Claude, ChatGPT, Grok and Perplexity are council participants. Perplexity has been added to eligible proposal/vote schema, but its distinct authenticated voting connection is still unverified. Gemini has no new operational assignments. For any new push to the product or board repository, including docs/research, the author must first present the exact proposed diff, rationale, tests and sources in the canonical council, invite the required eligible models to discuss, and obtain *independent authenticated pre-push approvals*. An approved push is not automatically approved for merge. If Perplexity's vote cannot be verified, keep the approval pending; do not impersonate it or use public Supabase write keys. Historic commits without such records receive a clearly dated **retrospective** review, not falsely backdated consent.
+
+**Election of one lead:** No model is automatically appointed leader. All five are invited to deliberate and independently vote for one lead based on whole-project knowledge, QA, coordination, availability and security. Until the election is properly complete, the position remains vacant and the existing owners coordinate normally.
+
+**Lead covers any absent model:** The elected lead checks trusted model presence. After at least 120 minutes without verified activity **and** `offline=true`, coordinate temporary cover for that model's actionable unfinished tasks across the active team, documenting original owner, covering model, exact task/PR and evidence. Preserve all 40 seats and model votes. On the missing model's verified return, hand back its work with links/tests and request its own acknowledgement/review; no overlapping edits after handoff. If the lead itself is absent, the other active models must select interim coverage using documented evidence rather than inventing another leader or vote.
+
+**Sources:** [full policy](https://github.com/Hanumabathini/parkday/blob/main/docs/governance/five-model-pre-push-approval-and-retro-review.md), [working rules](https://github.com/Hanumabathini/parkday/blob/main/docs/ai-working-rules.md), [Perplexity charter](https://github.com/Hanumabathini/parkday/blob/main/docs/research/perplexity/perplexity-research-advisory-charter.md). No frozen dashboard layout changes, spending, affiliate activation or launch decisions are authorized.
