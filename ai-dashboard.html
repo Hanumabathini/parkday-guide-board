@@ -113,7 +113,7 @@ footer{color:var(--dim);font-size:12px;padding-block:0 30px}
 <main class="wrap">
   <div id="banner" class="banner" hidden></div>
   <section class="hero">
-    <div class="kicker" id="kicker">Sprint · Nov 15 to 21, 2026</div>
+    <div class="kicker" id="kicker">Project lead: ChatGPT · Sprint · Nov 15 to 21, 2026</div>
     <h1>One Brain. <span id="hModels">3 models</span>. <span id="hMembers">40 members</span>. Every task traced.</h1>
     <p>The shared discussion room sits at the centre. It connects to each AI model, each model to the team leads of its members, each lead to its members, each member to their tasks, and each task to its data: status, evidence, discussion and history. Rings show the share of tasks done. Tap a team lead to link out its members, a member to link out their tasks, and a task to link out its data.</p>
   </section>
@@ -144,9 +144,9 @@ footer{color:var(--dim);font-size:12px;padding-block:0 30px}
 
   <section class="grid">
     <div class="card"><h3>Where the sprint stands</h3><p class="note">Computed from the live task table and audit log on every refresh.</p><div id="analysis"></div></div>
-    <div class="card"><h3>AI models</h3><p class="note"><strong>Project lead: ChatGPT</strong> — CEO-confirmed 4–1 election (Proposal #24). Members, tasks done, and messages confirmed.</p><div id="models"></div></div>
+    <div class="card"><h3>AI models</h3><p class="note"><strong>Project lead: ChatGPT (coordination)</strong> · Four execution models: Muse, Claude, Grok, Perplexity · 10 members each. CEO-confirmed election #24.</p><div id="models"></div></div>
     <div class="card"><h3>Team leads</h3><p class="note">Progress of each lead's group across all models.</p><div id="leads"></div></div>
-    <div class="card"><h3>Discussion room</h3><p class="note"><strong>Lead election finalized: ChatGPT, 4–1</strong> by CEO decision, including attributed GitHub and late ballots. Future change approvals remain independent; see proposal #24.</p><div id="props"></div></div>
+    <div class="card"><h3>Discussion room</h3><p class="note"><strong>ChatGPT chairs the four-model council.</strong> Perplexity now owns the former ChatGPT 10-member execution roster. Every push requires separately recorded discussion and approval; historical votes remain attributed to their original models.</p><div id="props"></div></div>
     <div class="card"><h3>Data freshness</h3><p class="note">Checks against NPS.gov and Recreation.gov. Older than 14 days is stale.</p><div id="fresh"></div></div>
     <div class="card"><h3>Launch gates</h3><p class="note">Human sign-off at production only.</p><div id="gates"></div></div>
   </section>
@@ -222,13 +222,12 @@ function build(){
     (propBy[t.task_id]||[]).forEach(p=>k.push({name:"Discussion #"+p.id,kind:"data",text:p.state+": "+p.title}));
     const a=auditBy[t.task_id];if(a)k.push({name:a.n+" history entries",kind:"data",text:"Last change "+fmt(a.last)});
     return k};
-  const models=["Muse","Claude","ChatGPT","Grok"].map(m=>{
+  const models=["Muse","Claude","Grok","Perplexity"].map(m=>{
     const mem=D.users.filter(u=>u.ai_agent===m),groups={};
     mem.forEach(u=>{const lead=u.reports_to&&u.reports_to!==u.name?u.reports_to:"Hanuma";(groups[lead]=groups[lead]||[]).push(u)});
     return {name:m,kind:"model",children:Object.entries(groups).sort((a,b)=>b[1].length-a[1].length).map(([lead,us])=>({name:lead,kind:"lead",L:byName[lead],
       children:us.sort((a,b)=>a.seat-b.seat).map(u=>({name:u.name,kind:"member",u,children:(tasksOf[u.name]||[]).map(t=>({name:t.task_id,kind:"task",t,children:data(t)}))}))}))};
   });
-  models.push({name:"Perplexity",kind:"gemini"});
   return {name:"Brain",kind:"brain",children:models};
 }
 function st(n){const ids=new Map();(function w(x){if(x.data.kind==="task")ids.set(x.data.t.task_id,x.data.t.status);(x.children||x._children||[]).forEach(w)})(n);
@@ -335,12 +334,12 @@ function panels(){
   document.getElementById("kDone").innerHTML=`${done} <span>of ${T.length}</span>`;
   document.getElementById("kBar").innerHTML=[[done,"#4ade80"],[ip,"#fbbf24"],[bl,"#fb7185"],[ns,"#7c8a86"]].map(([n,c])=>`<i style="width:${100*n/T.length}%;background:${c}"></i>`).join("");
   document.getElementById("kSplit").textContent=`${done} done · ${ip} in progress · ${bl} blocked · ${ns} not started`;
-  const models=["Muse","Claude","ChatGPT","Grok"].filter(m=>D.users.some(u=>u.ai_agent===m));
+  const models=["Muse","Claude","Grok","Perplexity"].filter(m=>D.users.some(u=>u.ai_agent===m));
   document.getElementById("hModels").textContent=models.length+" models";document.getElementById("hMembers").textContent=D.users.length+" members";
   // models card
   const mStat=m=>{const ids=new Map();D.tasks.forEach(t=>{if(ownersOf(t).some(u=>u.ai_agent===m))ids.set(t.task_id,t.status)});const tot=ids.size,dn=[...ids.values()].filter(s=>DONE.has(s)).length;return {tot,dn}};
-  document.getElementById("models").innerHTML=["Muse","Claude","ChatGPT","Grok","Perplexity"].map(m=>{const s=mStat(m),n=D.users.filter(u=>u.ai_agent===m).length,a=(D.acks||[]).find(x=>x.model===m);
-    return `<div class="row"><b style="color:${MCOL[m]}">${m}</b><div>${s.tot?`<div class="pbar"><span style="width:${100*s.dn/s.tot}%"></span></div>`:""}<span class="mono" style="color:var(--mut)">${m==="Perplexity"?"council participant":n+" members · "+s.dn+"/"+s.tot+" tasks"}</span></div><span class="tag ${a&&a.n>=D.messages?"ok":"wait"}">${a?a.n:0}/${D.messages} msgs</span></div>`}).join("");
+  document.getElementById("models").innerHTML=["Muse","Claude","Grok","Perplexity"].map(m=>{const s=mStat(m),n=D.users.filter(u=>u.ai_agent===m).length,a=(D.acks||[]).find(x=>x.model===m);
+    return `<div class="row"><b style="color:${MCOL[m]}">${m}</b><div>${s.tot?`<div class="pbar"><span style="width:${100*s.dn/s.tot}%"></span></div>`:""}<span class="mono" style="color:var(--mut)">${n+" members · "+s.dn+"/"+s.tot+" tasks"}</span></div><span class="tag ${a&&a.n>=D.messages?"ok":"wait"}">${a?a.n:0}/${D.messages} msgs</span></div>`}).join("");
   // leads card
   const leads=[...new Set(D.users.map(u=>u.reports_to&&u.reports_to!==u.name?u.reports_to:"Hanuma"))];
   document.getElementById("leads").innerHTML=leads.map(l=>{const mem=D.users.filter(u=>(u.reports_to&&u.reports_to!==u.name?u.reports_to:"Hanuma")===l);const ids=new Map();D.tasks.forEach(t=>{if(ownersOf(t).some(u=>mem.includes(u)))ids.set(t.task_id,t.status)});const tot=ids.size,dn=[...ids.values()].filter(s=>DONE.has(s)).length;const L=D.users.find(u=>u.name===l);
