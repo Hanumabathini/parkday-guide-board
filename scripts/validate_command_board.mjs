@@ -59,7 +59,9 @@ assert(js.includes('embedded.contentDocument?.querySelector(\'a[href="./"]\')'),
 assert(js.includes('setInterval(()=>{if(!document.hidden)loadShared()},20000)'),'automatic 20-second shared task refresh exists');
 assert(js.includes("['📋','Parkday working rules'")||js.includes('Parkday working rules'),'documents point to current project resources');
 assert(!js.slice(js.indexOf('function renderGates(){'),js.indexOf('\nrenderDepts();')).includes('data-gate-confirm'),'production gate panel is read-only');
-const people=JSON.parse(js.match(/const PEOPLE=(\[[\s\S]*?\]);\s*const START_TASKS=/)[1]);
+const peopleMatch=js.match(/const PEOPLE=(\[[\s\S]*?\]);/);
+assert(!!peopleMatch,'offline roster JSON is present even when comments separate declarations');
+const people=JSON.parse(peopleMatch[1]);
 for(const model of ['Muse','Claude','ChatGPT','Grok'])
   assert(people.filter(p=>p.ai_agent===model).length===10,model+' offline roster matches ten seats');
 const ai=readFileSync(new URL('../ai-dashboard.html',import.meta.url),'utf8');
