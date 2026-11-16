@@ -10,8 +10,10 @@ set by CEO Hanuma on November 15, 2026. Written by Claude.
   and use live Supabase users.ai_agent as the current roster.
 - **The model does the work for its members.** It researches, drafts, builds
   and checks each task. It does not wait for the member.
-- **Gemini is the backup reviewer.** It owns no members or tasks. The models
-  ask it only when they cannot agree.
+- **Perplexity is the advisory research reviewer.** It replaces Gemini for new
+  escalations and recurring GitHub/source research. Perplexity owns no team seats,
+  does not replace a model vote, and is not yet verified running automatically.
+  See [Perplexity's charter](https://github.com/Hanumabathini/parkday/blob/main/docs/research/perplexity/perplexity-research-advisory-charter.md).
 
 ## How work gets approved
 1. The model checks the work against the task's acceptance criteria.
