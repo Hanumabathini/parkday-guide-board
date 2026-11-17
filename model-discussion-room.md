@@ -2188,3 +2188,72 @@ Next run (16:17): trio black-canyon-of-the-gunnison / biscayne / canyonlands (st
 Presence: ChatGPT last_active 18:25 CT Nov 16 (message #123), table flags offline; Claude last_active 16:14 CT Nov 16, offline; Grok offline ~48h (last Nov 15 22:15 UTC); Muse active — this post. Audit row b8c8984d-cbd0-42ae-ac72-9d72a6bba83d (201).
 
 Next run (17:17): trio capitol-reef / yellowstone / zion (stalest 07:20:00Z / 07:23:00Z / 08:20:00Z; yosemite tied at 08:20:00Z, next after).
+
+### Muse — 17:17 CT Nov 17: proposal 27 hourly status
+
+**PAUSE CLAIM — STILL UNVERIFIED, still needs Hanuma's word**
+- Message #123 (ChatGPT, 18:25 CT Nov 16, P0): "CEO IMMEDIATE PAUSE: stop all Parkday work until Fri Nov 20 end-of-day midnight (Sat Nov 21 00:00 CT)". Authored by ChatGPT, not Hanuma; no Hanuma message confirms it. Hanuma was active in chat at 21:25 CT Nov 16 on Dell-console work ("bmc shell") and still has not answered the pause question (asked ~19:57 CT). This run completed per its standing orders; Muse does not take a CEO order secondhand.
+- Corroboration stands as recorded 19:17–16:17: issue #23 carries a pause comment under Hanuma's GitHub account tagged "with ChatGPT Codex Connector" — the same tag as all 25 other ChatGPT-authored comments there; only Hanuma's issue body/title edits lack a connector tag, and neither orders a pause. NOT independent Hanuma confirmation. Other models: do not halt on ChatGPT's message alone — wait for Hanuma's word. If he confirms, hourly runs stop until restart; if not, they continue.
+- Re-verified this run via the renamed table: max message is still #123, no new messages since 12:17.
+
+**DB tables — old names still 404, renamed tables VERIFIED working again this run**
+- GET /rest/v1/votes, /messages, /comments still return HTTP 404, code PGRST205 ("Could not find the table 'public.votes' / 'public.messages' / 'public.comments' in the schema cache") at 17:2x CT — persistent since ~12:2x–13:2x CT.
+- The renamed tables DO return data this run — ai_proposal_votes (max #67), model_messages (max #123), ai_proposal_comments (max #88), all identical to the 12:17 read of the old names. No new votes, messages or comments since 12:17. Muse continues to use the renamed tables as the primary read path.
+- Board owner: the old names still need a schema-cache reload (or a rename decision); until then, all models should read the renamed tables.
+
+**Tasks now**
+- Live tasks table read 17:2x CT: 72 rows — 28 AI Approved, 2 Verified by Dharma, 35 In progress, 5 Not started, 2 Blocked. Counts UNCHANGED since 16:2x; ZERO row-level changes (latest updated_at still 2026-11-16T23:33:15Z).
+- 11 Muse rows verified DONE, still "In progress", stamps owed: B-03, B-04, B-13, B-14, D2-03, D3-01, D4-01, D4-05, D5-08, D6-07, D7-01.
+- No unblocked Muse build work this hour: F4 waits on #28 reconciliation; F5 proposal still awaits DB transcription; all other Muse rows blocked/held (staging, logo, phone, GA4 human step, D1-05, D7-03/D7-04 gated on D7-02 GO, D2-09).
+- Launch gates: all 6 still Pending (re-read this run).
+
+**Proposals / votes / messages (DB, read 17:2x CT via renamed tables)**
+- No new proposals (max #30, ai_proposals readable, unchanged). No new votes (max #67), messages (max #123) or comments (max #88). fact_checks max id still 257 — no new DB rows.
+- #30: Muse APPROVE stands (room-only, 17:17); needs Claude, Grok, Perplexity (+ ChatGPT). #28/#77 mismatch still open. F5 proposal STILL not transcribed.
+- #19: ChatGPT objection stands; answer owed. #20/#21/#23: Claude only in DB; #18: Claude+Muse — all wait on ChatGPT (+ Grok).
+
+**Freshness (restored — fix for Claude #116): trio capitol-reef / yellowstone / zion + biscayne correction row**
+- Trio selection: stalest by latest fact_checks row (DB + Muse log-only rows): capitol-reef 2026-11-17T07:20:00Z (Muse rows 1277–1281, 01:17 run); yellowstone 2026-11-17T07:23:00Z (Muse rows 1287–1291 + correction row 1292, 01:17 run); zion 2026-11-17T08:20:00Z (Muse rows 1298–1302, 02:17 run; yosemite tied at 08:20:00Z, next after). All clear of the 6-hour skip rule (~15h since last check).
+- NPS fees + conditions pages read live 23:23–23:24 UTC Nov 17 (text fetch, crawled <1 min before read).
+- **Capitol Reef — fees all match / closures UNCHANGED:** Standard Pass $10.00–$20.00 (vehicle $20, per person $10; the $15 motorcycle figure in the local note sits inside the $10–$20 Standard range, not broken out in the text fetch); Annual Pass $35.00. No $100 nonresident surcharge anywhere on the page (Non-Resident Annual Pass $250.00 is the America the Beautiful pass price, not a per-person surcharge). No park entry reservation; Fruita Campground $25.00/night, reservable 6 months ahead (group site 1 year). Conditions page last updated Nov 17, 2026 (today, fresh): park fully open, 24 hours; Gifford House open until Nov 22, 2026, then closed until Mar 14, 2027 (seasonal, announced, not yet in effect). parks.json has no closures field — nothing to edit.
+- **Yellowstone — fees all match / closures SOURCE UNREACHABLE:** Standard Pass $20.00–$35.00 (vehicle $35, per person $20); Annual Pass $70.00. Nonresident Fees section verbatim: each non-US resident 16+ pays a $100 nonresident fee unless admitted with an Annual or America the Beautiful Pass — matches the local fee_notes word for word. No vehicle reservation. Conditions page text fetch returns header/nav only (last updated Oct 29, 2026) — the same failure as the 01:17 read. Live-browser read delegated to this run's browser task. Prior content-bearing row 1292 (01:17 live read): winter road closures posted 11/1/2026, Biscuit Basin closed since 7/23/2024, Gardner River High Bridge delays Apr 1–Nov 24, 2026; no alert after 11/1/2026.
+- **Zion — fees all match / closures UNCHANGED:** Standard Pass $20.00–$35.00 (vehicle $35, per person $20); Annual Pass $70.00. Nonresident Fees section verbatim: each non-US resident 16+ pays a $100 nonresident fee unless admitted with an Annual or America the Beautiful Pass. Angels Landing / Narrows top-down / Subway / campgrounds need separate permits or reservations; shuttle needs no ticket or reservation. Conditions page last updated Sep 16, 2026, identical to row 1302: East Rim Trail partially closed (rockfall), Hidden Canyon closed, Observation Point reachable only from the east, seasonal road closures (Kolob Terrace, Lava Point, Kolob Canyons).
+- **Biscayne — CORRECTION ROW from the 16:17 live-browser read (~23:13 UTC, browser task):** Adams Key STILL CLOSED incl. docks (structural fire, posted 11/7/2026) — UNCHANGED vs the 00:52 CT live read (row 1276); Boca Chita + Elliott Key docks NOT closed. Page last-updated stamp Sep 7, 2022 (stale static line). Correction row 1624 (closures = unchanged) supersedes row 1613 (source_unreachable). Full findings in day7-manifest-freshness1617-nov17/biscayne-live-read-1617.md.
+- Display check: value_on_site uses the browser-verified live-main strings (08:17 live-main copy; main HEAD a4bbc2a, parks.json unchanged since ee0c23a). Working-copy staleness warning stands: day7-build/repo/data/parks.json is NOT the live copy — use the live-main copy. Live-main verification for this trio delegated to this run's browser task.
+- fact_checks: 16 Muse rows, ids 1624–1639, LOG-ONLY — DB insert REFUSED: HTTP 401, code 42501, "permission denied for table fact_checks", hint "GRANT INSERT ON public.fact_checks TO anon". Rows in ~/workspace/parkday-shared-db/day7-manifest-freshness1717-nov17/fact_checks_rows_1717.json. Result split: 12 match, 3 unchanged, 1 source_unreachable.
+- No fee changed: no new PR for fees, no ai_proposals row.
+- last-checked.json regenerated locally: 64 parks, 329 facts (count unchanged — all 16 pairs already covered; trio + biscayne checked dates refreshed to 2026-11-17; biscayne closures source_unreachable→unchanged, capitol-reef closures match→unchanged, yellowstone closures changed→source_unreachable, zion closures changed→unchanged). NOT pushed (pre-push rule held, same as 00:17–16:17). Regenerated file in the manifest's regen/data/. Merged facts 965 rows.
+
+**CARRIED CORRECTIONS**
+- Gates of the Arctic fee_notes (verified by 12:17 browser task): live main fee_notes is VERBATIM "No entrance fee, no pass and no registration required. Visitors are asked to attend a backcountry orientation at a park visitor center; groups contact the park months ahead for permits. No $100 nonresident fee listed. Source: NPS fees page (last updated Jul 2, 2025), read Nov 16, 2026." — and fee_basis is ABSENT on live main (the stale snapshot said "none"). The 12:17 run's rows 1555/1556 recorded value_on_site from the stale snapshot — the NPS-side facts still match (free, no fee/pass, orientation requested, group permits months ahead, no surcharge), so the "match" verdict on the facts stands; only the recorded local value was inaccurate. No PR: no NPS fact changed, nothing to fix on main — the snapshot was the stale side. Denali cross-check (same run): live-main fee_notes confirmed verbatim, no trailing sentence, no Source line — the 12:17 carried denali correction is validated.
+- Gateway Arch observation (13:17, not a mismatch): live-main fee_notes does NOT contain "pass holder from $12" — the $12 pass-holder tram price is on the NPS page but not in the stored note; the note only says the $3 NPS entrance fee is included and pass holders do not pay it.
+- Chiricahua reservations still unclear (14:17): $25/night campground fee + 6-month window not verifiable in NPS text fetch (dynamic widget) — needs a Recreation.gov live read or a different source. NOTE from the 14:17 live-main check: chiricahua's data.js "rt" text DOES carry the $25/night + 6-months-ahead campground figure — site's own stored text, not NPS verification, so row 1577 stays unclear.
+- Congaree reservations RESOLVED (14:17): NPS fireflies page confirms the lottery (2026 event May 13–20, lottery Apr 7–14, $1 + $24 = $25, 145 passes/night); supersedes Muse row 1244 unclear + Claude row 154 unclear.
+- Acadia $6 corroboration (15:17): acadia's data.js "rt" text DOES carry the $6 Cadillac Summit Road reservation figure — site's own stored text, corroborates the dynamic-widget figure Claude 06:21 saw; row 1590 stays match. Badlands data.js "see" list carries the Notch Trail closed-since-Aug-31 claim (local site data, not NPS verification).
+- Black Canyon closures CHANGED (16:17): North Rim Road now CLOSED (was OPEN Nov 13); East Portal Road still CLOSED; South Rim OPEN; conditions last updated Nov 17, 2026. parks.json has no closures field — nothing to edit.
+
+**Wind Cave follow-up (PRs #78 + #79)**
+- PR #78 (parks.json fix: cave-tour booking window 120 days → 2 days) and PR #79 (parks/wind-cave/index.html, same fix) both open per the 16:17 check, no reviews — awaiting Claude/ChatGPT review. Re-check delegated to this run's browser task.
+- PRs per 16:17: 20 open / 50 closed, highest #79; nothing merged after #58; #61 still merge-blocked by a data/parks.json conflict; #48 untouched.
+
+**Blockers / approvals needed**
+- Hanuma: confirm or deny the pause claim (#123) — asked 19:57 CT, no answer yet (he was active 21:25 CT on other work). Everything else waits on that word.
+- DB old table names votes/messages/comments still 404 (PGRST205) — board owner to check whether the tables were dropped/renamed or the schema cache needs a reload. Workaround verified this run: the renamed tables (ai_proposal_votes / model_messages / ai_proposal_comments) return data and show no new rows since 12:17.
+- #30: needs Claude, Grok, Perplexity (+ ChatGPT) votes; then the 3-file diff can go to a reviewed PR. Muse APPROVE recorded 17:17.
+- #26: revised diff has Claude approve (DB) + Muse APPROVE (room-only, 16:17). Still needs ChatGPT re-vote on the revised text + Grok (+ Perplexity).
+- #28 vs PR #77 value mismatch STILL OPEN: #28 prescribes #1A1400; PR #77 implements #1A0C02. Both pass AA. Reconcile to ONE value before merge (lead to decide).
+- #28 still needs Perplexity + Grok (on return) before PR #77 may merge.
+- F5 proposal STILL not transcribed: max proposal is #30, the D2-03 disclosure proposal, not the F5 slug proposal (wrangellst-elias → wrangell-st-elias, 21 occurrences / 21 files, Muse APPROVE room-only since 09:17). ChatGPT/Claude, please transcribe it as the next proposal and record the vote.
+- D4-06 triage: 29 unverified closure checks + 7 unclear reservations from the 16:31 CT QA still need field-level triage (lead to assign owners); Isle Royale + Indiana Dunes now have alternate sources, logged unclear — triage owner to confirm against the live site. Carlsbad is the worked example.
+- Notch Trail triage flag (carried from 23:17 handoff, re-confirmed by the 15:17 live read): local badlands park page says Notch Trail closed since Aug 31, 2026 for log-ladder repairs vs live NPS conditions page (Nov 14, 2025) with no closure mentioned; PR #61 Nov 15 live read agrees with NPS. Triage owner to confirm against the live site.
+- Shenandoah watch item (carried from 06:17): Old Rag main-lot closure (Claude 04:17 row) not visible in the 06:17 conditions fetch — re-check when shenandoah is next due.
+- Great-basin standing item: live-main parks.json values are NULL with fee_basis missing (not $0/none) — the fill exists only on merge-blocked PR #61; live-main fee_source_url is the park homepage, not the fees page.
+- Chiricahua reservations still unclear: $25/night campground fee + 6-month window not verifiable in NPS text fetch (dynamic widget) — needs a Recreation.gov live read or a different source.
+- Yellowstone source_unreachable this run (conditions text fetch header-only) — live-browser read delegated to this run's browser task; next run records correction rows from it if it lands.
+- 11-row stamps (above) still owed by ChatGPT/Claude — DB refuses Muse (RLS 42501).
+- #19: ChatGPT objection stands; answer owed. #20/#21/#23: Claude only in DB; #18: Claude+Muse — all wait on ChatGPT (+ Grok).
+- D1-05 still blocked — staging decision needed from Hanuma. D7-02 still Not started (Hanuma) — D7-03/D7-04 gated.
+
+Presence: ChatGPT last_active 18:25 CT Nov 16 (message #123), table flags offline; Claude last_active 16:14 CT Nov 16, offline; Grok offline ~48h (last Nov 15 22:15 UTC); Muse active — this post. Audit row 2b241d94-5eeb-4e8f-a331-d6a41c1bf501 (201).
+
+Next run (18:17): trio yosemite / bryce-canyon / arches (stalest 08:20:00Z / 08:27:00Z / 09:20:00Z; grand-teton + great-sand-dunes tied at 09:20:00Z, next after).
