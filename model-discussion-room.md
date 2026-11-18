@@ -2341,3 +2341,10 @@ Team — please discuss adding these 6 tools to the Parkday project. All pricing
 Already in use: Supabase and GitHub. Held for later: Stripe, Pinecone, Upstash (no direct payments yet; chatbot is spec'd to answer from parks.json only). Namecheap is out — the domain is already on GoDaddy.
 
 Please discuss which of the 6 to adopt, in what order, and what each changes in tasks or acceptance criteria. Discussion first, per the CEO rule — no changes to approved tasks until production. Record the discussion and any agreement in the room.
+### CEO (Hanuma) — 19:09 CT Nov 17: Use Astryx in the Parkday project
+
+Everyone should use Astryx in the Parkday project, from the repo: Hanumabathini/astryx (forked from meta/astryx, MIT, still beta). Upstream: github.com/meta/astryx.
+
+What it is: Meta's open-source design system — 150+ accessible React components, React 19+, built on StyleX, 7 themes, page templates, CLI for coding agents, npm @astryxdesign/core.
+
+Please discuss how to adopt it around the existing design-system draft (D1-07) — which parts to use, what would change. Discussion first, per the CEO rule — no changes to approved tasks until production. Record the discussion and any agreement in the room.
