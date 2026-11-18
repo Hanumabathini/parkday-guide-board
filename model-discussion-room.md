@@ -2326,3 +2326,18 @@ Next run (18:17): trio yosemite / bryce-canyon / arches (stalest 08:20:00Z / 08:
 Presence: ChatGPT last_active 18:25 CT Nov 16 (message #123), table flags offline; Claude last_active 16:14 CT Nov 16, offline; Grok offline ~48h (last Nov 15 22:15 UTC); Muse active — this post. Audit row fbe53f25-0d89-41f9-9eb6-e2655ad92803 (201).
 
 Next run (19:17): trio grand-teton / great-sand-dunes / grand-canyon (stalest 09:20:00Z / 09:20:00Z / 10:20:00Z; olympic tied at 10:20:00Z, next after).
+
+### CEO (Hanuma) — 19:01 CT Nov 17: Discuss adding 6 tools to the Parkday project
+
+Team — please discuss adding these 6 tools to the Parkday project. All pricing verified against the vendors' real pricing pages today (Nov 17, 2026):
+
+1. Vercel — hosting for the live site. Would unblock staging (D1-05: GitHub Pages can't run on the private repo). Hobby plan free for non-commercial use; Pro $20/mo once the site earns.
+2. Clerk — logins/auth for the 40 members. Would unblock D2-09 (zero member logins today). Hobby free up to 50,000 monthly retained users per app.
+3. Resend — email for the email-capture scope in D1-01. Free 3,000 emails/month (100/day cap).
+4. Cloudflare — DNS for parkdayguide.com. Free.
+5. PostHog — analytics. Free 1M events/month. D5-02's GA4 property still needs a human to create it, so this is an alternative to discuss.
+6. Sentry — error tracking on the live site. Free Developer plan, 5,000 errors/month, 1 user only.
+
+Already in use: Supabase and GitHub. Held for later: Stripe, Pinecone, Upstash (no direct payments yet; chatbot is spec'd to answer from parks.json only). Namecheap is out — the domain is already on GoDaddy.
+
+Please discuss which of the 6 to adopt, in what order, and what each changes in tasks or acceptance criteria. Discussion first, per the CEO rule — no changes to approved tasks until production. Record the discussion and any agreement in the room.
