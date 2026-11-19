@@ -341,3 +341,37 @@ Branch claude/redesign-v2 still does not exist on the remote (verified 404 again
 - ChatGPT: votes #43/#54 still owed in the DB. #62/#63 have zero DB votes from any model.
 - CEO: D7-02 GO decision; D1-05 staging call (public vs Pro); close of the 11 agreed-but-unclosed proposals.
 - Next run (00:17): trio death-valley / crater-lake / cuyahoga-valley (DB-stalest, Nov 15 23:20Z — recompute at run time, skip any checked within 6h; note they were Muse log-only checked Nov 16); rows start at 2225.
+
+## Muse — 00:17 CT Nov 19: no new vote owed; freshness trio 12/1/2/0 (2 closures changed); main HEAD verified 9d797a0
+
+### Votes — none new this run
+
+- No new proposals (max #65); no new votes, comments or messages in the DB since 23:17. Muse has no unvoted proposal listing Muse.
+- Cast votes stand: OBJECT #4/#5/#19/#53/#47/#57/#64; APPROVE #54/#56/#58–#63/#65 (room commits f5cd99e / 37a8292). #56 now Muse (room) + Claude (DB 147) APPROVE. #65 now all three models: Muse (room) + Claude (DB 145) + ChatGPT (DB 148).
+- CORRECTION — #52: proposal #52 was WITHDRAWN (22:17 STATUS: only Claude OBJECT vote 91 in DB) — Muse's Nov 17 APPROVE is moot and must NOT be transcribed. This run's 16-row transcription payload wrongly included a #52 APPROVE; the insert was refused HTTP 401 / 42501, so nothing landed. Future runs: do not re-attempt #52.
+- #62 / #63: still ZERO DB votes from any model. Muse's APPROVEs live only in muse-room f5cd99e; transcription re-attempted this run (15 valid rows — #4/#5/#19/#53/#54/#56/#57/#58–#65) — refused HTTP 401 / 42501, `permission denied for table ai_proposal_votes`. Same refusal for fact_checks inserts (exact errors in the main-room post + run manifest).
+- #47: DB vote 134 still says "approve" — stale; correction to OBJECT needs an UPDATE of row 134, not an INSERT.
+- Closures: never pre-assign numbers — file at transcription time (currently #66+). The 11 agreed-but-unclosed proposals (#42/#46/#48–#51/#58–#61/#65) still await closing; the close ask stands.
+
+### Finished work this run
+
+- Main HEAD VERIFIED live: 9d797a0 (full 9d797a0955af3155b6f5e6151a321a27b3e24dc3, merge PR #81, Nov 17 9:18 PM CST) — the 23:17 run's "HEAD still 9d797a0" claim is now independently confirmed; no PR merged since #81. PRs: 29 open / 53 closed, highest #91. All 14 checked PRs (#48/#70/#75/#78/#79/#82–#85/#87–#91) 2/2 checks, no conflicts, no formal reviews; no new reviews/approvals since 23:17 CT except #91's own creation (11:56 PM CST). #91 (viis Trunk Bay micro-fix, head 3936eb6) still open, no reviews.
+- Trio site values verified verbatim on live main data/parks.json: lassen-volcanic 30 (L2134, fee_notes L2135), mammoth-cave 0 (L2179, fee_notes L2180), mesa-verde 30 (L2224, fee_notes L2225). Fee_notes text identical to the values this run's rows record.
+- Board: 72 tasks UNCHANGED (29 AI Approved / 35 In progress / 4 Not started / 2 Blocked D1-05 + D2-09 / 2 Verified by Dharma); latest updated_at still 2026-11-18T11:26:41Z. Gates G1–G6 Pending.
+
+### Freshness — trio lassen-volcanic / mammoth-cave / mesa-verde (NPS fees + conditions read 06:23 UTC Nov 19; live-browser alert reads 06:28–06:37 UTC)
+
+- 17 fact_checks rows 2225–2241 LOG-ONLY (DB insert refused HTTP 401 / 42501). Final split: 12 match / 1 unchanged / 2 changed / 0 source_unreachable (rows 2229/2239 corrected after the live reads).
+- Fees, $100 nonresident rule, reservations all MATCH on all three (30 / 0 / 30; no $100 nonresident entrance fee on any page — lavo's only nonresident item is the $250 Non-Resident Annual Pass; meve's $100 figures are group-fee caps). Fees pages: lavo no last-updated date, maca last updated Aug 17, 2026, meve no last-updated date.
+- CHANGED — lassen-volcanic closures (row 2240, supersedes 2229 source_unreachable AND 1851 "no named closures", which was WRONG): live read shows Park Closure "Lassen National Park Highway Closed to Vehicle Traffic", posted 10/30/2026 — Hwy 89 closed to through travel for snow; NW entrance open 1 mile to Loomis Plaza, SW entrance open to Kohm Yah-mah-nee Visitor Center. Plus Juniper Lake Campground closed (7/24/2026), phone line intermittent, EV charger at Kohm Yah-mah-nee inoperable. Supports Claude row 323. Conditions last updated Nov 15, 2026.
+- CHANGED — mesa-verde closures (row 2241, supersedes 2239 source_unreachable AND 1861): live read shows 1 alert only (Limited Drinking Water Filling, winter). The Far View Sites + Cedar Tree Tower access-road closures from row 1861 do NOT still stand — they appear nowhere on the page after the Nov 18, 2026 update. Cliff dwelling tours closed for the season; Spruce Tree House closed since 2015 (rock fall). Conditions last updated Nov 18, 2026.
+- UNCHANGED — mammoth-cave closures (row 2234): no named closures; Green River Ferry status via X feed or hotline (270) 758-2166. Supersedes Claude row 324 unclear. Conditions last updated Jan 23, 2026.
+- No fee changed: no fix PR, no ai_proposals row. last-checked.json regenerated locally (64 parks, 330 facts), NOT pushed.
+- Audit row db7bff94 landed (201) with the pre-correction split (12/1/0/2); correction audit row 1a82021f landed (201) with the corrected split (12/1/2/0).
+
+### Still waiting on other models
+
+- Claude: PR #87 fixes (4 gaps) + REA skill files/install steps (CEO notes c3c1579, 0413109 still unanswered) + votes #62/#63.
+- ChatGPT: votes #43/#54 still owed in the DB. #62/#63 have zero DB votes from any model.
+- CEO: D7-02 GO decision; D1-05 staging call (public vs Pro); close of the 11 agreed-but-unclosed proposals.
+- Next run (01:17): trio mount-rainier / redwood / saguaro (stalest: 12:24:00Z / 12:25:00Z / 12:25:00Z Nov 18; alphabetical tie-break); rows start at 2242.
