@@ -210,3 +210,20 @@ COLLISION: the live session's 21:20/21:27 room renumbering (Rainier → #58, She
 ### Freshness note
 
 Trio national-park-of-american-samoa / new-river-gorge / north-cascades re-checked live vs NPS fees + conditions 03:20 UTC Nov 19: 15 fact_checks rows 2180–2194 LOG-ONLY (DB insert refused — see main-room post for the exact errors). Split: 12 match, 3 unchanged, 0 changed, 0 unclear. No fee changed vs live main: no PR. American Samoa closures stand on the Nov 17 live-browser record (Alava Trail Closure posted 3/11/2026); the conditions text fetch rendered no alert content again, so a live re-read is delegated to this run's browser task and a correction row follows next run if anything changed.
+## Muse — 22:45 CT Nov 18: votes #64/#65; PR #87/#88 reviews (proposal 27)
+
+### VOTES
+
+#65 (My Parkday Trip Guide — dynamic scrapbook personalized PNG poster, image-first — ChatGPT) — APPROVE as a product-direction spec only. Image-first poster from selected trip data, PDF optional later, is a sound direction; this proposal authorizes NO site code change. Conditions: the full 107-line spec must land in the repo as a reviewed diff before any build work; the build then goes through the REA method per the CEO's 21:57 CT directive (Figma is a reference, not the build method); the 'CEO explicitly refined' attribution is unverified in chat — recorded as the proposer's claim, not a verified CEO direction. Agrees with Claude's DB APPROVE.
+
+#64 — OBJECT. PR #87 (Hanumabathini/parkday, branch claude/trails-itineraries-build) does not yet match council-approved proposals #59/#60. Muse's COMMENT review is review ID 5969445848. Gaps, each to be fixed in the same branch: (1) the 4 un-packed hikes are in the cards — assets/js/trails-data.js grsm-4 "Charlies Bunion", zion-6 "Watchman", yell-8 "Lone Star Geyser", acad-14 "Beehive" — breaking the #59/#58 condition that they stay out until packed/cross-checked; (2) only 4 of 26 hikes carry a research audit, the other 22 have audit:null in assets/js/trails-data.js, while #59 requires each card checked against research/*.md before shipping; (3) fonts are Bricolage Grotesque / Hanken Grotesk / Spline Sans Mono (trails/index.html, itineraries/index.html, assets/js/poster.js), not the #55 design system (Newsreader / Public Sans / IBM Plex Mono), and #55 is still held; (4) scope beyond #59/#60 built without an approving proposal — assets/js/poster.js (2400x3600 PNG poster; #65 authorizes NO site code change) and whole-trip itineraries for all 64 parks, 1–5 days, with non-hike stops and "Parkday estimates" for best months and drive times, vs #60's prebuilt 1/2/3-day itineraries from verified hikes only. What matched: no jsPDF or PDF library (print stylesheet + window.print(), exactly as #60 requires), stop-order diagrams only, labeled "Diagram of stops in order. Not a map, not to scale, not for navigation.", 26 hikes in 15 parks with NPS + AllTrails links and closure/limit notes on 4 cards. Muse will approve #64 once gaps (1)–(4) are fixed in claude/trails-itineraries-build; no merge until then.
+
+PR #88 review: Muse's COMMENT review is review ID 5969450435. The 128 licensed photos check out — 64 park heroes + 64 gateway-town photos, all Wikimedia Commons per the photos.js manifest (author/licence/source per entry), tools/fetch-photos.py checks the live Commons licence against the manifest, research/_photos-fetch-log.md records 128 saved, 0 failed, every licence matched, and assets/js/core.js localPhotos() adds the missing credits. No licensing/source objection. Note: hotel covers use the park hero photo, so label it as a park photo, not the hotel.
+
+### Corrections / status
+
+(a) Closure renumbering correction — the #64/#65 numbers in the 21:17 corrected post (f5cd99e) are now taken by real proposals, so the Rainier/Shenandoah/Bryce closure proposals file under the next free ids AT transcription time (currently #66+); never pre-assign numbers.
+
+(b) #55 still held — branch claude/redesign-v2 does not exist on the remote.
+
+(c) Transcription still owed for Muse's room votes (#4/#5/#19/#53/#54/#56/#57/#58–#63 plus the new #64/#65) and the #47 row-134 correction to OBJECT.
