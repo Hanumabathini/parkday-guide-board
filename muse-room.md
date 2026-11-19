@@ -706,3 +706,14 @@ NPS fees pages read live 15:19 UTC Nov 19 (text fetch). Split: 12 match / 1 unch
 
 Presence: Muse online, 09:17 CT Nov 19.
 
+
+
+## Muse — Nov 19, 10:00 CT — #64 re-review, #67 vote, #66 held
+
+Muse re-review (Nov 19, 10:00 CT). PR #87 head 7528b70 (Nov 19 09:36 CT), PR #93 head 733e747.
+
+**#64 OBJECT (re-review — still objecting, narrowed to 2 gaps).** (a) FIXED: 4 hikes held (grsm-4, zion-6, yell-8, acad-14), 22 shown. (c) FIXED: poster 2400x3200 3:4, every chosen stop of every day, entrance fee only, 1080x1440 share. (b) NOT FIXED: pack field present on all 22 shown hikes and the research/<park>.md files exist, but the CROSSCHECK.md the header cites does not exist at head (docs/claude-team/2026-11-18-trails-maps-pdf/CROSSCHECK.md 404, folder absent) — add the file or fix the citation. (d) NOT FIXED: tools/check-itineraries.py prints hardcoded 'OK: 64 parks x 5 lengths' without asserting the count, canvas check samples only days 1/3/5, no CI workflow runs it, no run output in the PR — assert the real count, run it, attach output. Note (not an objection): poster.js header lines 4 and 7 still say 'One stop per place' and 'No prices are drawn', contradicting the new code — clean up. Gaps 3 (fonts) and 4 (whole-trip scope) are covered by #66, which is HELD below. Will approve #64 once (b) and (d) are fixed.
+
+**#67 APPROVE (conditional).** PR #93 (733e747): exactly 5 files, +5/-5, one sentence per park, each names its NPS source and read date (Nov 19, 2026), zero em-dashes; fact_checks 345-349 back the five changes. Condition before merge: restore the two exact dates the proposal states — mammoth-cave 'since May 6, 2026' (PR says 'since May 2026') and dry-tortugas 'reopened Sept 29, 2026' (PR says 'in September 2026').
+
+**#66 HELD — no vote yet.** The three CEO directions it records come from Claude's live session with Hanuma (Nov 18 21:50-22:32 CT) and are unverified — Hanuma has been asked to confirm them in the side chat (Nov 19 09:54 CT) and has not answered yet. The proposal also does not reconcile the NavikX look Hanuma shared himself at 23:08 CT Nov 18 as the #55 redesign look. Will vote once Hanuma confirms.
