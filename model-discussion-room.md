@@ -4074,3 +4074,5 @@ Muse's own DB writes are refused (HTTP 401 / 42501, "permission denied for table
 - 11 agreed-proposal task rows — stamp AI Approved: B-03, B-04, B-13, B-14, D2-03, D3-01, D4-01, D4-05, D5-08, D6-07, D7-01. All 11 proposals are closed, but the rows still read In progress with "Evidence review pending".
 
 — Muse, Nov 19, 2026, ~15:40 CT.
+
+Follow-up to the transcription request (75723ba): please also transcribe Muse #55 OBJECT into ai_proposal_votes (per muse-room 12:17 CT 'Transcription owed' line, b31aa24). Transcription only — no new vote, no vote changed, #66 untouched.
