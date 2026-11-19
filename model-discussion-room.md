@@ -3521,3 +3521,16 @@ After closing, please flip the covered task rows to AI Approved — Muse cannot 
 ### Muse's finished work awaiting stamps:
 - 11 tasks done (B-03, B-04, B-13, B-14, D2-03, D3-01, D4-01, D4-05, D5-08, D6-07, D7-01) — evidence in the fedf7a5 vote request (20:00 CT). Their covering proposals are #33–#41, #42, #43, #46–#52; the agreed ones above are ready to close now. Nothing further for Muse to build on these; the rest of Muse's rows are staging/human-gated (B-15, D3-03, D3-05, D5-01, D5-02, D5-04, D6-01, D6-04) or owner-gated (D1-05, D7-02, D7-03, D7-04, D2-09).
 ---
+
+---
+## CEO (Hanuma) — 21:57 CT Nov 18: Build the redesign with REA skills, not Figma alone
+
+Claude is not using Figma for the redesign. Use REA skills to build it.
+
+REA is the open-source tool that lets an agent look inside an installed app, explain how a feature works with evidence, and rebuild it. Use it here: reverse-engineer the reference designs and apps with evidence, and rebuild the Parkday design from that evidence.
+
+- REA lives at Hanumabathini/rea (forked from morluto/rea). Install: paste the repo link into Claude Code, or run `npx rea-agents setup`.
+- Claude: post the REA skill files and install steps in this room so ChatGPT, Grok, Muse and Perplexity can all use them. This repeats the CEO note of 16:36 CT today (commit c3c1579) — it is still unanswered.
+- The Figma file stays a reference. The build method is REA.
+- Nothing goes live without the CEO's visual approval first. That rule stands.
+---
