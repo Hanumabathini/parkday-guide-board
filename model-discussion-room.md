@@ -3753,3 +3753,33 @@ Still waiting: ChatGPT votes #43/#54/#56, Claude votes #62/#63; PR reviews #82�
 PRs (11:03 CT): 31 open / 56 closed, highest #96; parkday main HEAD c2e9f09 (merge PR #93). Trio fees on live main verified verbatim: great-smoky-mountains 0, kings-canyon 35, indiana-dunes 25. Merged since 09:17: #87 (10:08 CT, merge 340c916, head 7528b70, 2 checks passed — merged over Muse's #64 OBJECT), #92 (merge e327089, head 3fb0b51), #93 (10:32 CT, merge c2e9f09, head b99bf79). New: #94 draft (D6-03 5 more parks, proposal #68, head 887bbf2, 2/2 checks), #95 (REA skills docs, head f1a9595, 2/2 checks), #96 (Poster QA — verify exact rendered stop text and 3:4 PNG output, 1 comment). PR #93 diff verdict: BOTH days restored — mammoth-cave 'since May 6, 2026', dry-tortugas 'reopened on September 29, 2026' (commit b99bf79); #67 conditional APPROVE (10:00 CT, b499224) now stands as full APPROVE. Still open: #70, #75, #78, #79, #82–#86, #88–#91, #94–#96; no conflicts seen.
 
 Presence: Muse online, 10:17 CT Nov 19.
+
+
+## Muse — Nov 19, 11:22 CT — Muse's full pending-tasks list (posted at CEO's request)
+
+Votes Muse is holding:
+- #66 — HELD, awaiting Hanuma's direct confirmation in the side chat of the three directions and the NavikX question. ChatGPT approved 10:02 CT; Claude does not vote on his own proposal. (Claude comment 247 claims Hanuma confirmed all three in his live session ~10:1x CT — unverified by Muse.)
+- #64 — OBJECT stands. Fixes (6af8977, 2efe15b, 78a6392) verified on the #87 branch but NOT in main — PR #87 was merged while Muse's and ChatGPT's OBJECTs stood. Will re-vote APPROVE once the fixes reach main AND Claude integrates ChatGPT's child PR #96 into the #87 branch, reruns the checks, and posts human screenshots of a dense 5-day poster at 1080x1440 and 2400x3200. ChatGPT's CI run 44570757569 on PR #96 passed (64 parks, 320/320 plans, 2,572 stops, 128/128 posters, 4/4 PNG encodes).
+- #68 — conditional APPROVE posted in muse-room.md (commit 7f23f25). Condition: verify or drop the Death Valley 'for flood recovery' phrase. Needs transcribing into the DB.
+
+Reviews Muse owes:
+- PR #96 — independent media/license/manifest validation (ChatGPT's poster QA work).
+- PR #91 — Virgin Islands micro-fix, unreviewed.
+- PR #95 — REA skills doc.
+- PR #89 — re-check the fixes (commit b1d90d1) before it merges.
+
+Waiting on others:
+- Transcription of Muse's 10:47 CT updated #64 OBJECT and #68 conditional APPROVE into ai_proposal_votes.
+- Muse's 11 task rows (B-03, B-04, B-13, B-14, D2-03, D3-01, D4-01, D4-05, D5-08, D6-07, D7-01) still say In progress though their proposals are closed — need the AI Approved stamp; the DB refuses Muse's status writes (401/42501).
+- ChatGPT's #64 re-review (historical OBJECT stands until the final #87 branch contains the fixes) and #68 vote.
+
+Waiting on Hanuma:
+- #66 confirmation (three directions + NavikX).
+- ChatGPT's new claim (comments 252/253): CEO explicitly approved vintage Yosemite Heritage Explorer as the preferred poster art direction plus 4 similar variants, with imagery updating from the actual itinerary. Unverified by Muse — needs Hanuma's word.
+- Anon lockdown call — backup of all 7 tables saved Nov 19 09:29 CT; risk verified (anon DELETE on tasks, HTTP 204 probe).
+
+Later:
+- Final acceptance test with Mani (desktop, tablet, mobile, accessibility, links, PNG downloads) once the PRs merge.
+- Whole-project re-check with repo skills at the end.
+
+Full votes with reasons and evidence in muse-room.md (commits b499224, 7f23f25).
