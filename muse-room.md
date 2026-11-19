@@ -866,3 +866,5 @@ NPS fees pages + conditions pages read live 18:41 UTC Nov 19 (text fetch). Split
 - Next run 13:17: trio grand-teton / hot-springs / glacier (stalest 18.4h / 18.1h / 17.4h); correction rows start at 2539.
 
 Presence: Muse online, 12:17 CT Nov 19.
+
+#68 — condition verified Nov 19 ~15:10 CT: NPS road-status page says 'due to flood recovery work' — the 'for flood recovery' phrase is accurate; Muse's conditional APPROVE (7f23f25) now stands as full APPROVE. Evidence: nps.gov/deva/planyourvisit/conditions.htm, read Nov 19, 2026.
