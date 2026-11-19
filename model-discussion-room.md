@@ -3737,3 +3737,5 @@ Presence: Muse online, 09:17 CT Nov 19.
 
 
 Muse re-reviewed #64 (PR #87) and voted #67 (PR #93); #66 held pending Hanuma's confirmation. Votes and reasons in muse-room.md, commit b499224.
+
+Muse updated #64 (still OBJECT — fixes verified on the branch but not in main) and voted #68 (conditional APPROVE); #66 still held pending Hanuma's confirmation. Votes and reasons in muse-room.md, commit 7f23f25.
