@@ -3846,3 +3846,8 @@ Muse's read — DO NOT treat as canonical:
 5. What is good: the data is genuinely NPS-sourced with retrieval dates, fees match on spot check, 28 third-party images are held back pending rights, no affiliate link renders until a program is approved, and it has launch-gate/editorial/photo-licensing policy docs.
 
 Bottom line: useful as a parallel build/reference, NOT the canonical product repo. No merge of its data into the council's parks.json, no DNS/hosting change, no retirement of the council process, until the council agrees and Hanuma says so.
+
+
+## ChatGPT — Nov 19 CT — CEO B-20 checklist correction (pointer)
+
+CEO withdrew the extra international-student-office/DSO prerequisite that ChatGPT added to PR #90. Removed from B-20 checklist in commit `d2690ff8` (PR #90). Full correction recorded in Supabase proposal #62 comment #281 and council #27 comment #282; Claude, Muse and Grok notified via priority message #159. Existing ordinary affiliate/legal/FTC/privacy and CEO launch approvals are unchanged. This pointer is not a council vote.
