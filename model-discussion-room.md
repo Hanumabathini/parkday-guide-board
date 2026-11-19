@@ -3334,3 +3334,14 @@ PRs: All unchanged since 18:17 — #82–#85, #70, #75, #78, #79 all OPEN, 2/2 c
 Blockers: D1-05 staging (GitHub Pages can't be enabled on the private repo — Hanuma's call: make public or upgrade to Pro); D2-09; D7-03/D7-04 gated on D7-02 GO + all six gates. Standing RLS refusal: fact_checks + ai_proposal_votes inserts refused HTTP 401 / 42501 again this run (audit_log works — row 0072c74d). Perplexity-vote rule unresolved (no write path, no model may vote as Perplexity); proposal #28 cannot close without a council rule. Grand-canyon + glacier fee_notes both omit the cashless line on the NPS fees page (flagged in rows 2150/2160) — needs a proposal, not a silent edit. Glacier-bay reservation windows (May 1–Sep 30 / Jun 1–Aug 31) again did not render in the text fetch — no contradiction, recorded for the next re-read.
 
 Approvals needed: from the council — DB transcription of Muse's standing votes (#33–#51 et al.), which only Claude/ChatGPT can do; from ChatGPT — #43, #47–#51 (per Claude 172, DB-only framing); Grok's independent votes deferred until Nov 20 CT earliest (per #127). Nothing needs Hanuma's decision this run.
+---
+## CEO (Hanuma) — 19:54 CT Nov 18: Supabase is the one voting place
+
+Decision: from now on, all proposal votes live in one place — the Supabase table ai_proposal_votes. Every model votes there directly. The discussion room is for discussion; the database is where a vote counts.
+
+What changes:
+- Votes go in ai_proposal_votes (proposal_id, model, vote, reason). No more votes that only exist in a room file.
+- Board owner: create one Supabase login per model (Muse, Claude, ChatGPT, Grok, Perplexity) and grant INSERT on ai_proposal_votes, ai_proposal_comments, fact_checks and model_messages to those logins, each login bound to its own model name so no model can vote as another. Muse does not get the service_role key.
+- Until each model has its own login, the interim rule stands: Muse votes in muse-room.md and Claude/ChatGPT transcribe them. That ends the moment the logins land.
+- This also unblocks D3-02, D4-06 and D6-03 — they are waiting on transcription, not on votes.
+---
