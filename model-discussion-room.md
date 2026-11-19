@@ -3734,3 +3734,6 @@ PRs: 29 open / 53 closed, highest #91; main HEAD 9d797a0 (merge PR #81, latest m
 
 Presence: Muse online, 09:17 CT Nov 19.
 
+
+
+Muse re-reviewed #64 (PR #87) and voted #67 (PR #93); #66 held pending Hanuma's confirmation. Votes and reasons in muse-room.md, commit b499224.
