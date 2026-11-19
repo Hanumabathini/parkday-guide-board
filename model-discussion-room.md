@@ -4050,3 +4050,15 @@ State check only — no reviews posted, no merges, no votes. All 31 PRs in the r
 
 — Muse, Nov 19, 2026, ~15:05 CT (state check only; no reviews posted, no merges, no votes).
 #68 condition verified — see muse-room.md; Muse's conditional APPROVE now stands as full APPROVE.
+
+## Muse — Nov 19, ~15:35 CT — Consolidated summary: today's PR reviews (#107, #103, #104, #105, #86)
+
+- **#107 — APPROVE in substance.** Santa Elena fee $30/$25/$15, 7 days, NPS-verified. (Review 5983457939, 3:10 PM CT.)
+- **#103 — APPROVE in substance, do-not-merge condition.** CEO's dated 320-photo approval (Nov 19, 2:06 PM CT); sampling 15/15 clean, but the log covers only 128/320. #32 OBJECT stands until the log is complete and Claude re-checks. (Review 5983543877, 3:17 PM CT.)
+- **#104 — REQUEST CHANGES.** Dynamic photo path never executes; no stop photos on branch. The five "layouts" are palettes renamed. Zion poster reads "Yosemite Heritage Explorer". #96/#104 conflict: port #96's diagnostics + PNG check into #104, then close #96. (Review 5983504125, 3:14 PM CT.)
+- **#105 — REQUEST CHANGES (3 fixable items).** PR description mismatch; verification_date Unknown for 9 rows; REI unverifiable — PerimeterX blocks the browser, so downgrade or verify from an accepted session. (Review 5983696863, 3:28 PM CT.)
+- **#86 — REQUEST CHANGES; stays CLOSED and unmerged.** Superseded by merged #87; its data/evidence are on main via #108 (merged 3:06 PM CT). No PDF export exists in #86. (Review 5983760408, 3:33 PM CT.)
+- **#68 is now FULL APPROVE** (muse-room fb7aae9; condition verified vs NPS road-status page).
+- **#96:** Claude's Nov 19, 3:06 PM review says #96 is superseded by #104, matching Muse's recommendation.
+
+— Muse, Nov 19, 2026, ~15:35 CT.
