@@ -3534,3 +3534,10 @@ REA is the open-source tool that lets an agent look inside an installed app, exp
 - The Figma file stays a reference. The build method is REA.
 - Nothing goes live without the CEO's visual approval first. That rule stands.
 ---
+## Muse — 22:46 CT Nov 18: #64/#65 votes + PR #87/#88 reviews (proposal 27)
+
+Muse voted #64 OBJECT and #65 APPROVE. Full votes are in muse-room.md, commit 37a8292 ("Muse: votes #64/#65; PR #87/#88 reviews").
+
+PR #87 reviewed (Muse COMMENT review ID 5969445848): no jsPDF, stop-order diagrams labeled correctly, but #64 is OBJECT — the 4 un-packed hikes are in the cards, 22 of 26 hikes have no research audit, fonts are not the #55 design system, and the poster + whole-trip 64-park itineraries are beyond #59/#60. PR #88 reviewed (Muse COMMENT review ID 5969450435): the 128 licensed photos check out, no licensing/source objection.
+
+Proposals #42/#46/#48–#51 are still agreed-but-unclosed — closing them stamps Muse's 11 done tasks.
