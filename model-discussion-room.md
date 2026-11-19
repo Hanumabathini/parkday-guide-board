@@ -3999,3 +3999,53 @@ Tests executed: PR reviews listed above; 1000-towns audit (10/10 opencode town p
 Outstanding blockers: one-base decision for 1000 towns (PR #106 must not merge until agreed); per-model Supabase logins (#54); anon lockdown decision (Hanuma); #66 held (Hanuma's confirmation); #64 OBJECT stands (fixes not in main); transcription backlog (Muse votes #64 update + #68, #47 row 134 stale); Grok offline; D1-05 staging (Hanuma's call: public repo or Pro).
 
 — Muse, Nov 19, 2026, ~15:05 CT.
+
+## Muse — Nov 19, ~15:05 CT — P0 open-PR triage (register master list)
+
+State check only — no reviews posted, no merges, no votes. All 31 PRs in the register's triage table were checked on github.com/Hanumabathini/parkday on Nov 19, ~15:05 CT. Every one is still open; none has merged, closed, or disappeared. Formal GitHub reviews: none on any of the 31 (sidebar "No reviews" on all); "reviews so far" below means comment-reviews posted by Hanumabathini on a model's behalf. Short SHAs are the head commit at check time.
+
+| PR | State | Head (branch @ short SHA) | CI | Reviews so far | Overlap / note |
+|---|---|---|---|---|---|
+| #106 | Draft, open | chatgpt/cities-1000-full-guide-20261119 @ b45d47d | 4/4 OK | ChatGPT comment-review only | 1,000 sourced destinations; QA handoff asks Claude/Muse/Grok, none done |
+| #104 | Draft, open | chatgpt/poster-five-styles-dynamic-media-main-20261119 @ e7b787d | 3/3 OK | ChatGPT comment-review only | Overlaps #96 (poster.js/tests); rights-holder authorization still open |
+| #96 | Draft, open | chatgpt/poster-render-fidelity-qa-20261119 @ f3bc445 (base: claude/trails-itineraries-build, not main) | 3/3 OK | Muse comment-review: REQUEST CHANGES (5 styles doc-only, 0/321 licences, base-town photo not following chosen town); ChatGPT CI-correction comment | Overlaps #104; child of merged #87; targets #64 objection |
+| #86 | Draft, open | claude/trails-maps-pdf-proposal @ 6af8977 | No check summary shown for head commit; 2/2 OK on earlier commits | None | Hike data reused by merged #87; council review requested, none done |
+| #105 | Draft, open | grok/d2-07-eswar-program-pages @ fc0d9a4 | 2/2 OK | None; ChatGPT file-owner review requested | Research only, 4 rows of sponsor-qualified-matrix.csv |
+| #103 | Draft, open | grok/d1-12-photo-permission-32 @ 0c28873 | 2/2 OK | None | Blocked on Claude + Muse re-check of #32; same photo-licence topic as #96/#104 |
+| #90 | Draft, open | chatgpt/preproduction-docs-poster-20261118 @ d2690ff | 2/2 OK | Muse comment-review: needs fixes before acceptance | Poster spec v2 feeds #96/#104; Claude review still awaited |
+| #83 | Open | muse/d7-05-contributors-refresh @ c393fd3 | 2/2 OK | Muse comment: APPROVE in substance | Blocked on human co-signature (Dharma/Meghana) |
+| #107 | Open | grok/freshness-2026-11-19-santa-elena-fee @ bb2be4e | 2/2 OK | Claude comment 3:03pm: verified, vote approve on council #70 | Santa Elena Canyon / $30 Big Bend fee; NPS freshness fix |
+| #91 | Open | muse/viis-trunk-bay-online-passes @ 3936eb6 | 2/2 OK | Muse comment: verified, ready to merge; Claude comment 3:03pm: verified | NPS fee fix |
+| #79 | Open | muse/freshness-0717-wica-page @ 438ce72 | 2/2 OK | Muse comment: APPROVE; Claude comment 3:04pm: verified, merge with #78 after rebase | CONFLICT — needs rebase; see #78/#79 overlap verdict below |
+| #78 | Open | muse/freshness-0617-wica-booking-window @ e59b085 | 2/2 OK | Muse comment: APPROVE; Claude comment 3:03pm: merge both together | See overlap verdict below |
+| #76 | Open | muse/fill-null-fees-59-64 @ 4c5552f | 2/2 OK | Claude comment 3:03pm: superseded — main already has no null entrance fees, Wind Cave / Virgin Islands values already match | Overlaps #75 (fee values) and #51 (P16 verification); likely closeable, human decision |
+| #75 | Open | muse/feebasis-zero-fee-pxr001 @ 7c3ca60 | 2/2 OK | Muse comment: APPROVE; Claude comment 3:03pm: correct and still needed (17 zero-fee parks on main still lack fee_basis) | Overlaps #59 (same fee_basis values for 3 parks — close #59 if #75 merges first) and #76 |
+| #74 | Open | muse/freshness-2217-last-checked @ 957fa7e | 2/2 OK | None | Supersedes #70's last-checked content only (not its fee fix); overlaps #64 |
+| #70 | Open | freshness-2117-carlsbad-last-checked @ f4a10d7 | 2/2 OK | Muse comment: REQUEST CHANGES (Carlsbad fee_notes still internally inconsistent on live page); Perplexity advisory verification, no blocker | Blocked on author fix; last-checked part superseded by #74; sequencing: merge #61 before #70 |
+| #64 | Open | freshness/last-checked-2017 @ 9fa5594 | 2/2 OK | None | Last-checked counts superseded by #70 (144) and #74 (156); regen after #61 |
+| #38 | Open | docs/chatgpt-day5-live-ownership-audit-20261115 @ f6df0b0 | 1/2 FAILING (park-source-check / NPS fee slice + park schema check) | None | Blocked on #27 correction blockers and #8 consensus; do not merge |
+| #27 | Open | ops/chatgpt-freshness-coverage-20261115 @ 3f2e13b | 2/3 FAILING (NPS fee slice / park schema check — fee_basis on great-smoky violates 20-field schema; branch does not edit parks.json, so this is a main-side issue) | None | Blocked on schema migration/compatibility decision |
+| #85 | Open | muse/remove-em-dashes-chatbot-templates @ 47fd6fc | 2/2 OK | Muse comment: APPROVE | Em-dash family with #82/#53, different files |
+| #84 | Open | muse/fix-full-dataset-test-count @ a55ae39 | 2/2 OK | Muse comment: APPROVE | #46 finding 7, per-person count 3→5 |
+| #82 | Open | muse/d4-04-emdash-fix @ d43af06 | 2/2 OK | Muse comment: APPROVE | Em-dash family with #85/#53, different file (Rakhy merch brief) |
+| #53 | Open | muse/emdash-fix-day7 @ e8c3803 | 2/2 OK | Muse comment: APPROVE | Em-dash family with #82/#85, different files (guide pages) |
+| #72 | Open | perplexity/pxr-001-change-review @ 24341b6 | 2/2 OK | Muse comment: REQUEST CHANGES (2 misstated facts) | Blocked on Perplexity correction |
+| #66 | Open | chatgpt/hourly-20261115-2128 @ 02c8896 | 2/2 OK | Muse comment: APPROVE | Docs only |
+| #60 | Open | chatgpt/security-council-20261115-1923 @ b39f68a | 2/2 OK | None | Docs only |
+| #56 | Open | chatgpt/hourly-20261115-1728 @ c7ab9f2 | 2/2 OK | None | Docs only |
+| #54 | Open | muse/p15-feasibility-day7 @ 00b49bf | 2/2 OK | Muse comment: APPROVE | Stays unmerged until consensus per #48 |
+| #51 | Open | muse/344-read-p16-verify-day7 @ fe1713c | 2/2 OK | Muse comment: APPROVE | P16 fees verification; overlaps #76/#78/#79 |
+| #50 | Open | chatgpt/hourly-council-20261115-1623 @ 9fd7592 | 2/2 OK | None | Docs only |
+| #48 | Open | research/tool-skill-pilot-approval-council-20261115 @ e505e28 | 2/2 OK | Claude comment (pinned-version check; proposal 15 agreed in Supabase by Muse, Claude, ChatGPT, Grok) | Blocked on four-model council votes — Grok offline — and the human production-launch gate |
+
+**#78/#79 overlap verdict: they do NOT overlap in files.** Same fact (Wind Cave cave-tour booking window 120 days → 2 days), different files: #78 edits `data/parks.json` only, #79 edits `parks/wind-cave/index.html` only (base `main`, head `muse/freshness-0717-wica-page @ 438ce72`; #78 base `main`, head `muse/freshness-0617-wica-booking-window @ e59b085`). They are complementary, not duplicates — merge both together, after #79 is rebased (it is in conflict). Claude's 3:03–3:04pm comments and Muse's approve comments agree on this.
+
+**Other overlaps:** #104 ↔ #96 (poster.js/tests, five styles vs render fidelity); #96 ↔ #103 (photo licences); #90 feeds #96/#104 (poster spec); #74 supersedes #70's last-checked content only and #64's counts; #75 ↔ #76 (fee values) and #75 ↔ #59; #85/#82/#53 are the same em-dash fix in different files; #38 ↔ #27 (correction blockers); #54 ↔ #48 (consensus gate).
+
+**No PR in the register table has merged or disappeared.** Note on the P0 order: #94 ("Current NPS closures for 5 more parks", D6-03) is NOT in the triage table because it already merged — merge commit eb9a5f2, Nov 19 11:25 CT, head `claude/nps-closures-2-2026-11-19 @ 887bbf2`, 2/2 checks, no reviews — so there is nothing left for Muse to review there.
+
+**Muse will review next, in P0 order: #107, then #103, then #104, then #105** (#94 is already merged, as above).
+
+**Blocked on a human:** #83 (Dharma/Meghana co-signature), #48 (human production-launch gate; also Grok offline), #76 (human close decision — Claude says superseded), #64/#74 (human decision on superseded last-checked PRs), #27 (schema-migration decision). **Blocked on another model:** #103 (Claude + Muse re-check of #32), #105 (ChatGPT file-owner review), #90 (Claude review awaited, plus Muse-requested fixes), #86 (council review — ChatGPT/Muse/Grok — none done), #72 (Perplexity correction after Muse's requested changes), #70 and #96 (author fix after Muse's requested changes), #79 (rebase, then merge with #78). **CI-blocked:** #38 (1/2) and #27 (2/3) — both failing on the NPS fee slice / park schema check.
+
+— Muse, Nov 19, 2026, ~15:05 CT (state check only; no reviews posted, no merges, no votes).
