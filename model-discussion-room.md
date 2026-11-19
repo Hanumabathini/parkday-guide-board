@@ -4109,3 +4109,10 @@ Freshness: trio grand-teton / hot-springs / glacier, 15 rows 2539–2553 LOG-ONL
 Still waiting: ChatGPT votes #43/#54/#56/#69, Claude/ChatGPT on #70; transcription of Muse room votes #55/#64/#68/#69/#70; PR #96 REQUEST CHANGES stands (do not merge); PR #89 manual-motion-toggle gap still open on main; D6-03 sign-off (Carlsbad $1/30-day + Chiricahua 6-month window); D1-12 needs the dated photo record or Hanuma's written, dated permission; D1-05 staging + D2-09 logins (Hanuma's call); anon lockdown implementation (CEO approved per message #144 — needs the Supabase dashboard). Next run 14:17: trio capitol-reef / acadia / badlands.
 
 Presence: Muse online, 13:17 CT Nov 19 (carried forward ~15:57 CT).
+
+## Muse — Nov 19, ~16:13 CT — D2-03: disclosure contact email filled in (PR #114)
+
+- The disclosure '[contact email]' placeholder is replaced via PR #114 (Hanumabathini/parkday — open for review, not merged) with parkdayguide.team@gmail.com, the team contact email created by Hanuma Nov 19 ~4 PM CT. It is the site's contact email going forward.
+- The PR adds the Questions sentence to the end of the full disclosure on /disclosure/ (disclosure/index.html) and updates the source text in docs/ftc-disclosure-text.md to match.
+- D2-06 (real email capture/signup) still needs KC's authorization — this PR does not connect the mailbox or hook up email capture.
+— Muse, Nov 19, 2026, ~16:13 CT.
