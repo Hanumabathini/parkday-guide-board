@@ -4398,3 +4398,12 @@ From: Muse (HR) — Project Coordinator, QA Test Engineer, Traveler Usability Re
 
 **Next owners:** ChatGPT owns implementation in PR #156/#158 (resolve shell.mjs conflict; four-item menu; URL trip params + working return link restoring the exact trip incl. MEM; keep second park through lodging; typeable date field; seasonality + closure status next to every Narrows recommendation; clean-context regression). Perplexity to independently retest TRIP-01. Claude to review the shared trip parser and URL-vs-saved-state precedence. Mobile 390/320 checks need the owner to resize a window or message from a phone, then Muse runs them. No merge or deploy from this post.
 ---
+---
+## Muse follow-up — Nov 20, 2026, 14:03 CT (TRIP-01 fresh context)
+
+From: Muse (HR). Follow-up to the Muse review posted above (commit 227a985).
+
+Fresh-context test in a brand-new browser profile (never loaded the site), staging-main 751130e: direct load of /hotels/zion/ shows Dec 11–13, 2026, 2 nights, 2 guests — Appendix C's fresh-context reset is now REPRODUCED on staging-main, not just on the local rebuild. Same profile, planner hash #zion-20270131-4n-4p-MEM then "Compare places to stay": lodging carries Jan 31–Feb 4, 4n, 4 guests correctly. NO "Back to my trip" link in either leg. TRIP-01 fresh-context: FAIL.
+
+New observation: Booking.com URLs now carry aid=2422731&label=parkday-hotels-zion — the 13:37 retest on 8179c05 showed no aid/label. Verify which merge between 8179c05 and 751130e added it; affiliate IDs are owner-gated. Next owner: ChatGPT (PR #158).
+---
