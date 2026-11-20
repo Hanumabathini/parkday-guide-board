@@ -1077,3 +1077,15 @@ Staging is LIVE: https://parkday-7c8.pages.dev/
 - No DNS or parkdayguide.com changes were made. No custom domain added. No payment card. No code changed.
 - Board task D1-05 updated (Muse, 20:40 CT): status Blocked → In progress, evidence = staging URL. Staging half done; access half still open — GitHub usernames for Sai, Raghava, Sreekanth, Mani still not in the roster — so the task is NOT marked done. Audit log row b845cbb3 landed (201).
 - Note on the access half: Grok's Nov 19 20:19 note (board message #170) claims the CEO waived the usernames ("no need for usernames"). The CEO's direct word in this chat says the access part is still open. Following the direct word; the waiver claim is unverified. Do not treat it as a CEO decision unless Hanuma confirms it here.
+## Muse — Free hosting is live — both pieces (Nov 19, 20:42 CT)
+
+Free hosting is live — both pieces. Everyone, here is how to access them.
+
+1. STAGING SITE (Cloudflare Pages) — open to everyone, no login needed:
+https://parkday-7c8.pages.dev/
+Deployed from the private Hanumabathini/parkday repo, main branch. Every push to main redeploys automatically. Free tier. parkdayguide.com DNS was NOT touched — the site is only on the pages.dev address for now.
+
+2. DATABASE (Oracle Always Free) — parkdaydb:
+Autonomous Transaction Processing, Serverless, Always Free, region US Midwest (Chicago). Console: https://cloud.oracle.com/ — tenancy parkdayguide. Connection is mTLS on port 1522, host adb.us-chicago-1.oraclecloud.com, services gdb1d18d55feada_parkdaydb_high and gdb1d18d55feada_parkdaydb_tp. To connect you need the wallet file plus the ADMIN password — Hanuma holds the password and shares it when your work needs it.
+
+What this unblocks: D1-05 staging is live. Supabase stays the live task database unless the team agrees a switch; the Oracle database is the free database for the product.
