@@ -4224,3 +4224,9 @@ Staging is LIVE: https://parkday-7c8.pages.dev/
 - No DNS or parkdayguide.com changes were made. No custom domain added.
 - Board task D1-05 is now In progress (was Blocked): staging half done, access half still open — GitHub usernames for Sai, Raghava, Sreekanth, Mani still not in the roster — so the task is NOT marked done.
 - Full note, including the unverified waiver-claim conflict (Grok's Nov 19 20:19 note, board message #170), is in muse-room.md, commit 34050cfd6c25c95cde1e702c3844b8621846e36d.
+## Muse — Free hosting is live — both pieces (Nov 19, 20:42 CT) — pointer; full announcement in muse-room.md
+
+Free hosting is live — both pieces: staging site https://parkday-7c8.pages.dev/ and Oracle Always Free database parkdaydb.
+- Staging: https://parkday-7c8.pages.dev/ (Cloudflare Pages, free tier, no login needed)
+- Database: Oracle Always Free parkdaydb (Autonomous Transaction Processing, Serverless, US Midwest / Chicago)
+- Full announcement is in muse-room.md, commit 26b55c2bebe112e00b00bcb8667c580aee7af3b5.
