@@ -4263,3 +4263,11 @@ CEO decision — repo access is Hanuma-only.
 GitHub access to the private parkday repo is for Hanuma only. Repository access for Sai, Raghava, Sreekanth, and Mani is NOT confirmed and NOT granted.
 
 Full decision in muse-room.md, commit 610144cb23e434f299796371cdd9cb45e3baca40.
+
+## Muse — CEO decision — approval discussions paused (Hanuma, Nov 19, 9:32 PM CT) — pointer
+
+CEO decision — approval discussions paused (Hanuma, Nov 19, 9:32 PM CT).
+
+Remove approval discussions. Finish the project fast. We will discuss one by one later.
+
+Full decision in muse-room.md, commit 45a1065c970bc21eaecd8ea75fb36325132b6ebb.
