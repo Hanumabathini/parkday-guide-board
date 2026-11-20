@@ -1639,3 +1639,19 @@ Presence: Muse active; no other model posted since 06:35 CT; Grok paused per 1:1
 - Staging unchanged: nav 6 items, /towns/ 529+471, #140 not live. Leak still closed (6/6 paths 404).
 - Branch preview still Access-walled; 320/390 retest still blocked on owner Access email. Booking.com live-href capture still pending.
 - Waiting on: merge agreement for #159 (council — Muse merges nothing); Access authorized email; pdk_ key.
+
+## Muse 17:17 hourly — #159 merged into #156 branch (not main); board still blind
+
+- Board: reads refused 15th consecutive run (05:49 → 17:17 CT). tasks select=* → HTTP 401 / 42501 "permission denied for table tasks". No pdk_ key. Last known counts (04:52 CT): 72 tasks — 29 AI Approved / 36 In progress / 4 Not started / 1 Blocked (D2-09) / 2 Verified by Dharma. Stale.
+- Freshness: STOPPED per CEO #173 — no trio, no rows this run.
+- #159 MERGED 5:04 PM CT into #156's base branch (chatgpt/fix-responsive-multipark-routes-auth-20261120), NOT into main. Head 2d977d6 "test: regression for seasonally empty itinerary days", 6 commits, 1,457 files (+33,313 / −6,712), 7/7 checks PASS on 2d977d6. Main HEAD still 751130e; no merge into main since #157 (1:14 PM).
+- Discrepancy resolved: the 17:00 board check's "Merging is blocked" was 2d977d6's checks still running after the push; it merged once 7/7 passed. The 16:17 "Ready to merge" was on 47555a7 (7/7). Both readings were correct at their times.
+- Claude exact-SHA review of 47555a7 (5:03 PM, via Hanumabathini): one-line trails.js Slow day guard (if(!items.length)); 7/7 on 47555a7; no regression test, so 2d977d6 added the test file only — new test fails on 2b2e67c, passes on 47555a7 (24/24). Review, not approval.
+- #156: head now 2d977d6 (was d6b9527), 94 commits, still conflicted vs main only in tools/site/shell.mjs. Claude process note ~5:05 PM: fast-forwarding #159 into #156 may conflict with the 2:15 PM owner rule (no PR merged into any branch, #156 included) — owner decides; nothing reverted. Flagging for the owner, not debating it: the merge stands until the owner says otherwise.
+- #121: PR #121 merged into main 2:24 AM CT (merge commit 9fd0dec, 3/3 checks) — the planner Invalid Date / NaN fix is on main. Correction: the 03:17 run recorded it open; that was stale.
+- Other PRs: #140 / #141 / #136 / #144 unchanged, still conflicted. #155 / #152 / #154 / #150 / #130 unchanged. #131 closed unmerged 11:45 AM (CEO decision, already known). PR counts 23 open / 125 closed / 148 total; highest #159, no #160+. Issues #135 21 comments / #153 0 comments, unchanged.
+- Muse local QA: no re-run on 2d977d6 — the delta from 47555a7 is a test file only per the review comment, and CI passed 7/7 on the new head. The 16:17 node-only checks (park-first 23/23, fee-slice PASS, affiliate-config PASS) stand for the source change.
+- Staging: unchanged — nav 6 items; /towns/ still 529 + 471; #140 not live. Leak re-probe (curl 17:1x CT): all six paths 404 (CLAUDE.md, encoded CLAUDE.md, supabase/schema.sql, encoded, .gitignore, AUDIT.md) — PR #157 middleware holding.
+- Waiting on: (1) pdk_ key — board blind 15 runs; (2) Cloudflare Access authorized email for PR previews; (3) #140 rebase needs a git client; (4) owner decision: does the #159-into-#156 merge stand under the 2:15 PM owner rule? (5) Booking.com live-href capture still pending (browser task 4df0ee70, no handoff yet).
+- No new room posts from other models since 16:17; no questions addressed to Muse.
+- Next run 18:17 CT.
