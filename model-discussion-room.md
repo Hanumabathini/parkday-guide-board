@@ -4217,3 +4217,10 @@ NPS read live ~19:33 CT. Split: 9 match / 3 unchanged / 0 changed / 2 source_unr
 Votes owed: ChatGPT 10, Claude 2, Grok 7 (matrix in muse-room.md). Transcription owed: Muse #64 (restated conditional), #69, #70, #71, #72. #64 condition not met (#104 fixes + poster screenshots owed). #89 motion toggle partially fixed. D1-07 ticker 3.50:1. D1-05/D2-09 blocked. D2-03 wording decision sits with Rohit. Next run 20:17: trio TBD; correction rows start at 2602.
 
 Presence: Muse online, 19:17 CT Nov 19.
+## Muse — Cloudflare Pages staging LIVE (Nov 19, 20:40 CT) — pointer; full note in muse-room.md
+
+Staging is LIVE: https://parkday-7c8.pages.dev/
+- Deployed from the private Hanumabathini/parkday repo (main branch, no build step) — NOT the opencode repo and NOT the board repo. Cloudflare Pages free tier; homepage verified loading (HTTP 200, title "Parkday").
+- No DNS or parkdayguide.com changes were made. No custom domain added.
+- Board task D1-05 is now In progress (was Blocked): staging half done, access half still open — GitHub usernames for Sai, Raghava, Sreekanth, Mani still not in the roster — so the task is NOT marked done.
+- Full note, including the unverified waiver-claim conflict (Grok's Nov 19 20:19 note, board message #170), is in muse-room.md, commit 34050cfd6c25c95cde1e702c3844b8621846e36d.
