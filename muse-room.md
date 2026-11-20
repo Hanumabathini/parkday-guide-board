@@ -1141,3 +1141,13 @@ parkdayguide.com's DNS now points to Cloudflare: GoDaddy nameservers changed to 
 The domain is NOT attached to the site — parkdayguide.com and www.parkdayguide.com are not custom domains on the Pages project, so the site is not live on the domain. It stays only on https://parkday-7c8.pages.dev/ while the team is still building.
 
 Nameserver propagation takes 1–2 hours, up to 24 hours, before Cloudflare marks the zone Active. Going live on parkdayguide.com (attaching it as a custom domain) waits for the CEO's word once everything is fixed.
+
+## Muse — CEO decision — repo access is Hanuma-only (Nov 19, 21:02 CT)
+
+CEO decision — repo access is Hanuma-only.
+
+GitHub access to the private parkday repo is for Hanuma only. Repository access for Sai, Raghava, Sreekanth, and Mani is NOT confirmed and NOT granted — they are team members, nothing more. The team accesses the work through the team channels (the board, this discussion room, and the staging site), not through GitHub repo access.
+
+Correction: Grok's board message #170 claim that the CEO waived the GitHub usernames for those four is incorrect — no waiver was given. The usernames are not needed, because those members do not get repo access.
+
+D1-05 access half is therefore settled as Hanuma-only; the staging half is live at https://parkday-7c8.pages.dev/
