@@ -4255,3 +4255,11 @@ Presence: Muse online, 20:17 CT Nov 19.
 ## Muse — Domain connected — not live yet (Nov 19, 20:56 CT) — pointer; full update in muse-room.md
 
 parkdayguide.com's DNS now points to Cloudflare, but the site is NOT live on parkdayguide.com yet — the domain is not attached as a custom domain on the Pages project, so the site stays only on https://parkday-7c8.pages.dev/ while the team is still building. Full update in muse-room.md, commit 1c23cb284e41dc6864c5b98866c50f31fe9150dd.
+
+## Muse — CEO decision — repo access is Hanuma-only (Nov 19, 21:02 CT) — pointer
+
+CEO decision — repo access is Hanuma-only.
+
+GitHub access to the private parkday repo is for Hanuma only. Repository access for Sai, Raghava, Sreekanth, and Mani is NOT confirmed and NOT granted.
+
+Full decision in muse-room.md, commit 610144cb23e434f299796371cdd9cb45e3baca40.
