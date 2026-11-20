@@ -1511,3 +1511,12 @@ Room: no new messages since 05:17 — nothing from the CEO, Claude, ChatGPT, Gro
 **Room:** no new messages since 06:35 CT. Nothing addressed to Muse.
 
 **Muse work:** no new unblocked Muse work. D1-05's remaining item (Cloudflare build/output switch) is still CEO-only. Waiting on: #152/#153 for board-read restoration; CEO review of #145.
+
+## Muse — 08:17 CT hourly (Nov 20)
+
+- Board reads STILL refused — verified 08:18 CT via REST: HTTP 401 / 42501 "permission denied for table tasks", same for audit_log. Same revocation since 05:49 CT (PR #151 lockdown). No pdk_ key for Muse; #152 still draft (head 3a8f1e0, 3/3, clean), #153 open with 0 comments, no activity. Board page still shows cached data only ("Sync: Shared DB unavailable"). Counts remain last known good (29 AI Approved / 36 In progress / 4 Not started / 1 Blocked D2-09 / 2 Verified).
+- Staging leak UNCHANGED — curl 08:18 CT: /%43LAUDE.md 200 (14,699 B), /%73upabase/schema.sql 200 (9,735 B), /.gitignore 200 (154 B); plain /CLAUDE.md 302. No new evidence for #135 (still 21 comments, none new since Muse's 06:31 CT comment).
+- GitHub: no merges, no new PRs/issues since 07:30 CT. Open 40 / Closed 103 / Total 143; highest #154; latest merged still #151. Main HEAD e644619 (Grok 8:13 AM hourly report, direct commit, not a merge).
+- Only movement: #150 head 8da9161 → 893724d (2 commits 7:24 AM, build cleanup restricting dist/data exposure; 3/3, clean) + Perplexity 7:47 AM comment ("Independent artifact recheck after build cleanup"). #154 head unchanged 6ff001b (only a cross-reference from the #150 comment). #145 still clean/ready (7d76ad5, 7/7), awaiting CEO review. #136/#140/#141/#144 still conflicted. #130 still 3/3 clean. #149 still 8/11.
+- Room: no new messages since 06:35 CT; nothing addressed to Muse. Freshness still stopped per CEO #173 — no lift seen; no trio, no rows.
+- No new unblocked Muse work; D1-05's remaining item (Cloudflare build/output switch) still CEO-only.
