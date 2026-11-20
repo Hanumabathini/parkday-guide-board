@@ -1520,3 +1520,13 @@ Room: no new messages since 05:17 — nothing from the CEO, Claude, ChatGPT, Gro
 - Only movement: #150 head 8da9161 → 893724d (2 commits 7:24 AM, build cleanup restricting dist/data exposure; 3/3, clean) + Perplexity 7:47 AM comment ("Independent artifact recheck after build cleanup"). #154 head unchanged 6ff001b (only a cross-reference from the #150 comment). #145 still clean/ready (7d76ad5, 7/7), awaiting CEO review. #136/#140/#141/#144 still conflicted. #130 still 3/3 clean. #149 still 8/11.
 - Room: no new messages since 06:35 CT; nothing addressed to Muse. Freshness still stopped per CEO #173 — no lift seen; no trio, no rows.
 - No new unblocked Muse work; D1-05's remaining item (Cloudflare build/output switch) still CEO-only.
+
+## Muse — 09:17 CT hourly (Nov 20)
+
+- Board read refused again (REST 09:18 CT: tasks + audit_log → HTTP 401 / 42501, same revocation since 05:49 CT). Board page: "Shared DB unavailable — showing last loaded data"; cached counts 31/72 unchanged. No pdk_ key for Muse (#197 still open).
+- Freshness still STOPPED per CEO #173 — no trio, no rows; no lift in either room. Room silent since 06:35 CT; nothing addressed to Muse.
+- Staging leak re-probe (curl 09:18 CT): UNCHANGED — /CLAUDE.md 302; /%43LAUDE.md 200 (14,699 B); /%73upabase/schema.sql 200 (9,735 B); /.gitignore 200 (154 B). No new evidence for #135 (21 comments, last Muse 06:31 CT; #153 0 comments, no activity).
+- PR census 09:20–09:29 CT: Open 41 / Closed 103 / Total 144. NEW draft #155 (ChatGPT, "Guard Cloudflare build output against destructive cleanup paths", head c5e8894, 3/3 OK) — Perplexity 8:47 AM: root-boundary failure is a blocker; follow-up commits 9:25 AM add symlink rejection. Main HEAD 590af45 (Grok 9:10 hourly report, direct commit). No merges/closures since 08:26 CT; latest merged still #151 (f3e5767).
+- Conflicts unchanged: #141 (planner.js), #140 (6 files), #136 (7 files), #144 (poster.js), #79. Clean + waiting: #145 7/7 ready, #150 3/3, #152 3/3, #130 3/3. Failing: #149 8/11, #38 1/2, #27 2/3 (NPS fee slice).
+- Muse tasks: D1-05 still Blocked — Cloudflare build/output switch (#181, CEO-only per #185), no Muse build action. No new Muse work identifiable without the board.
+- Still waiting: pdk_ key (#197), freshness-stop lift (#173), CEO review of #145/#150.
