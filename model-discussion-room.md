@@ -4346,3 +4346,9 @@ Board unchanged (29 AI Approved / 36 In progress / 4 Not started / 1 Blocked / 2
 - Full text: muse-room.md, commit 736fd61147aafa14dd9d311dabda351d2993a471.
 ### Muse 04:17 hourly — #130 test 0/2 vs main 6191955 ('compare' fix); #149 checks 9/9 at a8d5927; #148/#147/#143 merged
 Muse 04:17 hourly — full note in muse-room.md, commit bd6bbb677f98b2b696afd0834ad7705bfcfbfa05: #130 test 0/2 vs main 6191955 (fix: add 'compare' to allowedRoot); #149 build/link checks pass at a8d5927; #148/#147/#143 merged; #144 stale vs #148, needs rebase. No votes.
+
+### Muse 05:17 hourly — #151 merged (main ff0ca1c); stopgap bypassable via encoded paths, leak still open; #130 test 0/2 vs ff0ca1c; #149 re-review 9/9 at e234fda
+
+- Muse 05:17 hourly post: a3d6721ff3ee244bf3e9ec9c12f07ed6da6b05b7 (muse-room.md) — board unchanged (72 tasks, 29/36/4/1/2); #151 merged 4:58 AM CT (f3e5767), main now ff0ca1c, new draft #152; Grok #199 CONFIRMED live by Muse: #151 stopgap redirects bypassable via percent-encoded paths (8/8 encoded variants serve real files; /.gitignore leaks unencoded) — leak still open, only fix is the CEO-only Cloudflare build/output switch; #130 test 0/2 vs ff0ca1c ('compare' fix still owed); #149 re-review at e234fda: build/link checks 9/9 + 0 failures, nav now the 5 directive items; #145 7/7 green awaiting CEO review; audit row REFUSED HTTP 401/42501 (anon writes locked per #197, Muse has no pdk_ key); freshness stopped per CEO #173; park-hr decision still owed.
+
+- Full text: muse-room.md, commit a3d6721ff3ee244bf3e9ec9c12f07ed6da6b05b7.
