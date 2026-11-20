@@ -1351,3 +1351,27 @@ Presence: Muse online, 22:17 CT Nov 19.
 No votes (approval discussions paused, CEO decision 21:32 CT). No approval debates.
 
 Presence 23:17 — Muse
+
+## Muse — 00:17 CT Nov 20 hourly (proposal 27)
+
+Board read ~06:1x UTC: 72 tasks, 29 AI Approved / 36 In progress / 4 Not started / 1 Blocked (D2-09) / 2 Verified by Dharma — ZERO status/notes/updated_by changes vs 23:49. Proposals max #73, votes max 214, fact_checks max 539 (unchanged). Gates G1–G6 Pending. Presence: Claude 06:10:22Z, Grok 06:11:56Z, ChatGPT 05:28:41Z, Muse 05:21:36Z.
+
+DB correction: the messages/comments 404s (PGRST205) were wrong table names — the readable tables are model_messages and ai_proposal_comments. Read this run: latest model_messages #187 (Grok), ai_proposal_comments #334 (ChatGPT 23:28 CT).
+
+Freshness: STOPPED per CEO #173 — no trio, no fact_checks rows. Corroborated this run: ChatGPT comment #331 cites the CEO priorities from #173–175, "stop routine daily/hourly park freshness sweeps during build".
+
+Merges: PR #134 MERGED 12:03 AM CT (802b3dc, Claude session) — /privacy/ /terms/ /cookies/ /refunds/ /accessibility/, consent.js gating Google Maps + GA4, self-hosted fonts, WCAG 2.2 AA (axe-core 0 violations on 27 pages), CSP/security headers via build-dist. /privacy/ now 200 on staging (Grok #186). I did NOT verify #134's diff against my drafted park-hr privacy/FTC edits, so I am not claiming it as that retarget. G2/G3 still Pending on the board; staging still serves repo root, so the new headers are not live yet (#181).
+
+CEO review request #185 / issue #135 (00:10 CT): Muse's slice (data accuracy on the new park pages + consent/maps behaviour) is being worked separately; results go on issue #135, not here. Grok's slice posted (#187): SEO PASS (883 pages, 881 indexable, 0 missing title/description/canonical); one CSP finding for Claude — assets/js/poster.js L28 injects a fonts.googleapis.com stylesheet, which the new CSP will block and which contradicts #134's no-Google-Fonts claim; suggests self-hosting those two OFL fonts or dropping them. Mobile 390px not done.
+
+PR #130 — answer to Perplexity's 11:47 PM advisory question ("Can Muse rerun the updated test…?"): No, not yet. There is no updated test file — the advisory itself recommends reworking it (allow _redirects, assert the about-preview redirect, separate local vs post-deploy checks), and I hold only the verbatim ab71614 file with no current-main checkout (the test resolves the repo root from its own path and runs scripts/build-dist.mjs there). Syntax re-verified node --check OK this run. The only execution on record is Perplexity's own run against scratch main e89dc9e: both modes fail "Unexpected public root: _redirects". Retest needs the reworked test + a checkout or CI. The Cloudflare build-command/output switch (#181) is CEO-only per #185 — I am not touching Pages settings, and no signed-in Cloudflare session exists.
+
+PR #121 still open, "Do not merge yet", 3/3 checks OK, no reviews — planner bug still live on staging. Drafts #131 / #104 / #117 / #105: no activity since 11 PM CT. #131: ChatGPT's slice includes whether it should close now that the multipage rebuild merged (CEO #182: keep multipage).
+
+park-hr: STILL GONE, re-confirmed ~00:25 CT signed in as owner — GitHub 404, absent from the owner's repo list (357 repos; "park" search returns only parkday, parkday-guide-board, parkday-guide-opencode), no renamed variant. Needs Hanuma's decision; already flagged at 23:17, nothing new to add.
+
+Rebuild local check: privacy/FTC edits present in the local rebuild copy (index.html:33, app.js renderPrivacy); planner date math already correct there (real Date arithmetic, nights+1); top_trails / best_months / description empty 64/64 — the hikes gap on park pages is a data gap, not wiring, in the rebuild.
+
+Correction owed from the 23:17 post: the ticker grep was done in the 23:17 run on the local rebuild files, not the 22:17 run as credited. Substance stands: no ticker/marquee in the rebuild.
+
+Room tails: nothing new in either room since the 23:17 posts. No questions to Muse. Still waiting: ChatGPT votes #29/#30/#31/#43/#54/#56/#62/#63/#68/#72; transcriptions #64/#69/#70/#71/#72/#73; #105 title re-review; #66 HELD. No votes (approval discussions paused, CEO 21:32 CT). Audit row 38d0af11 landed (201).
