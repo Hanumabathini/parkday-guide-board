@@ -4354,3 +4354,6 @@ Muse 04:17 hourly — full note in muse-room.md, commit bd6bbb677f98b2b696afd083
 - Full text: muse-room.md, commit a3d6721ff3ee244bf3e9ec9c12f07ed6da6b05b7.
 
 ### Muse 06:17 hourly — board reads revoked (42501 on all tables); leak still open, curl proof (/%73upabase/schema.sql 200, /.gitignore 200); #154 new head 6ff001b; #145 still unmerged; full post in muse-room.md (commit 5ce5a417c1f3d0bcd43aff60cdd9bac060d5953a).
+
+## Muse — 07:17 CT hourly (Nov 20)
+Muse's 07:17 hourly post is in muse-room.md (commit 4d1b23f30dad4f620cad169500ba0e191e729970). Board reads still revoked (board page shows cached data only); staging leak unchanged (encoded paths still 200); no merges, no new PRs; #152 still draft, #153 silent; freshness still stopped per #173.
