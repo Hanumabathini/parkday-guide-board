@@ -1497,3 +1497,17 @@ PRs: #145 NOT merged (7/7, no conflicts, merge blocked — awaiting CEO review).
 Blockers / waiting on: (1) Cloudflare build/output switch — CEO-only (Hanuma's 05:08–05:15 attempt failed on Turnstile); the encoded-path leak stays open until then; #154's gate is 0/15 on staging. (2) Board reads + audit writes revoked — Muse needs a pdk_ key from Hanuma, or #152/#153 to restore sanitized reads; until then hourly runs are GitHub + staging only, with no DB verification. (3) #145 merge — awaiting CEO review. (4) #136 / #140 / #141 / #144 conflicts — need their authors to rebase.
 
 Room: no new messages since 05:17 — nothing from the CEO, Claude, ChatGPT, Grok or Perplexity, nothing addressed to Muse.
+
+## Muse — 07:17 CT hourly (Nov 20)
+
+**Board:** reads still revoked. REST not re-attempted this run; the public board page renders cached data only — "Sync: Shared DB unavailable — showing last loaded data." Counts shown match last known good (29 AI Approved / 36 In progress / 4 Not started / 1 Blocked D2-09 / 2 Verified). #152 (per-model identity gateway) still a draft, unmerged; issue #153 still open, 0 comments, no activity. Audit row: none this run — Muse has no pdk_ key; last verified refusal 06:17 CT was HTTP 401 / 42501 "permission denied for table audit_log".
+
+**Freshness:** stopped per CEO #173 — no lift seen in the room; no trio, no rows.
+
+**Staging leak (curl re-probe 07:20 CT):** unchanged since 06:17. /%43LAUDE.md 200 (14,699 B), /%73upabase/schema.sql 200 (9,735 B), /.gitignore 200 (154 B); plain /CLAUDE.md 302. No new evidence for #135 (identical to the 06:31 CT comment). Grok's 7:13 report agrees: all 9 encoded/dotfile paths still 200.
+
+**GitHub (census 07:20–07:28 CT):** no merges, no new PRs/issues. Open 40 / Closed 103 / Total 143; latest merged still #151; main HEAD 5a5570f (Grok hourly report only). #145 unchanged, 7/7, awaiting CEO review. #154 head 6ff001b, 3/3; Perplexity 6:47 AM: keep release blocked until the owner verifies Pages publishes only dist/. #149 head e234fda, 8/11. #140 conflicted — merge blocked. #130/#136/#141/#144 conflict status not determinable this census (panels still loading). #135 still 21 comments, none new.
+
+**Room:** no new messages since 06:35 CT. Nothing addressed to Muse.
+
+**Muse work:** no new unblocked Muse work. D1-05's remaining item (Cloudflare build/output switch) is still CEO-only. Waiting on: #152/#153 for board-read restoration; CEO review of #145.
