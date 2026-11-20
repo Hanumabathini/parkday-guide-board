@@ -4164,3 +4164,36 @@ PR reviews this run (in the muse-room post's browser check): #105 re-review at h
 Next run 18:17: trio TBD from stalest; correction rows start at 2586.
 
 Presence: Muse online, 17:17 CT Nov 19.
+
+
+## Muse — Nov 19, ~20:02 CT — CEO decision: free hosting stack (Cloudflare) — adoption plan (proposal 27)
+
+CEO decision (Hanuma, main chat, Nov 19 ~8 PM CT): Parkday Guide uses the free hosting stack from the @ai.lution reel. This answers the D1-05 staging question — Cloudflare Pages free tier instead of making the repo public, upgrading to Pro, or Vercel.
+
+THE STACK (as approved):
+- Hosting: Cloudflare Workers / Pages free tier (100k requests/day, static files free and unlimited). This is the staging + hosting route and unblocks D1-05.
+- Files: Cloudflare R2 (10 GB free, downloads cost nothing).
+- Database: Neon free Postgres (100 projects, 1 GB each, no card) as a FALLBACK only, if Supabase's pause-after-a-week-idle ever bites. Supabase stays the live DB unless the team agrees a switch.
+- Email: Resend (3,000/month, 100/day) — already in the 6-tools note.
+- Server (if ever needed): Oracle Cloud Always Free VM (2 Arm cores, 12 GB RAM, 10 TB outbound/month).
+- AI: Gemini API free tier (Gemma 4, Flash-Lite). Fine print from the reel: the free tier may use prompts to train models, and EU/UK/Switzerland users need the paid tier.
+
+ADOPTION ORDER (what moves first):
+1. FIRST — Cloudflare Pages staging (D1-05). Deploy the static site to Cloudflare Pages. This unblocks staging without making the repo public or upgrading to Pro. Staging URL becomes the Cloudflare Pages URL (a *.pages.dev address, exact name set when the project is created).
+2. LATER — Cloudflare R2 file storage, when file storage is needed (large assets / uploads). Not an immediate move; the site's files deploy from the repo for now.
+3. WHEN AUTHORIZED — Resend email, tied to D2-06 (real email capture/signup). D2-06 still needs KC's authorization; Resend is the email route when that lands.
+4. FALLBACK ONLY — Neon Postgres. Only if Supabase pauses after a week idle. No migration unless the team agrees a switch. Supabase stays the live DB.
+5. ONLY IF NEEDED — Oracle Cloud VM, if a real server is ever needed. The site is static, so not now.
+6. FUTURE — Gemini API free tier, for future AI features (e.g. the chatbot). Note the fine print above.
+
+WHAT STAYS:
+- Supabase stays the live DB (tasks, proposals, votes, fact_checks, the shared board). No migration, no switch unless the team agrees.
+- DNS (parkdayguide.com) is NOT pointed anywhere. No DNS change in this plan.
+
+WHAT NEEDS HANUMA (owner-only, not done here):
+- Creating the Cloudflare account and the Pages project, and any Oracle/Neon account. Signups and DNS are owner-only and need his word first. This post does NOT create any account and does NOT change DNS.
+
+OPEN FLAG (verify before relying on it):
+- Neon's own pages disagree right now: a Nov 2 pricing post says 10 projects at 0.5 GB, while the FAQ says 100 projects at 1 GB. Verify on Neon's plans page before counting on the bigger numbers. Since Neon is only a fallback, this does not block anything now.
+
+D1-05 status: the staging question is ANSWERED (Cloudflare Pages). The remaining step is the Cloudflare account/project setup, which needs Hanuma's word (owner-only signup). D1-05 moves from "blocked on the repo-public/Pro decision" to "waiting on the Cloudflare setup."
