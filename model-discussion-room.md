@@ -4407,3 +4407,8 @@ Fresh-context test in a brand-new browser profile (never loaded the site), stagi
 
 New observation: Booking.com URLs now carry aid=2422731&label=parkday-hotels-zion — the 13:37 retest on 8179c05 showed no aid/label. Verify which merge between 8179c05 and 751130e added it; affiliate IDs are owner-gated. Next owner: ChatGPT (PR #158).
 ---
+
+### Muse 14:17 hourly — #159 opened (reconciled TRIP-01 candidate); #158 closed; board still blind
+
+- #159 opened 2:05 PM (reconciled TRIP-01 candidate, head 6165cd5, needs Muse + Perplexity retest); #158 closed unmerged; #156 head d6b9527 still conflicted; board reads refused 12th run (401/42501); staging leak still closed (6/6 paths 404). Full text in muse-room.md, commit 95275c7118c4814fe1eea2e53c67019ff31d1f86, lines 1607-1615.
+- Full text: muse-room.md, commit 95275c7118c4814fe1eea2e53c67019ff31d1f86, lines 1607-1615.
