@@ -1437,3 +1437,28 @@ Room tails: nothing new in either room since the 23:17 posts. No questions to Mu
 **Still waiting (no votes — paused 21:32 CT):** ChatGPT votes #29/#30/#31/#43/#54/#56/#62/#63/#68/#72; transcriptions #64/#69/#70/#71/#72/#73; #105 title re-review; #66 HELD. No questions addressed to Muse.
 
 **Audit row:** 41fba7cc-1e68-4b09-a579-1d48e9b39a44 (201).
+## Muse 04:17 hourly — Nov 20 (#130 test 0/2 vs main 6191955 — one-word fix: 'compare'; #149 checks 9/9 at a8d5927; #148/#147/#143 merged)
+
+**Board read ~10:2x UTC:** 72 tasks — 29 AI Approved / 36 In progress / 4 Not started / 1 Blocked (D2-09) / 2 Verified by Dharma. ZERO row-level diffs vs the 03:17 snapshot. Proposals max #73, votes max 214, fact_checks max 539 — all unchanged. Gates G1–G6 Pending. Presence: ChatGPT 10:17:55Z, Grok 09:50:18Z, Muse 09:19:11Z, Claude 06:10:22Z (offline).
+
+**New since 03:17:** model_messages #192 (ChatGPT, 04:17:55 CT, P0 CEO directive) — review draft PR #149, Muse slice responsive accessibility + visual QA; respond in issue #135 or PR #149, no approval votes. ai_proposal_comments #338 (ChatGPT, 03:27 CT, proposal #27) — PR #144 poster.js font fix (efbac15), asks Muse CSP/build validation, Claude visual poster regression.
+
+**Merges since #139:** #143 (74626c4, ~3:38 AM), #147 (b07308d, 3:53 AM, posters readable / service-worker freshness), #148 (6191955, 3:59 AM, five photo-led poster layouts). Main HEAD now 6191955. Open 37 / Closed 102 / Total 139. #142 + #146 closed superseded by #148. Issue #135 now 13 comments (5 new: premium-plan updates, poster regression, #148 release).
+
+**PR #130 TEST — EXECUTED, 86077b5 vs main 6191955:** `node --test tools/check-dist-privacy.mjs` → 0/2 FAIL, both modes "Unexpected public root: compare". Build-dist itself runs clean (1,136 files, production). Verified directly: 'compare' is the ONLY dist root missing from the test's allowedRoot (36 roots vs 35 allowed); the new CSP/HSTS/font-src-'self'/frame-ancestors-'none' assertions would pass — all six headers present in the built _headers. Fix on the #130 branch: add 'compare' to allowedRoot (one word). The branch-head 'about-preview' failure is a branch-builder artifact; main never produces it. Full result also posted as a comment on PR #130.
+
+**PR #144 VALIDATION:** branch poster.js has no external font reference, parses clean, fontsReady via document.fonts.ready — CSP-compatible. BUT the branch is stale: it predates the #148 poster redesign and would revert it (5 layouts, Fraunces stack, layout picker, aria-busy/status, JPEG export) if merged as-is. It is conflicted in poster.js. Needs rebase onto current main; after rebase the remaining delta is small — main's poster.js already has no Google Fonts injection (grep clean across assets/js + tools/site) and uses self-hosted faces. Claude's visual regression check still owed after rebase.
+
+**PR #149 REVIEW (Muse slice, snapshot a8d5927 — 13 commits; head has since moved to 1200593, 18 commits):** local build clean — build-site 1,449 pages, build-dist staging 1,702 files. `tools/check-park-first.mjs` 9/9 PASS; `tools/check-park-links.mjs` 64 pages / 5,073 local links / 0 failures. Spot-checks on generated Zion: exactly 5 nav links (Parks, When to go, Where to stay, Compare, Budget); #plan anchor resolves (once per page, 64/64); inline planner + poster present (it-page data-park-id="zion", pst-canvas); viewport meta; all images have alt (0 missing); aria labels incl. poster canvas description; gateway shows 5 measured road-mi values all ≤100 (20.9–75.2). Responsive CSS: gateway grid 2→1 col ≤650px, poster canvas max-width 100% + aspect 3/4, min-width:0 containment. Caveats: results are for a8d5927, NOT current head; the 2 failing CI checks at head 1200593 (Cloudflare negative probes; Chromium visual/functional QA) were NOT reproduced locally; rendered visual QA (390px + desktop) still owed once the branch settles. Full findings also posted as a comment on PR #149.
+
+**PR #136:** still conflicted, now 7 files (was 4; +widgets.css, poster.js, trails.js). Head 39f76a5 unchanged, 2/2 checks OK. **PR #140:** 5/5 checks now pass (b15ed59) but newly conflicted in 6 files after main moved; no reviews. **PR #141:** draft, head 3be40ef, 5/5 checks OK, no reviews.
+
+**Freshness:** STOPPED per CEO #173 — no trio, no rows.
+
+**Staging P0:** /CLAUDE.md still loads (200) — repo-root exposure still open; CEO-only Pages build setting (#181).
+
+**Park-hr:** still gone (last confirmed 00:25 CT). Decision owed by Hanuma.
+
+**Still waiting (no votes — paused 21:32 CT):** ChatGPT votes #29/#30/#31/#43/#54/#56/#62/#63/#68/#72; transcriptions #64/#69/#70/#71/#72/#73; #105 title re-review; #66 HELD. No questions addressed to Muse.
+
+**Audit row:** 1a004d3e-e1dc-49c6-a21b-ad570371acdd (201).
