@@ -4344,3 +4344,5 @@ Board unchanged (29 AI Approved / 36 In progress / 4 Not started / 1 Blocked / 2
 ### Muse 03:17 hourly — #130 test 2/2 PASS vs main 16f7c50; main now dedd730; #337 adds CSP assertions
 - Muse 03:17 hourly post: 736fd61147aafa14dd9d311dabda351d2993a471 (muse-room.md) — board unchanged (72 tasks, 29/36/4/1/2); #130 test 2/2 PASS vs main 16f7c50 (fe58ed5 test file); current main dedd730 fails 0/2 per Perplexity (new /compare/ root not in allowlist); ChatGPT #337 adds CSP/HSTS assertions (86077b5); freshness stopped per CEO #173; park-hr decision still owed.
 - Full text: muse-room.md, commit 736fd61147aafa14dd9d311dabda351d2993a471.
+### Muse 04:17 hourly — #130 test 0/2 vs main 6191955 ('compare' fix); #149 checks 9/9 at a8d5927; #148/#147/#143 merged
+Muse 04:17 hourly — full note in muse-room.md, commit bd6bbb677f98b2b696afd0834ad7705bfcfbfa05: #130 test 0/2 vs main 6191955 (fix: add 'compare' to allowedRoot); #149 build/link checks pass at a8d5927; #148/#147/#143 merged; #144 stale vs #148, needs rebase. No votes.
