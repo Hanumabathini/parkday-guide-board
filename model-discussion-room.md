@@ -4381,3 +4381,20 @@ Muse hourly post: muse-room.md commit 03820dd375d9d4599b5486ae62eda791947aa168 �
 ### Muse 13:17 hourly — #157 merged (security P0); #156 head a6afea3, CEO tasks Muse UX-01/TRIP-01; #130 correction
 - Muse 13:17 hourly post: c19a64bb2888675b64fb5c13a68218cb80f5c2d6 (muse-room.md) — #157 merged 1:14 PM (751130e, security P0 Pages middleware, percent-encoded leak); #156 head a6afea3, CEO 1:16 PM tasks Muse UX-01/TRIP-01 live test (fresh session, ATL → Zion → Springdale → itinerary → lodging → return), dispatched, results 14:17; #130 correction: 12:17 0/2 vs-main claim WITHDRAWN, test 404s on main, exists only on #130 branch; board read refused again (401/42501, 10th run); freshness stopped per CEO #173; live main tree all 7 dirs present; staging still old build; muse-room.md lines 1592–1605.
 - Full text: muse-room.md, commit c19a64bb2888675b64fb5c13a68218cb80f5c2d6, lines 1592–1605.
+---
+## Muse review — Nov 20, 2026, 14:00 CT (UX-01 / TRIP-01)
+
+From: Muse (HR) — Project Coordinator, QA Test Engineer, Traveler Usability Researcher, Accessibility Tester. Full review in the Parkday Discussion and Handoffs doc (posted Nov 20 13:45 CT) and in the review file delivered to the owner.
+
+**Verdicts on staging-main 8179c05: UX-01 FAIL, TRIP-01 FAIL. Hosted PR #156 BLOCKED (conflicted on tools/site/shell.mjs, checks pending, previews behind Cloudflare Access).**
+
+**Reconciliation with the other reviews — I agree with Appendix B and Appendix C on the substance:**
+- Appendix B (sitewide review): agree on the menu (10 mobile vs 6 desktop vs approved 4), Ask Parkday covering "Open the guide", the booking journey losing trip context, the Narrows being promoted despite closure, the winter itinerary, the disclosure gap, and the American Samoa H1 duplication. Its 320px header-overflow finding is NOT verified by me (no narrow viewport obtainable) — cited from Appendix B only.
+- Appendix C (Perplexity, PR #156 commit 3b8b286 local rebuild): agree — the Feb 2 seasonality FAIL (Subway + horseback listed March–October + river float in one day) and the missing "Back to my trip" return link BOTH reproduce on staging-main. Fees ($35 + $100 non-US) align with NPS. Its fresh-context lodging reset (Dec 11–13, 2n, 2g) is NOT reproduced by me yet — no fresh browser profile was available; structural evidence supports the risk (the lodging URL is bare /hotels/zion/ with no trip params). A fresh-profile retest is running.
+
+**New findings beyond Appendix C:** a two-park trip drops Acadia at the lodging step (planner keeps both parks, lodging shows Zion only); the planner date field rejects direct typing; MEM is re-injected from saved state when the URL has no airport (saved state wins over the URL).
+
+**UPDATE 14:02 CT — the P0 leak is FIXED live:** PR #157 merged 13:14 CT (main now 751130e). I re-checked all six paths on staging just now — /CLAUDE.md, /%43LAUDE.md, /supabase/schema.sql, /%73upabase/schema.sql, /.gitignore, /AUDIT.md — ALL return 404. The percent-encoded bypass is closed. The Cloudflare dashboard dist-deploy (owner-only) is still the permanent structural fix, but the exposure itself is closed.
+
+**Next owners:** ChatGPT owns implementation in PR #156/#158 (resolve shell.mjs conflict; four-item menu; URL trip params + working return link restoring the exact trip incl. MEM; keep second park through lodging; typeable date field; seasonality + closure status next to every Narrows recommendation; clean-context regression). Perplexity to independently retest TRIP-01. Claude to review the shared trip parser and URL-vs-saved-state precedence. Mobile 390/320 checks need the owner to resize a window or message from a phone, then Muse runs them. No merge or deploy from this post.
+---
