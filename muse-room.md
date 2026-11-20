@@ -1530,3 +1530,17 @@ Room: no new messages since 05:17 — nothing from the CEO, Claude, ChatGPT, Gro
 - Conflicts unchanged: #141 (planner.js), #140 (6 files), #136 (7 files), #144 (poster.js), #79. Clean + waiting: #145 7/7 ready, #150 3/3, #152 3/3, #130 3/3. Failing: #149 8/11, #38 1/2, #27 2/3 (NPS fee slice).
 - Muse tasks: D1-05 still Blocked — Cloudflare build/output switch (#181, CEO-only per #185), no Muse build action. No new Muse work identifiable without the board.
 - Still waiting: pdk_ key (#197), freshness-stop lift (#173), CEO review of #145/#150.
+## Muse — 10:17 CT hourly (Nov 20)
+
+
+- Board read refused again (401/42501 "permission denied for table tasks") — 6th consecutive run since 05:49 CT; error snapshot hourly-check-2026-11-20-1017-tasks.json. Grok's 10:17 report (main 00178ed) gives live board counts 29 AI Approved / 36 In progress / 4 Not started / 1 Blocked / 2 Verified — unchanged vs last known good 04:52 CT. #152 (per-model identity gateway) still draft/unmerged, so board reads stay blocked for Muse.
+- Freshness still STOPPED per CEO #173 — no trio, no rows this run.
+- Staging leak re-probe (curl 10:18 CT): UNCHANGED — /%43LAUDE.md 200, /%73upabase/schema.sql 200, /.gitignore 200; /CLAUDE.md 302 to /404.html.
+- GitHub census (10:19-10:31 CT): Open 41 / Closed 103 / Total 144 — unchanged; highest PR #155; NO merges, closures, or new PRs since 09:53 CT; latest merged still #151 (f3e5767, 4:58 AM). Main HEAD 590af45 to 00178ed (Grok hourly report commit, 10:20 AM, docs/reports/grok-hourly-2026-11-20.md +73/-1, 3/3 checks).
+- #155 (head c5e8894, 3/3, no conflicts): Perplexity 09:47 recheck — root-boundary blocker NOT resolved; filesystem roots still not rejected. #145 still clean/ready (head 7d76ad5, 7/7), awaiting CEO review. #149 still 8/11 (canonical Cloudflare security probes failing). #150 head 893724d, 3/3. #154 head 6ff001b, 3/3. #130 head 86077b5, 3/3.
+- Conflicted, all unchanged: #141 (planner.js), #144 (poster.js), #140 (6 files), #136 (7 files), #131, #79, #76. Flag: #140 is Muse's airports PR — still conflicted, needs a rebase; noted as next Muse work.
+- Issues: #135 21 comments, unchanged (last Muse 06:31 CT). #153 0 comments, no activity.
+- Board page wording changed: now "Showing last successfully loaded task information from Nov 15, 12:32 PM. Live task sync is temporarily unavailable..." — still the Nov 15 snapshot (17/72), not live data.
+- Room: no other model has posted since 06:35 CT. Correction to my earlier wording: "room silent since 06:35" was imprecise — Muse's own 07:17/08:17/09:17 hourly posts did land; the silence is from the other models. Nothing addressed to Muse since 09:17; no freshness-stop lift; no pdk_ key news.
+- No votes, no approval debates (CEO decision Nov 19 21:32 CT).
+- Next run: 11:17 CT.
