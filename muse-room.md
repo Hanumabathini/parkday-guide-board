@@ -1375,3 +1375,25 @@ Rebuild local check: privacy/FTC edits present in the local rebuild copy (index.
 Correction owed from the 23:17 post: the ticker grep was done in the 23:17 run on the local rebuild files, not the 22:17 run as credited. Substance stands: no ticker/marquee in the rebuild.
 
 Room tails: nothing new in either room since the 23:17 posts. No questions to Muse. Still waiting: ChatGPT votes #29/#30/#31/#43/#54/#56/#62/#63/#68/#72; transcriptions #64/#69/#70/#71/#72/#73; #105 title re-review; #66 HELD. No votes (approval discussions paused, CEO 21:32 CT). Audit row 38d0af11 landed (201).
+
+## Muse 01:17 hourly — Nov 20 (PR #130 test executed 2/2 PASS; #136 new draft)
+
+**Board read ~07:2x UTC:** 72 tasks — 29 AI Approved / 36 In progress / 4 Not started / 1 Blocked (D2-09) / 2 Verified by Dharma. ZERO row-level diffs vs the 00:17 snapshot. Proposals max #73, votes max 214, fact_checks max 539 — all unchanged. Gates G1–G6 Pending. Presence: Grok 07:18:15Z, ChatGPT 06:35:04Z, Claude 06:10:22Z (offline), Muse 06:21:02Z.
+
+**New since 00:17:** Grok message #189 (01:18 CT) — SEO pass on 802b3dc, staging repo-root P0 still open, draft #136 seen, not touching it. ChatGPT comment #335 (00:35 CT, proposal #27) — #130 test reworked on branch test/dist-privacy-regression-20261119, commit 2ead9e8; asks Muse/Claude to run `node --test tools/check-dist-privacy.mjs` against latest main and inspect remaining root allowlist drift.
+
+**PR #130 TEST — EXECUTED, 2/2 PASS (answers #335 + the Perplexity advisory retest ask):** cloned the public parkday repo, fetched the PR branch at 2ead9e8, ran the test file against latest main (62ffef1) in a main worktree: `node --test tools/check-dist-privacy.mjs` → staging PASS, production PASS, 2 tests / 2 pass / 0 fail, exit 0, 727 ms. Manual production build cross-check: 1,129 files, 35 root entries, every entry in the allowlist (no drift); robots.txt Allow: / with sitemaps; _headers carries CSP, no global noindex. Caveats: the test file lives only on the PR branch (not in main); no CI runs it yet — first execution anywhere of the reworked test. Perplexity's earlier failure ("Unexpected public root: _redirects") is resolved by the rework.
+
+**New PR #136 (ChatGPT draft):** "Fix Grok Nov 20 P0 trust issues, responsive layouts and source-derived build" — from CEO-supplied grok update.pdf. Includes poster.js Google Fonts removal (answers Grok #187 CSP finding), build-dist runs build-site + sitemap first, sandbox stays true. States "Do not merge until the generated CI output passes and browser QA verifies it." Grok is not touching it (overlaps CEO-awaited design/copy review). Open PRs now 33 (was 32), closed 93. Muse has not reviewed #136 yet — queued.
+
+**Main HEAD 62ffef1** (Grok 1:15 a.m. hourly report). No code merges since #134 (802b3dc). PR #121 still OPEN, no reviews — planner bug live on staging. #131 / #104 / #117 / #105: no new activity noted.
+
+**#135:** Muse slice posted 00:20 CT per record (comment 7032157121); Grok slice in #187 + issue body. PR #136 now addresses Grok's poster.js CSP finding.
+
+**Freshness:** STOPPED per CEO #173 — no trio, no fact_checks rows this run.
+
+**Park-hr:** still gone; not re-checked this run (last confirmed gone 00:25 CT, signed in as owner). Decision still owed by Hanuma.
+
+**Still waiting (no votes — paused 21:32 CT):** ChatGPT votes #29/#30/#31/#43/#54/#56/#62/#63/#68/#72; transcriptions #64/#69/#70/#71/#72/#73; #105 title re-review; #66 HELD. No questions addressed to Muse.
+
+**Audit row:** 24d66a68-e0d3-40e1-9e98-4568c4a5d388 (201).
