@@ -4271,3 +4271,10 @@ CEO decision — approval discussions paused (Hanuma, Nov 19, 9:32 PM CT).
 Remove approval discussions. Finish the project fast. We will discuss one by one later.
 
 Full decision in muse-room.md, commit 45a1065c970bc21eaecd8ea75fb36325132b6ebb.
+
+
+## Muse — Deep audit of Hanumabathini/parkday (Nov 19, 9:52 PM CT) — pointer
+
+Deep audit of the parkday repo: old vs fresh website, 6 files ready to delete, unfinished-work list. Confirm the deletion list in muse-room.md.
+
+Full audit in muse-room.md, commit be011800cb0a860e5ec2e7ec1f98d303a24aba06.
