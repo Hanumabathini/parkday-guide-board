@@ -1560,3 +1560,31 @@ Room: no new messages since 05:17 — nothing from the CEO, Claude, ChatGPT, Gro
 - No new post by any model in either room since 10:17 CT; other models silent since 06:35 CT. Nothing addressed to Muse. No freshness-stop lift, no pdk_ key news.
 - Still waiting: pdk_ key (#197), freshness-stop lift (#173), CEO review of #145/#150, git-client rebase of #140.
 - Next run 12:17 CT.
+
+## Muse — 12:17 CT hourly (Nov 20)
+
+**Board read refused again (12:18 CT):** REST tasks → HTTP 401 / 42501 "permission denied for table tasks" (hint: GRANT SELECT ON public.tasks TO anon). 9th consecutive failing run (05:49 → 12:17 CT). Already reported to Hanuma once (05:49 run) — not repeated.
+
+**Freshness STOPPED per CEO #173** — no trio, no fact_checks rows. No lift found in the rooms.
+
+**Staging leak re-probe 12:18 CT, UNCHANGED since 06:17 CT:** /CLAUDE.md 302 (24 B); /%43LAUDE.md 200, 14,699 B; /%73upabase/schema.sql 200, 9,735 B; /.gitignore 200, 154 B.
+
+**CEO SWEEP 11:44–11:45 AM CT:** #145 MERGED (8179c05, SEO JSON-LD + og:image, 7/7 checks); 18 PRs closed unmerged per CEO decision 2026-11-20 — #149 (superseded by #156), #131 (conflicts with multipage decision), #79 (obsolete generated park page), #38, #27 (dated/obsolete), #64, #66, #56, #53, #54, #60, #48, #50, #51, #72, #74, #105, #117. #48 closed, NOT merged. #64's conditional APPROVE and #66's HELD status are now moot (closed). PR census now Open 23 / Closed 122 / Total 145 (was 42/103/145). Highest still #156; no new PRs.
+
+**Main HEAD now 8179c05** — only new commit since 11:17 is the #145 merge (6/6 checks).
+
+**#156 (Ready, 9/9, no conflicts):** head 3b8b286 (was 8527e82; 17 commits added, 64 total). CEO decision comment 11:45 AM: main menu "Explore parks · Plan a trip · Gateway towns"; Towns/Itineraries/Trails stay as subpages; branches kept. Nav overlap: Grok's scope-overlap flag is answered by that CEO decision; the mobile "Ask Parkday overlaps home search/CTAs" fix (a381126) is in-branch only — staging still shows the old floating trigger. Newest comment 12:00 PM: Grok takeover/audit continuation, ChatGPT implemented further fixes, "do not merge/deploy before owner authorization." #156 NOT merged.
+
+**#155:** head 33257ec (was 387268a), 3/3 draft; build-first update, 8 test cases, execution not claimed. **#145 post-merge:** SEO spot-check 11:47 AM (5 HTML files: title/desc/canonical/og:image/parseable JSON-LD all present); asks who captures the post-deploy sample after the hosted release gate passes.
+
+**Still open/conflicted:** #140 (b15ed59, 5/5, 6 files — rebase needs a git client; web UI can't regenerate the generated files), #136 (39f76a5, 2/2, 7 files), #141 (3be40ef, 5/5), #144 (efbac15, 4/4). **#130** (86077b5, 3/3): test 0/2 FAIL vs main ff0ca1c ("Unexpected public root: compare"); fresh run vs main 8179c05 queued — main ZIP download in this run's posting task. **#76** (4c5552f, 2/2, conflicted data/parks.json). #152/#154/#150 drafts unchanged.
+
+**Issues:** 11 open, unchanged; #135 21 comments (last Muse 06:31 CT); #153 0 comments; no new issue.
+
+**Staging:** loads; "Plan a trip" CTA present; still OLD nav + floating Ask Parkday (unmerged #156); "529 town guides" (not 536 — #140 unmerged).
+
+**Rooms:** no new post by any model since 11:17 CT; other models silent since 06:35 CT. No questions to Muse. No votes.
+
+**Still waiting:** pdk_ key (#197), freshness-stop lift (#173), owner authorization for #156, git-client rebase for #140/#136/#141/#144.
+
+**Next run 13:17 CT.**
