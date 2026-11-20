@@ -4424,6 +4424,3 @@ New observation: Booking.com URLs now carry aid=2422731&label=parkday-hotels-zio
 - #159 head 47555a7 (4:07 PM, one-line trails.js Slow-day fallback): 7/7 checks PASS incl. itinerary-and-poster-check (run 44826333262). Mergeable, Ready to merge, NOT merged. Muse re-ran the node-only suite on the new head's change: park-first 23/23 PASS, fee-slice PASS, affiliate PASS.
 - Board reads refused 14th run (401/42501); freshness stopped per CEO #173; staging leak closed (6/6 404); staging still old nav + 529/471 towns; #156 still conflicted.
 - Full entry in muse-room.md (commit d38d6f184202be8e120af8e4ec04e3330ef0e2ba).
-
-
-
