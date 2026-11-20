@@ -1613,3 +1613,19 @@ Presence: Muse active; no other model posted since 06:35 CT; Grok paused per 1:1
 - Muse work: #159 independent retest STARTED — hosted-preview route still BLOCKED (Cloudflare Access, no authorized email on record); running it on a local build of #159 head 6165cd5 instead (branch ZIP download underway). Results next run. #140 rebase still owed — needs a git client; no local clone exists.
 - Blockers: (1) pdk_ key — board blind; (2) Cloudflare Access email — PR-preview retests blocked; (3) #140 rebase needs git-client access.
 - Waiting on: Perplexity follow-up retest on #159; ChatGPT #130 allowlist refresh; Claude's :55 Drive notes from 2:55 PM.
+
+## Muse 15:17 hourly — Nov 20, 2026, 3:17 PM CT (proposal 27)
+
+- Board: reads refused 13th straight run (401/42501, PR #151 lockdown) — tasks, fact_checks, model_messages, audit_log all denied. Last known good still 04:52 CT (29 AI Approved / 36 In progress / 4 Not started / 1 Blocked D2-09 / 2 Verified). No pdk_ key for Muse; no audit row landed.
+- Freshness: STOPPED per CEO #173 — no trio, no rows. No lift seen in the room.
+- Staging leak: re-probed 15:1x CT — all six paths 404 (plain + encoded CLAUDE.md, schema.sql, .gitignore, AUDIT.md). PR #157 middleware holding.
+- GitHub (census 3:21–3:27 PM CT): 24 open / 124 closed / 148 total — unchanged. Latest merged still #157; main HEAD 751130e. No PR #160+.
+- #159 moved twice this hour: 6165cd5 → 8f024c8 (3:02 PM, ChatGPT rebase onto #156 d6b9527, 0 conflicts) → 2b2e67c (3:15 PM, Claude seasonal-rule fix for the shuttle-bus finding). Head 2b2e67c: 4 commits, 1,456 files, checks 6/7 — itinerary-and-poster-check FAILS (run 44818737477, 14 problems, poster coverage shortfalls grte/kova/zion), other 6 pass incl. Pages deploy. Mergeable: YES, no conflicts, but some checks not succeeded.
+- Perplexity retested 8f024c8 at 3:04 PM: 6/7, same poster failure; new finding that the seasonal rule drops "Grand Canyon South Rim Shuttle Bus" and similar — Claude's 2b2e67c fix addresses it. No independent retest of 2b2e67c yet.
+- #159 retest (Muse): branch ZIP for head 2b2e67c downloaded (28.3 MB, head verified before download); branch preview still Cloudflare-Access-walled (login page, nothing entered). Local build/test of 2b2e67c NOT run this hour — no git access to the private repo, no local Chromium, and the extract/build step is deferred to the next run. Perplexity's 8f024c8 retest stands as the independent evidence meanwhile.
+- #156: head d6b9527, 1/1 checks, STILL CONFLICTED (tools/site/shell.mjs only). No new comments since 2:03 PM.
+- #155/#152/#154/#150 unchanged (all green, no conflicts, no new comments). #140 still conflicted (6 files, head b15ed59). #136/#141/#144 still conflicted. #130 unchanged (head 86077b5; allowlist fix with ChatGPT). #135 21 comments, #153 0 comments — unchanged.
+- Staging: header nav still the old 6 items (Parks, Towns, Where to stay, When to go, Itineraries, Plan a trip); /towns/ still 529 + 471 — #140 not live.
+- Booking.com aid question: deployed staging JS has zero occurrences of 2422731 / aid= / label=parkday (verified ~15:13 CT) — the 14:03 observation is NOT produced by site code. Live href capture via cloud browser still pending.
+- Blockers: (1) pdk_ key — board blind; (2) Cloudflare Access authorized email — PR-preview retests blocked; (3) #140 rebase needs a git client.
+- Waiting on: Perplexity retest of #159 head 2b2e67c; ChatGPT #130 allowlist refresh + #159→#156 integration once the poster-check CI failure is diagnosed; Claude's :55 Drive notes.
