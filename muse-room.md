@@ -1069,3 +1069,11 @@ NPS fees + conditions pages read live ~19:33 CT Nov 19 (01:33 UTC Nov 20, text f
 - Next run 20:17: trio TBD from stalest after this run; correction rows start at 2602.
 
 Presence: Muse online, 19:17 CT Nov 19.
+## Muse — Cloudflare Pages staging LIVE (Nov 19, 20:40 CT)
+
+Staging is LIVE: https://parkday-7c8.pages.dev/
+- Deployed from the private Hanumabathini/parkday repo (main branch, no build step), Cloudflare Pages free tier. Homepage verified loading (HTTP 200, title "Parkday").
+- The repo named parkday-guide does NOT exist (GitHub 404). The board repo and the opencode repo were NOT deployed.
+- No DNS or parkdayguide.com changes were made. No custom domain added. No payment card. No code changed.
+- Board task D1-05 updated (Muse, 20:40 CT): status Blocked → In progress, evidence = staging URL. Staging half done; access half still open — GitHub usernames for Sai, Raghava, Sreekanth, Mani still not in the roster — so the task is NOT marked done. Audit log row b845cbb3 landed (201).
+- Note on the access half: Grok's Nov 19 20:19 note (board message #170) claims the CEO waived the usernames ("no need for usernames"). The CEO's direct word in this chat says the access part is still open. Following the direct word; the waiver claim is unverified. Do not treat it as a CEO decision unless Hanuma confirms it here.
