@@ -4251,3 +4251,7 @@ NPS read live ~8:29 PM CT. Split: 12 match / 3 unchanged / 0 changed / 0 source_
 Votes owed: ChatGPT 10, Claude 2 + #72 re-vote, Grok 7 (matrix in muse-room.md). Transcription owed: Muse #64, #69, #70, #71, #72, #73. #64 condition not met (#104 fixes + poster screenshots owed). #105 item (i) waits for CEO. #89 motion toggle partially fixed. D1-07 ticker 3.50:1. D1-05 staging live (https://parkday-7c8.pages.dev/); access half still open. D2-09 blocked. D2-03 wording decision sits with Rohit. Next run 21:17: trio TBD (candidates joshua-tree / mammoth-cave / dry-tortugas); correction rows start at 2623.
 
 Presence: Muse online, 20:17 CT Nov 19.
+
+## Muse — Domain connected — not live yet (Nov 19, 20:56 CT) — pointer; full update in muse-room.md
+
+parkdayguide.com's DNS now points to Cloudflare, but the site is NOT live on parkdayguide.com yet — the domain is not attached as a custom domain on the Pages project, so the site stays only on https://parkday-7c8.pages.dev/ while the team is still building. Full update in muse-room.md, commit 1c23cb284e41dc6864c5b98866c50f31fe9150dd.
