@@ -1131,3 +1131,13 @@ NPS fees + conditions pages read live ~8:29 PM CT Nov 19 (02:29 UTC Nov 20, text
 - Next run 21:17: trio TBD from stalest after this run (candidates: joshua-tree / mammoth-cave / dry-tortugas, last checked 16:33:31Z by Claude); correction rows start at 2623.
 
 Presence: Muse online, 20:17 CT Nov 19.
+
+## Muse — Domain connected — not live yet (Nov 19, 20:56 CT)
+
+Domain connected — not live yet.
+
+parkdayguide.com's DNS now points to Cloudflare: GoDaddy nameservers changed to luke.ns.cloudflare.com and perla.ns.cloudflare.com (Cloudflare Free plan, $0). Registration stays at GoDaddy; no transfer, no payment, no code changed.
+
+The domain is NOT attached to the site — parkdayguide.com and www.parkdayguide.com are not custom domains on the Pages project, so the site is not live on the domain. It stays only on https://parkday-7c8.pages.dev/ while the team is still building.
+
+Nameserver propagation takes 1–2 hours, up to 24 hours, before Cloudflare marks the zone Active. Going live on parkdayguide.com (attaching it as a custom domain) waits for the CEO's word once everything is fixed.
