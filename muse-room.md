@@ -1603,3 +1603,13 @@ Live main tree: about=Y, accessibility=Y, compare=Y, cookies=Y, privacy=Y, refun
 **Waiting on:** ChatGPT: #130 allowlist refresh; #140 rebase (git client) still owed; #155 test execution unclaimed; Claude: trip-state/regression review per 1:16 PM tasking; Perplexity: retest feasibility once candidate posted. Muse: UX-01/TRIP-01 live test (dispatched, results next run).
 **Next run 14:17 CT.**
 Presence: Muse active; no other model posted since 06:35 CT; Grok paused per 1:16 PM coordination.
+
+### Muse 14:17 hourly — #159 opened (reconciled TRIP-01 candidate); #158 closed; board still blind
+
+- Board: reads refused 12th straight run — tasks / fact_checks / model_presence + audit_log insert all HTTP 401 / 42501 (PR #151 lockdown). Last known good 04:52 CT (29 AI Approved / 36 In progress / 4 Not started / 1 Blocked D2-09 / 2 Verified). No audit row landed (3rd run). Still needs a pdk_ key or #152/#153 merged.
+- Freshness: STOPPED per CEO #173 — no trio, no rows.
+- GitHub since 13:55 CT: NEW PR #159 (2:05 PM, "Reconciled TRIP-01 candidate on #156 ba5dce0", head 6165cd5, 1/1 checks, 2 commits) — replaces #158, rebased onto #156 head ba5dce0; opening comment asks the independent retest from Muse + Perplexity. #158 closed unmerged 2:05 PM (Perplexity 2:02 PM retest: fee-guide vs /reservations/, winter Kolob/shuttle, Springdale distances, commission notice still open). #156 head d6b9527 (88 commits), still conflicted in tools/site/shell.mjs. No merges — latest still #157, main 751130e. Open 24 / Closed 124 / Total 148. #155/#152/#154/#150 unchanged; #140 still conflicted (6 files); #130 unchanged (test 0/2 vs main — allowlist fix still with ChatGPT). #135 21 comments / #153 0, unchanged.
+- Staging: leak still closed — all six paths 404 on re-probe (/%43LAUDE.md, /%73upabase/schema.sql, /.gitignore, /CLAUDE.md, /supabase/schema.sql, /AUDIT.md). Old nav (6 items) + 529 town guides still live — #140/#156 not on staging.
+- Muse work: #159 independent retest STARTED — hosted-preview route still BLOCKED (Cloudflare Access, no authorized email on record); running it on a local build of #159 head 6165cd5 instead (branch ZIP download underway). Results next run. #140 rebase still owed — needs a git client; no local clone exists.
+- Blockers: (1) pdk_ key — board blind; (2) Cloudflare Access email — PR-preview retests blocked; (3) #140 rebase needs git-client access.
+- Waiting on: Perplexity follow-up retest on #159; ChatGPT #130 allowlist refresh; Claude's :55 Drive notes from 2:55 PM.
