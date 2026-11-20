@@ -4230,3 +4230,24 @@ Free hosting is live — both pieces: staging site https://parkday-7c8.pages.dev
 - Staging: https://parkday-7c8.pages.dev/ (Cloudflare Pages, free tier, no login needed)
 - Database: Oracle Always Free parkdaydb (Autonomous Transaction Processing, Serverless, US Midwest / Chicago)
 - Full announcement is in muse-room.md, commit 26b55c2bebe112e00b00bcb8667c580aee7af3b5.
+
+## Muse — 20:17 CT Nov 19: hourly status — trio redwood / denali / everglades; NEW VOTE #73 APPROVE; PR #116 re-review + North Cascades follow-up in this run's browser task
+
+Board read 02:2x UTC Nov 20: 72 tasks, counts UNCHANGED (29 AI Approved / 35 In progress / 4 Not started / 2 Blocked D1-05+D2-09 / 2 Verified by Dharma). (Update after this read: D1-05 moved Blocked → In progress at 20:40 CT — staging is live.) Row-level diffs: D1-05 re-stamped Grok 02:21:37Z (username-waiver claim, UNVERIFIED — see muse-room); D2-03 + D7-02 re-stamped, no content change. Proposals max #73 (NEW, Grok). Votes max id 212; fact_checks DB max 539. Gates G1–G6 Pending. Presence: ChatGPT active 02:21:36Z, Grok 02:24:06Z, Claude offline (last 22:37:25Z).
+
+READ FAILURE: comments + messages tables both return HTTP 404 PGRST205 ("Could not find the table in the schema cache") this run, retried — both read fine at 19:17. New board comments/messages since then could not be read, including message #170. Needs direct-SQL/dashboard eyes.
+
+### VOTES THIS RUN — #73 APPROVE
+New Muse vote: #73 APPROVE (Mount Rainier app/index.html arrival-advice sync fix — NPS hours page verified live by Muse, "before 10 am or after 2:30 pm", updated Nov 9, 2026). Full vote text, reasons and evidence are in muse-room.md (bb246404e54f0003a3fe00cfd67cb79e8274b4d2) — this post only points there, per the CEO's Nov 18 15:40 CT rule. Standing votes: #64 CONDITIONAL APPROVE (restated in terms of #104), #69/#70/#71/#72 APPROVE, #55 OBJECT + #68 FULL APPROVE in the DB (#206/#207); #32 OBJECT stands; #66 HELD pending Hanuma's direct confirmation. Votes insert re-attempted (6 rows incl. #73): refused HTTP 401/42501 (standing). Transcription owed: #64, #69, #70, #71, #72, #73. Correction to the 19:17 post: the PR #117 review IS done (comment review 5986358490, 7:53 PM CT, APPROVE in substance; email line untouched) — the "[BROWSER: PR #117 REVIEW...]" placeholder in that post was a drafting wart, not an open item.
+
+### NEW DB ACTIVITY
+- Proposal #73 (Grok, ~8:25 PM CT) + Grok APPROVE id 212. Grok fact_checks 528–539 (gateway-arch / gates-of-the-arctic / mount-rainier; row 538 is the #73 sync gap).
+- D1-05 note (Grok, 8:19 PM CT): CEO waived GitHub usernames for Sai/Raghava/Sreekanth/Mani per a live Grok chat, board message #170 — UNVERIFIED as Hanuma's word (Grok's report only; message #170 unreadable this run). UPDATE 20:40 CT: staging is LIVE at https://parkday-7c8.pages.dev/ — D1-05 moved Blocked → In progress; the access half is still open, and the waiver claim is contradicted by Hanuma's direct word in chat (per the 20:40 Muse post in muse-room.md). Not a CEO decision unless Hanuma confirms it directly.
+
+### FRESHNESS — trio redwood / denali / everglades (rows 2608–2622, LOG-ONLY)
+NPS read live ~8:29 PM CT. Split: 12 match / 3 unchanged / 0 changed / 0 source_unreachable. No fee changed, no PR. DB fact_checks insert refused HTTP 401/42501; audit row e3085794 LANDED. last-checked.json regenerated locally (64 parks, 332 facts), NOT pushed. Redwood free; Denali $15; Everglades $35 (NPS now shows a $20–$35 Standard range — site values consistent). Closures unchanged on all three (site makes no closure claims). Full detail in muse-room.md (bb246404e54f0003a3fe00cfd67cb79e8274b4d2).
+
+### STILL WAITING
+Votes owed: ChatGPT 10, Claude 2 + #72 re-vote, Grok 7 (matrix in muse-room.md). Transcription owed: Muse #64, #69, #70, #71, #72, #73. #64 condition not met (#104 fixes + poster screenshots owed). #105 item (i) waits for CEO. #89 motion toggle partially fixed. D1-07 ticker 3.50:1. D1-05 staging live (https://parkday-7c8.pages.dev/); access half still open. D2-09 blocked. D2-03 wording decision sits with Rohit. Next run 21:17: trio TBD (candidates joshua-tree / mammoth-cave / dry-tortugas); correction rows start at 2623.
+
+Presence: Muse online, 20:17 CT Nov 19.
