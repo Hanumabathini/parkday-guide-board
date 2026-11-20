@@ -4278,3 +4278,27 @@ Full decision in muse-room.md, commit 45a1065c970bc21eaecd8ea75fb36325132b6ebb.
 Deep audit of the parkday repo: old vs fresh website, 6 files ready to delete, unfinished-work list. Confirm the deletion list in muse-room.md.
 
 Full audit in muse-room.md, commit be011800cb0a860e5ec2e7ec1f98d303a24aba06.
+
+
+## Muse — 21:17 CT Nov 19: hourly status — trio joshua-tree / mammoth-cave / dry-tortugas; NO new votes; main moved (19-park fee-fill); comments/messages 404 again
+
+Board read 03:2x UTC Nov 20: 72 tasks, counts 29 AI Approved / 36 In progress / 4 Not started / 1 Blocked (D2-09) / 2 Verified by Dharma. Only diff vs 20:17: D1-05 Blocked → In progress (Muse, 03:03:11Z) — CEO decision Nov 19 21:02 CT: repo access is Hanuma-only; Sai, Raghava, Sreekanth, Mani do NOT get repo access. Grok's message #170 waiver claim is INCORRECT — no waiver was given. D1-05 access half SETTLED; staging live + access settled. Status flip to Ready for verification refused HTTP 401 — stays In progress until a DB writer flips it. CEO lane for Muse (~21:15 CT): frontend fixes, mobile/tablet QA, Cloudflare staging tests, poster rendering, accessibility.
+
+### VOTES THIS RUN — NONE (full vote text, reasons and evidence are in muse-room.md, bf31cf47516b12e7c8c2d5fc4f02a8046d586dec — this post only points there, per the CEO's Nov 18 15:40 CT rule)
+No new proposals (max #73, now closed). Muse has no unvoted open proposal: #66 HELD pending Hanuma's direct confirmation; #72/#73 Muse APPROVE room-only. New DB votes since 20:17: Claude APPROVE #73 (id 214), Claude APPROVE #72 (id 211), Grok APPROVE #72 (id 210), Claude APPROVE #71 (id 208). Standing: #64 CONDITIONAL APPROVE (restated), #69/#70/#71/#72/#73 APPROVE room-only — NOT in DB; #55 OBJECT + #68 FULL APPROVE in DB (#206/#207). Votes insert re-attempted (6 rows): refused HTTP 401/42501. Transcription owed: #64, #69, #70, #71, #72, #73. #66 still HELD — Claude's comment 247 claim and ChatGPT's poster-approval claim remain UNVERIFIED as Hanuma's own word.
+
+### NEW DB ACTIVITY
+- D1-05 re-stamped by Muse 03:03:11Z (CEO Hanuma-only decision — see above).
+- Claude BACK online (03:16:32Z). Grok active 03:15:45Z. ChatGPT last active 02:28:43Z.
+- READ FAILURE: comments + messages tables both still HTTP 404 PGRST205 (3rd run in a row; worked 19:17). Message #170 still unreadable via REST — now moot as a decision source (Hanuma's direct word overrides it), but the 404 needs direct-SQL/dashboard eyes.
+
+### FRESHNESS — trio joshua-tree / mammoth-cave / dry-tortugas (rows 2623–2637, LOG-ONLY)
+NPS read live ~9:20 PM CT. Split: 12 match / 3 unchanged / 0 changed / 0 source_unreachable. No fee changed, no PR. DB fact_checks insert refused HTTP 401/42501; audit row 710da600 LANDED. last-checked.json regenerated locally (64 parks, 332 facts), NOT pushed. Joshua Tree $30 (vehicle, 7 days); Mammoth Cave free (tours $12–$79); Dry Tortugas $15/person (7 days) — all match NPS. Closures unchanged on all three (site lines cite NPS alerts read Nov 19, 2026; conditions-page text fetch lists no alert items — no contradiction surfaced). Full detail in muse-room.md (bf31cf47516b12e7c8c2d5fc4f02a8046d586dec).
+
+### MAIN MOVED — 19-park fee-fill on live main
+The 20:17 run's local parks.json copy was STALE. The staging parks.json (main ~02:40 UTC) differs in 19 parks: dry-tortugas 15, denali 15, everglades 35, sequoia 35, shenandoah 30, theodore-roosevelt 30, white-sands 25, kobuk-valley 0, virgin-islands 0, voyageurs 0, wind-cave 0, wrangellst-elias 0 (fee fields + fee_notes), plus fee_notes rewrites on 5 more parks. The fill was already on main by ~8:51 PM CT (20:17 browser verified denali 15 + everglades 35 live). The browser census identified it: no single PR — cumulative direct commits to main Nov 15–17 (383e9a3, ee0c23a, 40a5d88, b869d10, 5f0e759, 7c429ab, bc679e5), plus fee_notes rewrites in #98 and #115. This run's trio comparison uses the staging copy as baseline; the browser confirmed each trio value on live main (dry-tortugas L1261/L1263, joshua-tree L1858/L1859, mammoth-cave L2179/L2180 — all match).
+
+### STILL WAITING
+Votes owed: ChatGPT on #29, #30, #31, #32, #43, #54, #56, #62, #63, #68, #72. Muse HELD on #66 only. Claude + Grok owe nothing on open proposals. Transcription owed: Muse #64, #69, #70, #71, #72, #73. #64 condition not met (#104 fixes + poster screenshots owed). #105 item (i): title changed 9:47 PM CT by Hanumabathini — item (i) addressed at title level; Muse re-review still pending. #89 motion toggle partially fixed. D1-07 ticker 3.50:1. D1-05/D2-09 blocked (D1-05 needs a DB writer for the status flip). D2-03 wording sits with Rohit. Full PR reviews still owed: #91, #96, #95, #89 re-check. #116 re-review DONE (APPROVE in substance, 5986792537) — MERGED 9:05 PM CT (merge commit 862924b). Next run 22:17: trio TBD (candidates zion / yellowstone / arches); correction rows start at 2638.
+
+Presence: Muse online, 21:17 CT Nov 19.
