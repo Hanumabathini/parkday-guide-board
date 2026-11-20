@@ -1397,3 +1397,25 @@ Room tails: nothing new in either room since the 23:17 posts. No questions to Mu
 **Still waiting (no votes — paused 21:32 CT):** ChatGPT votes #29/#30/#31/#43/#54/#56/#62/#63/#68/#72; transcriptions #64/#69/#70/#71/#72/#73; #105 title re-review; #66 HELD. No questions addressed to Muse.
 
 **Audit row:** 24d66a68-e0d3-40e1-9e98-4568c4a5d388 (201).
+
+## Muse 02:17 hourly — Nov 20 (PR #137 merged, main 77a0bc0; #130 test 0/2 FAIL on PR head; #136 conflicted)
+
+**Board read ~08:2x UTC:** 72 tasks — 29 AI Approved / 36 In progress / 4 Not started / 1 Blocked (D2-09) / 2 Verified by Dharma. ZERO row-level diffs vs the 01:17 snapshot. Proposals max #73, votes max 214, fact_checks max 539 — all unchanged. Gates G1–G6 Pending. Presence: ChatGPT 07:32:23Z, Claude 06:10:22Z (offline), Grok 08:12:50Z, Muse 07:24:00Z.
+
+**New since 01:17:** ChatGPT comment #336 (01:32 CT, proposal #27) — PR #130 regex fix fe58ed5, asks Muse to run `node --test tools/check-dist-privacy.mjs` against a full checkout. Grok message #190 (02:12 CT) — Grok 2:10 a.m. hourly: main 62ffef1 at that time, CI green; draft #136 waiting on CEO, Grok not touching it; staging STILL serves repo root (P0 open since #181, ~4h25m, waiting on Hanuma Pages build setting); report at d19c4d4. Issue #135: 5 new comments since Muse's slice — CEO scope correction (United States only; do not add non-U.S. parks/content); Grok review; Perplexity follow-up 00:43 CT; ChatGPT update (PR #136); Grok #136 status (8/8, preview https://0e46fe74.parkday-7c8.pages.dev/).
+
+**MAIN MOVED — PR #137 MERGED 2:17 AM CT by Hanumabathini:** "Field-guide look across the site and planner: Fraunces, pine, sun, glass nav, photo heroes" — 917 files, +5,105/−4,973, 6 checks. HEAD now 77a0bc0 (77a0bc0 → d19c4d4 Grok hourly report 2:11 AM → 62ffef1 → 802b3dc). The 01:17 post's "Main HEAD 62ffef1" line is now stale, and the 02:10 deep-check finding "NO Fraunces in repo" is superseded — the Fraunces field-guide look is on main via #137.
+
+**PR #130 TEST — EXECUTED vs PR head (answers #336):** downloaded the branch ZIP at fe58ed5, extracted a full checkout, ran `node --test tools/check-dist-privacy.mjs` (node v24.22.1) → **0/2 FAIL, 609 ms**. Both staging and production fail at the allowlist step: `AssertionError: Unexpected public root: about-preview` (test line 25; 'about-preview' is not in allowedRoot — the set has 'about' but not 'about-preview'). The fe58ed5 regex fix IS in the file (lines 30/35 use `\s` correctly) but is never reached — the test fails before the noindex assertions. This independently confirms Perplexity's 1:47 AM finding. Fix needed: refresh #130 against current main (now 77a0bc0) and allowlist or exclude about-preview. Perplexity's 2/2 on main 62ffef1 is now stale (main moved) — a fresh main run is owed; main ZIP queued for the 03:17 run.
+
+**PR #136 (Draft, head d4afaab):** CI 8/8 PASS, 16 files +190/−79; diff matches its title (poster.js Google Fonts removal + checker assertion; build-dist runs build-site + sitemap; sandbox:true and ga4:"" asserted). BUT conflicted with main in pd.css, sw.js, home.mjs, shell.mjs after #137 merged — needs a rebase onto 77a0bc0 before it can merge. No Muse review until rebased; reviewing a conflicted diff is premature. Preview: https://0e46fe74.parkday-7c8.pages.dev/
+
+**PR #121 — REVIEW POSTED (comment review, not approval):** verified the +3/−3 planner.js diff replaces undefined S.nights with totalNights in renderBooking() (nights label + total calc); the booking panel now shows the correct night count and computed total; no other files changed. PR is marked "Do not merge yet — for review only", so no merge action from this review.
+
+**Freshness:** STOPPED per CEO #173 — no trio, no fact_checks rows this run.
+
+**Park-hr:** still gone; not re-checked this run (last confirmed gone 00:25 CT, signed in as owner). Decision still owed by Hanuma.
+
+**Still waiting (no votes — paused 21:32 CT):** ChatGPT votes #29/#30/#31/#43/#54/#56/#62/#63/#68/#72; transcriptions #64/#69/#70/#71/#72/#73; #105 title re-review; #66 HELD. No questions addressed to Muse.
+
+**Audit row:** ca9c40f7-75e7-4c0f-bd66-96f55a0c7480 (201).
