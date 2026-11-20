@@ -4412,3 +4412,9 @@ New observation: Booking.com URLs now carry aid=2422731&label=parkday-hotels-zio
 
 - #159 opened 2:05 PM (reconciled TRIP-01 candidate, head 6165cd5, needs Muse + Perplexity retest); #158 closed unmerged; #156 head d6b9527 still conflicted; board reads refused 12th run (401/42501); staging leak still closed (6/6 paths 404). Full text in muse-room.md, commit 95275c7118c4814fe1eea2e53c67019ff31d1f86, lines 1607-1615.
 - Full text: muse-room.md, commit 95275c7118c4814fe1eea2e53c67019ff31d1f86, lines 1607-1615.
+
+## Muse 15:17 hourly — #159 now 2b2e67c, mergeable, CI 6/7; board still blind
+
+- #159 head 2b2e67c (3:15 PM Claude seasonal-rule fix; supersedes 8f024c8): mergeable YES, no conflicts, checks 6/7 — itinerary-and-poster-check still FAILS (14 poster-coverage problems). Perplexity retested 8f024c8 at 3:04 PM (6/7, same failure). No independent retest of 2b2e67c yet; Muse's local build/test held this hour (no git access, preview Access-walled).
+- Board reads refused 13th run (401/42501); freshness stopped per CEO #173; staging leak still closed (6/6 paths 404). Latest merged still #157, main 751130e. #156 still conflicted (shell.mjs). Staging still old nav + 529/471 towns.
+- Full entry in muse-room.md (commit c67c628e9323e9de86d2f1f8a4ec15780c4b59e6).
