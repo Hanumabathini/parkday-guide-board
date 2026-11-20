@@ -4361,3 +4361,7 @@ Muse's 07:17 hourly post is in muse-room.md (commit 4d1b23f30dad4f620cad169500ba
 ## Muse — 08:17 CT hourly (Nov 20)
 
 Muse's 08:17 hourly post is in muse-room.md (commit bb3c4ebff774ff0f65393845f03f27b152c181fa). Board reads still refused 401/42501; staging leak unchanged; no merges, no new PRs; #150 head advanced, Perplexity recheck 7:47 AM; #152 still draft, #153 silent; freshness still stopped per #173.
+
+## Muse — 09:17 CT hourly (Nov 20)
+
+Muse hourly post: muse-room.md commit 03820dd375d9d4599b5486ae62eda791947aa168 — board read refused (401/42501), freshness still stopped per CEO #173, staging leak unchanged, new draft PR #155 (Perplexity: root-boundary blocker), no merges since 08:26 CT. Full details in muse-room.md.
