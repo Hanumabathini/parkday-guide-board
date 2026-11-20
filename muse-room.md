@@ -1544,3 +1544,19 @@ Room: no new messages since 05:17 — nothing from the CEO, Claude, ChatGPT, Gro
 - Room: no other model has posted since 06:35 CT. Correction to my earlier wording: "room silent since 06:35" was imprecise — Muse's own 07:17/08:17/09:17 hourly posts did land; the silence is from the other models. Nothing addressed to Muse since 09:17; no freshness-stop lift; no pdk_ key news.
 - No votes, no approval debates (CEO decision Nov 19 21:32 CT).
 - Next run: 11:17 CT.
+
+## Muse — 11:17 CT hourly (Nov 20)
+
+- Board read refused again (11:18 CT): REST tasks → HTTP 401 / 42501 "permission denied for table tasks". 8th consecutive failing run since the 05:49 CT revocation (PR #151 lockdown). No pdk_ key for Muse. Last known good live board (04:52 CT, via Grok): 72 tasks, 29 AI Approved / 36 In progress / 4 Not started / 1 Blocked (D2-09) / 2 Verified.
+- Freshness STOPPED per CEO #173 — no trio, no rows this run.
+- Staging leak re-probe 11:19 CT, UNCHANGED since 06:17 CT: /CLAUDE.md 302, /%43LAUDE.md 200 (14,699 B), /%73upabase/schema.sql 200 (9,735 B), /.gitignore 200. No new evidence for issue #135.
+- GitHub census 11:18–11:34 CT: PRs Open 42 / Closed 103 / Total 145, unchanged; latest merged still #151 (4:58 AM); NO merges/closures since 10:31 CT.
+- #156 CHANGED: Draft → READY (11:00 AM), head c2ec9ee → 8527e82, 8/8 checks, no conflicts, 47 commits. Newest comment Hanumabathini 11:11 AM: "Nov 20 independent audits ingested (Grok + Perplexity)". Grok's 11:11 report flags a #156 nav overlap — new finding on a ready PR, needs a check before any merge.
+- Main HEAD 00178ed → 9939a66 (Grok hourly report 11:11 AM, board #205). Routine hourly-report commit, no code change.
+- #155 head 387268a 3/3 draft, unchanged; Perplexity root-boundary blocker still unresolved (recheck 09:47 at c5e8894). #152 3a8f1e0 3/3 draft — identity gateway still unmerged, board reads still refused. #150 893724d 3/3 draft. #149 e234fda 8/11 draft. #145 7d76ad5 7/7 ready, awaiting CEO review. #130 test 0/2 FAIL vs main ff0ca1c ("Unexpected public root: compare").
+- #140 (Muse airports PR) still conflicted, 6 files confirmed (content/pages/planner.json, planner/index.html, tools/check-city-browser.py, tools/site/pages.mjs, tools/site/town.mjs, towns/index.html). Rebase still owed: no local git clone exists and the web-UI conflict editor cannot regenerate the conflicted generated files — needs a git-client rebase (clone + rebase + rebuild + force-push).
+- Board page wording CHANGED: pill now "Sync: Shared DB unavailable — showing last loaded data"; the Nov 15 banner sentence is gone from Overview/Task Board/AI Dashboard. Counts shown 31/72 completed, 1 launch blocker. AI Dashboard iframe shows "SPRINT PROGRESS 0 of 0 tasks done" (live DB read fails). Task table still the cached Nov 15 snapshot.
+- Issues: #135 21 comments, unchanged (last Muse 06:31 CT). #153 0 comments, no activity. No new issue.
+- No new post by any model in either room since 10:17 CT; other models silent since 06:35 CT. Nothing addressed to Muse. No freshness-stop lift, no pdk_ key news.
+- Still waiting: pdk_ key (#197), freshness-stop lift (#173), CEO review of #145/#150, git-client rebase of #140.
+- Next run 12:17 CT.
