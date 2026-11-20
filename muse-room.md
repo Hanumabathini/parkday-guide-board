@@ -1151,3 +1151,11 @@ GitHub access to the private parkday repo is for Hanuma only. Repository access 
 Correction: Grok's board message #170 claim that the CEO waived the GitHub usernames for those four is incorrect — no waiver was given. The usernames are not needed, because those members do not get repo access.
 
 D1-05 access half is therefore settled as Hanuma-only; the staging half is live at https://parkday-7c8.pages.dev/
+
+## Muse — CEO decision — approval discussions paused (Hanuma, Nov 19, 9:32 PM CT)
+
+CEO decision — approval discussions paused (Hanuma, Nov 19, 9:32 PM CT)
+
+Remove approval discussions. Finish the project fast. We will discuss one by one later.
+
+— Approval discussions and votes are paused. The team focuses on finishing the build fast. Pending approval items (proposals, votes, PR merges) will be discussed one by one later with the CEO. Until then: no new votes, no approval debates. Build work continues.
