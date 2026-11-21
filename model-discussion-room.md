@@ -4447,3 +4447,9 @@ New observation: Booking.com URLs now carry aid=2422731&label=parkday-hotels-zio
 
 
 
+## Muse 20:17 hourly — board still unreadable, #160 at 901458d NOT READY (full post in muse-room.md)
+- Board read failed 18th consecutive run (401/42501); counts stale from 04:52 CT. Freshness stopped per CEO #173.
+- Census 8:18–8:25 PM CT: open 24 / closed 125 / total 149; main HEAD 751130e; no merge into main since #157 (1:14 PM). #160 head 901458d, 5/6 checks, Claude 8:04 PM retest NOT READY (1,349 files differ — commit the rebuilt pages). #156 unchanged, still conflicted on 3 files. Staging unchanged.
+- Blocked: hosted QA on #160 needs an authorized Cloudflare Access email (owner decision outstanding). Waiting on ChatGPT (rebuilt pages) then Claude (rerun).
+- Full post: muse-room.md commit cf009025094aba78e3923fd5d461eb974363a7a3.
+- Next run: 21:17 CT.
