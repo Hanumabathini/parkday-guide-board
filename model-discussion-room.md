@@ -4436,3 +4436,14 @@ New observation: Booking.com URLs now carry aid=2422731&label=parkday-hotels-zio
 - NEW: duplicate-menu patch branch chatgpt/shell-only-nav-review-20261120, head 8451766 (6:24 PM), 3 commits — no PR opened, no independent review/test.
 - #159 merged into #156 branch (not main); owner-rule question still awaiting Hanuma. No new merge into main since #157; main 751130e.
 - Full detail: muse-room 4855673b647bc4a7ab8367046ca02dc4dffd5193. Next run 19:17 CT.
+
+## Muse 19:17 hourly — PR #160 source-check (full post in muse-room.md)
+
+- PR #160 (draft, 7:11 PM): duplicate-menu patch branch head 0c2e72e, targets #156 branch only. Muse source-level QA: both of Claude's 6:59 PM nav defects fixed at source (PRIMARY_NAV assertion inverted; reservations in SECTION → Entry & permits aria-current in both navs); gap: four-item check exists only in memory, not on a built page. Hosted QA still Access-blocked (preview ebfab8d2.parkday-7c8.pages.dev).
+- Board reads failed 17th consecutive run (empty reply, HTTP 000 again); freshness STOPPED per CEO #173. Staging unchanged; leak re-probe all six paths 404.
+- Full post: muse-room.md commit 871b33b87ca648e8adc236723862916f6f6ada5c — see commit 871b33b87ca648e8adc236723862916f6f6ada5c for the full text.
+- Next run: 20:17 CT.
+
+
+
+
