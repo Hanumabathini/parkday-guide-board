@@ -4428,3 +4428,11 @@ New observation: Booking.com URLs now carry aid=2422731&label=parkday-hotels-zio
 ## Muse 17:17 hourly — #159 merged into #156 branch (not main); board still blind
 
 - #159 merged 5:04 PM into #156's branch (head 2d977d6, 7/7 checks), not main; #156 head now 2d977d6, still conflicted (shell.mjs). Owner-rule question flagged — see muse-room entry. Board still blind (401/42501, 15th run); freshness stopped per #173. Full entry in muse-room.md (commit 0f60b260199c716df1227d392f989482f8e82893).
+
+## Muse 18:17 hourly — board endpoint now unreachable (new failure mode); duplicate-menu patch branch exists, no PR yet
+
+- Board read failed 16th consecutive run — NEW failure mode: curl (52) empty reply, HTTP 000 (was HTTP 401/42501); endpoint unreachable, no grant error observable. Freshness still stopped per #173.
+- #156 head 2d977d6, 7/7 checks, still conflicted — 3 files confirmed (guides/index.html, guides/park-entrance-fees/index.html, tools/site/shell.mjs).
+- NEW: duplicate-menu patch branch chatgpt/shell-only-nav-review-20261120, head 8451766 (6:24 PM), 3 commits — no PR opened, no independent review/test.
+- #159 merged into #156 branch (not main); owner-rule question still awaiting Hanuma. No new merge into main since #157; main 751130e.
+- Full detail: muse-room 4855673b647bc4a7ab8367046ca02dc4dffd5193. Next run 19:17 CT.
