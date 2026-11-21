@@ -1672,3 +1672,24 @@ Presence: Muse active; no other model posted since 06:35 CT; Grok paused per 1:1
 - Booking.com live-href capture (browser-task:4df0ee70) still pending — no handoff.
 - Presence: Muse active this run; newest branch activity 6:24 PM (chatgpt/shell-only-nav-review-20261120); Claude last comment 6:04 PM; Grok offline since Nov 15.
 - Next run: 19:17 CT.
+
+## Muse 19:17 hourly — PR #160 source-check: both nav defects fixed at source; hosted check still Access-blocked
+
+- Board: reads failed 17th consecutive run (05:49 → 19:17 CT). Failure mode this run: empty reply, HTTP 000, on tasks + fact_checks + host root (same as 18:17; the 19:00 watch run got the standard 401/42501 JSON again — the endpoint flip-flops between the two; both mean unreadable). Counts stay last known good from 04:52 CT (29 approved / 36 in progress / 4 not started / 1 blocked D2-09 / 2 verified). Audit-log insert not attempted.
+- Freshness: STOPPED per CEO #173 — no lift in room tails; no trio, no rows.
+- PR census: open 24 / closed 125 / total 149, highest #160 (new). Main HEAD 751130e; no merge into main since #157 (1:14 PM).
+- NEW draft PR #160 (7:11 PM, Hanumabathini): duplicate-menu patch branch, head 0c2e72e, 6 commits on 2d977d6, targets the #156 branch only (not main); 5 files, +45/−18. No reviews yet.
+- Muse source-level QA of #160 head 0c2e72e (exact-head, read-only — a source check, NOT a merge approval): (a) PRIMARY_NAV assertion FIXED by inversion — tools/check-park-first.test.mjs L37 now doesNotMatch /PRIMARY_NAV|replaceChildren\(/; the runtime replacement is gone from assets/js/pages.js (L5–19 deleted); second guard in tools/check-shell-navigation.test.mjs L14–16. (b) Reservations marked current — tools/site/pages.mjs L5 SECTION now includes reservations: "reservations", so the generated nav marks Entry & permits aria-current="page" in both navs (shared `links` string, shell.mjs L23/26); CI 6/6 on 0c2e72e. (c) Gap: the new built-page test verifies Entry & permits on built reservations/index.html only — the four-item deepEqual exists only against header() output in memory, not on a built page. Labels match the approved four exactly (Explore parks / Plan a trip / Gateway towns / Entry & permits). (d) No unrelated changes in the diff. Still owed: Claude rerun, full regeneration, browser tests.
+- #156: head 2d977d6, 94 commits, 7/7 checks, still conflicted, exactly 3 files (guides/index.html, guides/park-entrance-fees/index.html, tools/site/shell.mjs). #159 quiet since 5:05 PM. #141 / #144 / #140 / #136 still conflicted, heads unchanged.
+- Staging unchanged: 6-item nav; /towns/ 529 + 471; #140 not live. Leak re-probe: all six paths 404 (PR #157 middleware holding).
+- Blocked / waiting on: hosted QA of the #160 preview (https://ebfab8d2.parkday-7c8.pages.dev) — Access-walled, no authorized email (owner decision outstanding); Claude rerun of 0c2e72e; pdk_ key (board blind); #140 rebase needs a git client; #159-into-#156 merge decision still awaiting Hanuma's word (flagged after 17:17). Booking.com live-href capture still pending (no handoff).
+- Next run: 20:17 CT.
+
+
+
+
+
+
+
+
+
